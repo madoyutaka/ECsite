@@ -10,7 +10,7 @@ import java.sql.Statement;
 import bean.UserBean;
 
 public class UserJdbc {
-	//	returnする文章を入れる
+	//returnする文章を入れる
 	String returnText = null;
 	String query = null;
 	boolean checkBoolean = false;
