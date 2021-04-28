@@ -221,5 +221,43 @@ public class UserJdbc {
 		}
 		return returnUser;
 	}
+	
+	
+//新規登録
+	public void  insert(UserBean ub) {
+		try{
+			Class.forName("com.mysql.jdbc.Driver");		
+			conn = DriverManager.getConnection(url,id,pw);		
+
+			stmt = conn.createStatement();
+
+			String query = "insert into user(user_id,password,email_address,postal_code,address,user_name)"+"values(?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(query);
+
+			pstmt.setString(1,ub.getUser_id());
+			pstmt.setString(2,ub.getPassword());
+			pstmt.setString(3,ub.getEmail_address());
+			pstmt.setInt(4,ub.getPostal_code());
+			pstmt.setString(5,ub.getAddress());
+			pstmt.setString(6,ub.getUser_name());
+			pstmt.executeUpdate();
+			 conn.commit();
+
+		}catch(ClassNotFoundException ex){
+			//例外処理
+			ex.printStackTrace();		
+		}catch(SQLException ex){
+			//例外処理
+			ex.printStackTrace();
+		}finally{	
+			try{
+				if (stmt!=null)stmt.close();
+				if (rs!=null) rs.close();
+				if (stmt!=null) stmt.close();
+				if (conn!=null) conn.close();
+			}catch(Exception ex){
+			}
+		}
+	}
 
 }
