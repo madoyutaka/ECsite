@@ -21,18 +21,18 @@ public class UserJdbc {
 		String id = "root";
 		String pw = "1qaz2wSX?";
 
-		//↓try内に書くとfinallyで使用できないため外に書く
+		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		try{
-			Class.forName("com.mysql.jdbc.Driver");		//ドライバのロードとインスタンス化を行う
+			Class.forName("com.mysql.jdbc.Driver");		
 
 
 			conn = DriverManager.getConnection(url,id,pw);		//接続
 
-			stmt = conn.createStatement();		//connectionオブジェクトのcreateStatementメソッドを実行　引数なし、戻り値はjava.sql.Statementオブジェクト
+			stmt = conn.createStatement();	
 
 			String query = "insert into user(user_id,password,email_address,postal_code,address,user_name)"+"values(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
@@ -47,7 +47,7 @@ public class UserJdbc {
 			pstmt.setString(6,ub.getUserName());
 			pstmt.executeUpdate();
 
-			 conn.commit();		//コミットを発行しデータベースを確定させる
+			 conn.commit();		
 
 		}catch(ClassNotFoundException ex){
 			//例外処理
@@ -62,7 +62,7 @@ public class UserJdbc {
 
 			try{
 				if (stmt!=null)stmt.close();
-				if (rs!=null) rs.close();				//接続したのとは逆順で解除する
+				if (rs!=null) rs.close();				
 				if (stmt!=null) stmt.close();
 				if (conn!=null) conn.close();
 			}catch(Exception ex){
