@@ -28,9 +28,6 @@ public class SignUpServlet extends HttpServlet {
 			req.forward(request, response);
 		}
 		System.out.println("セッション継続中");
-		
-		
-
 	}
 
 
@@ -68,17 +65,20 @@ public class SignUpServlet extends HttpServlet {
 			request.setAttribute("message", "ID,メールアドレス、パスワードは半角英数字のみ入力してください");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
-
-
 		}
 		else {
-
 			int postalCode = Integer.parseInt(pCode);
-			UserBean ub = new UserBean(userId, password, emailAddress, postalCode, address, userName);
+			UserBean ub = new UserBean();
+			
+			ub.setUserId(userId);
+			ub.setPassword(password);
+			ub.setEmailAddress(emailAddress);
+			ub.setPostalCode(postalCode);
+			ub.setAddress(address);
+			ub.setUserName(userName);
 
 			UserJdbc uj = new UserJdbc();
 			uj.insert(ub);
-
 
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
 			rd.forward(request, response);
