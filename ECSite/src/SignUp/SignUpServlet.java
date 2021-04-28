@@ -23,10 +23,13 @@ public class SignUpServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		if(session==null) {
-			System.out.println("セッション×");
-			return;
+			System.out.println("セッションが開始していません");
+			RequestDispatcher req = request.getRequestDispatcher("jsp/Login.jsp");
+			req.forward(request, response);
 		}
 		System.out.println("セッション継続中");
+		
+		
 
 	}
 
