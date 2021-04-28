@@ -1,14 +1,12 @@
 package userdatachange;
 
-import bean.UserBean;
 import jdbc.UserJdbc;
 
 public class UserDataChangeLogic {
 	public String dataChangeLogic(String btnName, String setNewName, int loginUserNo) {
 	//	returnする文章を入れる
 		String returnText = null;
-		UserBean userBean = new UserBean();
-
+		UserJdbc userjdbc = new UserJdbc();
 		//どの情報を更新するか判定し、
 		//入力できない文字が入力されていないか確認する。
 		if(setNewName.equals("")) {
@@ -21,7 +19,6 @@ public class UserDataChangeLogic {
 				returnText = "20文字以内で入力してください。";
 			}else{
 			//データベースに接続する。
-			UserJdbc userjdbc = new UserJdbc();
 			returnText = userjdbc.userDataChange("user_name", setNewName, loginUserNo);
 			}
 
@@ -33,7 +30,6 @@ public class UserDataChangeLogic {
 			//英数字(半角)が入力されている場合
 			}else if(setNewName.matches("^[a-zA-Z0-9]+$")) {
 				//データベースに接続する。
-				UserJdbc userjdbc = new UserJdbc();
 				returnText = userjdbc.userDataChange("user_id", setNewName, loginUserNo);
 			}else{
 				returnText  = "正しい入力方法で入力してください。";
@@ -47,7 +43,6 @@ public class UserDataChangeLogic {
 				returnText = "20文字以内で入力してください。";
 			}else {
 				//データベースに接続する。
-				UserJdbc userjdbc = new UserJdbc();
 				returnText = userjdbc.userDataChange("password", setNewName, loginUserNo);
 			}
 
@@ -61,7 +56,6 @@ public class UserDataChangeLogic {
 			//@の前は!.#$%&'*+/=?^_`{|}~-　@の後は.-が使用可能
 			}else if(setNewName.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
 				//データベースに接続する。
-				UserJdbc userjdbc = new UserJdbc();
 				returnText = userjdbc.userDataChange("email_address", setNewName, loginUserNo);
 			}else {
 				returnText = "正しい入力方法で入力してください。";
@@ -72,7 +66,6 @@ public class UserDataChangeLogic {
 			//7文字かつ半角数字以外が入力されていないか確認する
 			if(setNewName.matches("[+-]?\\d*(\\.\\d+)?") && setNewName.length()==7) {
 				//データベースに接続する。
-				UserJdbc userjdbc = new UserJdbc();
 				returnText = userjdbc.userDataChange("postal_code", setNewName, loginUserNo);
 			}else {
 				returnText="正しい入力方法で入力してください。";
@@ -85,7 +78,6 @@ public class UserDataChangeLogic {
 				returnText = "100文字以内で入力してください。";
 			}else{
 				//データベースに接続する。
-				UserJdbc userjdbc = new UserJdbc();
 				returnText = userjdbc.userDataChange("address", setNewName, loginUserNo);
 			}
 
