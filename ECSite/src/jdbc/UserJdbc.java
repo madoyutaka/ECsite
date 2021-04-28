@@ -5,78 +5,68 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import bean.UserBean;
 
 public class UserJdbc {
-	//JDBCでSQL文実行に必要な情報を格納する変数の宣言
-		PreparedStatement pstmt = null;
+
+	public void  insert(UserBean ub) {
+
+
+
+		String url = "jdbc:mysql://localhost/ec_site_db?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&"
+				+ "useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&"
+				+ "serverTimezone=UTC";
+		String id = "root";
+		String pw = "1qaz2wSX?";
+
+		//↓try内に書くとfinallyで使用できないため外に書く
 		Connection conn = null;
+		Statement stmt = null;
 		ResultSet rs = null;
-
-	 //登録コードの用意
-	 //データベース関連の情報
-	 String url = "jdbc:mysql://localhost/ec_site_db"
-	 		+ "?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	 String id = "root";
-	 String pass ="1qaz2wSX?";//MYSQLのpass
+		PreparedStatement pstmt = null;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");		//ドライバのロードとインスタンス化を行う
 
 
+			conn = DriverManager.getConnection(url,id,pw);		//接続
 
-	public UserBean LoginAccount(UserBean user) {
+			stmt = conn.createStatement();		//connectionオブジェクトのcreateStatementメソッドを実行　引数なし、戻り値はjava.sql.Statementオブジェクト
 
-		UserBean returnUser = new  UserBean();
+			String query = "insert into user(user_id,password,email_address,postal_code,address,user_name)"+"values(?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(query);
 
-	  //ドライバの登録
-		try {
-			Class.forName("com.mysql.jdbc.Driver");//MySQL固有
 
-			//ドライバの用意
-			 conn = DriverManager.getConnection(url,id,pass);
 
-			 //データベースの接続
-			 conn.setAutoCommit(false);//オートコミットモードの解除
+			pstmt.setString(1,ub.getUser_id());
+			pstmt.setString(2,ub.getPassword());
+			pstmt.setString(3,ub.getEmail_address());
+			pstmt.setInt(4,ub.getPostal_code());
+			pstmt.setString(5,ub.getAddress());
+			pstmt.setString(6,ub.getUser_name());
+			pstmt.executeUpdate();
 
-//			 LoginLogic login = new LoginLogic();
-//			 login.LoginAccount(user);
+			 conn.commit();		//コミットを発行しデータベースを確定させる
 
-			 //SELECT文
-			 String query = "SELECT user_no, user_id, password FROM user WHERE user_id = ? AND password = ?";
-		 	 pstmt = conn.prepareStatement(query);
+		}catch(ClassNotFoundException ex){
+			//例外処理
+			ex.printStackTrace();
 
-		 	 pstmt.setString(1, user.getLoginId());
-	         pstmt.setString(2, user.getLoginPass());
+		}catch(SQLException ex){
+			//例外処理
 
-			 rs = pstmt.executeQuery();
+			ex.printStackTrace();
 
-              if( rs.next()) {
-		           // 見つかったアカウント情報を戻り値にセット
-            	   returnUser.setUserNo(rs.getInt("user_no"));
-		           returnUser.setLoginId(rs.getString("user_id"));
-		           returnUser.setLoginPass(rs.getString("password"));
-		       } else {
-		    	   // アカウントがなければnull返す
-		           return null;
-		       }
-		}
+		}finally{		//必ず実行する処理
 
-		catch (ClassNotFoundException ex){//ドライバ登録時の例外処理
-			ex.printStackTrace();//例外処理
-
-		}catch (SQLException ex){//DBMSの接続時の例外処理
-
-		}finally {
-			try {
-				//接続の解除
-				if (rs !=null) rs.close();
-				if(pstmt !=null) pstmt.close();
-				if(conn !=null) conn.close();
-
-			}catch(Exception ex) {//例外処理
-
+			try{
+				if (stmt!=null)stmt.close();
+				if (rs!=null) rs.close();				//接続したのとは逆順で解除する
+				if (stmt!=null) stmt.close();
+				if (conn!=null) conn.close();
+			}catch(Exception ex){
 			}
-
-		}
-		return returnUser;
+}
 	}
 }
