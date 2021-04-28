@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import = "bean.UserBean" %>
@@ -14,7 +15,7 @@
 
 
 <% UserBean user = (UserBean) request.getAttribute("LoginUser");%>
-		<%= user.getLoginId() %>さんのマイページ
+		<%= user.getUser_id() %>さんのマイページ
 
 		<br>
 <form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
@@ -25,6 +26,5 @@
 <br>
 <a href="#">購入履歴</a>
 <br>
-<a href="Top.jsp" value="logout">ログアウト</a>
+<a href="Top.jsp">ログアウト</a>
 </body>
-</html>
