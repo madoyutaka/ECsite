@@ -29,7 +29,9 @@
 
 		<input type="submit" value="登録"><br><br>
 
-		<a href="Login.jsp">すでに登録済みの方はこちら</a><br><br>
+		<button type="button" onclick="location.href='******.jsp'">すでに登録済みの方はこちら</button>
+
+
 
 		</form>
 	</body>
