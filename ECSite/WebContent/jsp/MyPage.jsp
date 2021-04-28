@@ -17,7 +17,9 @@
 		<%= user.getLoginId() %>さんのマイページ
 
 		<br>
-<a href="#">ああああああああああ</a>
+<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+	<input type = "submit" name="btnMyPage" value = "登録情報を変更する">
+</form>
 <br>
 <a href="#">お気に入りリスト</a>
 <br>
