@@ -234,12 +234,12 @@ public class UserJdbc {
 			String query = "insert into user(user_id,password,email_address,postal_code,address,user_name)"+"values(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
 
-			pstmt.setString(1,ub.getUser_id());
+			pstmt.setString(1,ub.getUserId());
 			pstmt.setString(2,ub.getPassword());
-			pstmt.setString(3,ub.getEmail_address());
-			pstmt.setInt(4,ub.getPostal_code());
+			pstmt.setString(3,ub.getEmailAddress());
+			pstmt.setInt(4,ub.getPostalCode());
 			pstmt.setString(5,ub.getAddress());
-			pstmt.setString(6,ub.getUser_name());
+			pstmt.setString(6,ub.getUserName());
 			pstmt.executeUpdate();
 			 conn.commit();
 
