@@ -11,15 +11,6 @@ public class UserBean implements Serializable {
 	String address = null;
 	String userName = null;
 	
- public UserBean(String userId,String password,String emailAddress,int postalCode,String address,String userName) {
-	 this.userId=userId;
-	 this.password=password;
-	 this.emailAddress=emailAddress;
-	 this.postalCode = postalCode;
-	 this.address=address;
-	 this.userName=userName;
-	 }
-
 
 	public int getUserNo() {
 		return userNo;
