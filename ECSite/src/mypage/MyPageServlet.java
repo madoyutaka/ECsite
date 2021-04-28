@@ -21,9 +21,6 @@ public class MyPageServlet extends HttpServlet {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/Login.jsp");
 			rd.forward(request, response);
 			return;
-		}else if(session != null) {
-			session.invalidate();
-			System.out.println("session end");
 		}else{
 			RequestDispatcher rd =getServletContext().getRequestDispatcher("/jsp/Top.jsp");
 			rd.forward(request, response);
@@ -34,8 +31,7 @@ public class MyPageServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("Empty", "Not");
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/Login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/UserDataChange.jsp");
 		rd.forward(request, response);
 	}
 
