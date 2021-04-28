@@ -21,7 +21,7 @@ public class SignUpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);
 		if(session==null) {
 			System.out.println("セッション×");
 			return;
@@ -38,30 +38,30 @@ public class SignUpServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 
-		String user_id = request.getParameter("user_id");
+		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
-		String email_address = request.getParameter("email_address");
-		String p_code = request.getParameter("postal_code");
+		String emailAddress = request.getParameter("emailAddress");
+		String pCode = request.getParameter("postalCode");
 		String address = request.getParameter("address");
-		String user_name = request.getParameter("user_name");
+		String userName = request.getParameter("userName");
 
-		if(user_id=="" || password=="" || email_address=="" || p_code=="" || address=="" || user_name=="") {
+		if(userId=="" || password=="" || emailAddress=="" || pCode=="" || address=="" || userName=="") {
 			request.setAttribute("message", "未入力の項目があります");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
 
-		}else if(p_code.length()!=7){
+		}else if(pCode.length()!=7){
 			request.setAttribute("message", "郵便番号はハイフンなし半角数字7桁で入力してください");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
 
-		}else if(user_id.length()>=20||password.length()>=20||email_address.length()>=40||address.length()>=20||user_name.length()>=100){
+		}else if(userId.length()>=20||password.length()>=20||emailAddress.length()>=40||address.length()>=20||userName.length()>=100){
 			request.setAttribute("message", "文字数オーバーです");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
 
 		}
-		else if(user_id.matches("^[a-zA-Z0-9]+$")||password.matches("^[a-zA-Z0-9]+$")||email_address.matches("^[a-zA-Z0-9]+$")){
+		else if(userId.matches("^[a-zA-Z0-9]+$")||password.matches("^[a-zA-Z0-9]+$")||emailAddress.matches("^[a-zA-Z0-9]+$")){
 			request.setAttribute("message", "ID,メールアドレス、パスワードは半角英数字のみ入力してください");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
@@ -70,8 +70,8 @@ public class SignUpServlet extends HttpServlet {
 		}
 		else {
 
-			int postal_code = Integer.parseInt(request.getParameter("postal_code"));
-			UserBean ub = new UserBean(user_id, password, email_address, postal_code, address, user_name);
+			int postalCode = Integer.parseInt(pCode);
+			UserBean ub = new UserBean(userId, password, emailAddress, postalCode, address, userName);
 
 			UserJdbc uj = new UserJdbc();
 			uj.insert(ub);
