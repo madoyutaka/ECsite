@@ -32,6 +32,7 @@ public class UserDataChangeServlet extends HttpServlet {
 	//requestで送られてきたパラメータのエンコーディングを設定する
 		request.setCharacterEncoding("UTF-8");
 	//保存用
+		RequestDispatcher req = null;
 		String btnName = null;
 		String newSetName = null;
 		int loginUserNo = -1;
@@ -40,7 +41,7 @@ public class UserDataChangeServlet extends HttpServlet {
 		if(request.getSession(false)==null) {
 			System.out.println("セッションが開始していません。");
 			//画面遷移
-			RequestDispatcher req = request.getRequestDispatcher("jsp/login.jsp");
+			req = request.getRequestDispatcher("jsp/login.jsp");
 			req.forward(request, response);
 		}
 
@@ -94,11 +95,11 @@ public class UserDataChangeServlet extends HttpServlet {
 
 		if(resultText.equals("情報の更新が完了しました。")) {
 			request.setAttribute("resultText", resultText);
-			RequestDispatcher req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
+			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
 			req.forward(request, response);
 		} else {
 			request.setAttribute("resultText", resultText);
-			RequestDispatcher req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
+			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
 			req.forward(request, response);
 
 		}
