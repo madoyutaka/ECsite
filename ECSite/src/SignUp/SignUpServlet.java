@@ -50,7 +50,7 @@ public class SignUpServlet extends HttpServlet {
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
 
-		}else if(pCode.length()!=7||pCode.matches("^[^\\x01-\\x7E]")||user_id.matches("^[a-zA-Z]+$")){
+		}else if(pCode.length()!=7||pCode.matches("^[^\\x01-\\x7E]")||pCode.matches("^[a-zA-Z]+$")){
 			request.setAttribute("message", "郵便番号はハイフンなし半角数字7桁で入力してください");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
@@ -61,7 +61,7 @@ public class SignUpServlet extends HttpServlet {
 			return;
 
 		}
-		else if(user_id.matches("^[^\\x01-\\x7E]")||password.matches("^[^\\x01-\\x7E]")||email_address.matches("^[^\\x01-\\x7E]")){
+		else if(userId.matches("^[^\\x01-\\x7E]")||password.matches("^[^\\x01-\\x7E]")||emailAddress.matches("^[^\\x01-\\x7E]")){
 			request.setAttribute("message", "ID,メールアドレス、パスワードは半角英数字のみ入力してください");
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			return;
