@@ -1,8 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import = "bean.UserBean" %>
-    <%@ page isELIgnored ="false" %>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page import = "bean.UserBean" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +12,23 @@
 <!-- ブラウザ上にマイページ用の画面を表示 -->
 <a href="/top/TopServlet">TOP</a>
 
-
 <% UserBean user = (UserBean) request.getAttribute("LoginUser");%>
-		<%= user.getUser_id() %>さんのマイページ
+		<%= user.getUserId() %>さんのマイページ
+<br>
 
-		<br>
 <form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
-	<input type = "submit" name="btnMyPage" value = "登録情報を変更する">
+	<input type = "submit" name="btnUserDataChange" value = "登録情報を変更する">
+	<br>
+	<input type = "submit" name="btnFavoriteList" value = "お気に入りリストを確認する">
+	<br>
+	<input type = "submit" name="btnItemBuyLog" value = "購入履歴を確認する">
+	<br>
+	<br>
+	<br>
+	<input type = "submit" name="btnLogOut" value = "ログアウト">
 </form>
-<br>
-<a href="#">お気に入りリスト</a>
-<br>
-<a href="#">購入履歴</a>
-<br>
-<a href="Top.jsp">ログアウト</a>
+
+
 </body>
+
+</html>
