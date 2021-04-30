@@ -32,7 +32,7 @@ public class TopServlet extends HttpServlet {
 		}
 
 		//	ログインボタンを押したとき
-		if(request.getParameter("btnLogin")!=null) {
+		if(request.getParameter("btnLoginTransition")!=null) {
 			//セッションが継続している場合はマイページへ
 				if(loginUserSession == null) {
 				//セッションがnullの場合
