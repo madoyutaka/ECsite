@@ -25,6 +25,9 @@ if(empty != null){
 		<input type="submit" value="ログイン">
 	</form>
 
-	<a href="#"><button>新規アカウントはこちら</button></a>
+<form action = "http://localhost:8080/ECSite/SignUpServlet" method = "POST">
+	<input type = "submit" name="btnSignUpTransition" value = "新規登録はこちら">
+</form>
+
 </body>
 </html>

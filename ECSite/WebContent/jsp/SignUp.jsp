@@ -38,10 +38,11 @@
 
 		<input type="submit" value="登録"><br><br>
 
-		<button type="button" onclick="location.href='Login.jsp'">すでに登録済みの方はこちら</button>
+</form>
 
+<form action = "http://localhost:8080/ECSite/LoginServlet" method = "POST">
+	<input type = "submit" name="btnLoginTransition" value = "すでに登録済みの方はこちら">
+</form>
 
-
-		</form>
 	</body>
 </html>
