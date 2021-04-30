@@ -59,7 +59,7 @@ public class UserDataChangeServlet extends HttpServlet {
 		UserBean userBean = userJdbc.getUserData(loginUserNo);
 
 		//登録情報変更画面に遷移する。
-		if(request.getParameter("btnUserDataChange")!=null) {
+		if(request.getParameter("btnUserDataChangeTransition")!=null) {
 			request.setAttribute("userData", userBean);
 			//画面遷移
 			System.out.println("登録情報変更画面に遷移します。");
