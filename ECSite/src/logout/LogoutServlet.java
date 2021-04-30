@@ -1,4 +1,4 @@
-package top;
+package logout;
 
 import java.io.IOException;
 
@@ -10,26 +10,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/TopServlet")
-public class TopServlet extends HttpServlet {
-	//トップの画面での処理を制御するサーブレット
+/**
+ * Servlet implementation class LogoutServlet
+ */
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public LogoutServlet() {
+        super();
+
+    }
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher req = null;
-		req = request.getRequestDispatcher("jsp/Top.jsp");
-		req.forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher req = null;
-		HttpSession session = request.getSession(false);
-		//	ログインボタンを押したとき
-		if(request.getParameter("btnLogin")!=null) {
-			if(session.getAttribute("loginUser") == null) {
-				//セッションがnullの場合
-				req = request.getRequestDispatcher("jsp/Login.jsp");
-				req.forward(request, response);
+		HttpSession session = request.getSession();
+
+		if(request.getParameter("btnLogOut")!=null) {
+			System.out.println("ログアウトを行います。");
+			if(session.getAttribute("loginUser")!=null) {
+				session.invalidate();
 			}
-			req = request.getRequestDispatcher("jsp/MyPage.jsp");
+
+			System.out.println("ログアウトが完了しました、トップ画面に遷移します。");
+			req = request.getRequestDispatcher("jsp/Top.jsp");
 			req.forward(request, response);
 		}
 

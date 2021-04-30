@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import bean.UserBean;
 import jdbc.UserJdbc;
 
-@WebServlet("/UserDataChamgeServlet")
+@WebServlet("/UserDataChangeServlet")
 public class UserDataChangeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,9 +36,24 @@ public class UserDataChangeServlet extends HttpServlet {
 		String btnName = null;
 		String newSetName = null;
 		int loginUserNo = -1;
+		HttpSession session = request.getSession();
+		UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
+
+		//登録情報変更画面に遷移する。
+		if(request.getParameter("btnUserDataChange")!=null) {
+			//セッションから値を取得
+			loginUserNo = loginUserBean.getUserNo();
+			UserJdbc userJdbc = new UserJdbc();
+			UserBean userBean = userJdbc.getUserData(loginUserNo);
+			request.setAttribute("userData", userBean);
+			//画面遷移
+			System.out.println("登録情報変更画面に遷移します。");
+			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
+			req.forward(request, response);
+		}
 
 		//	セッションが継続していなかったときは処理を行わずにログイン画面へ
-		if(request.getSession(false)==null) {
+		if(session.getAttribute("loginUser") == null) {
 			System.out.println("セッションが開始していません。");
 			//画面遷移
 			req = request.getRequestDispatcher("jsp/login.jsp");
@@ -46,8 +61,6 @@ public class UserDataChangeServlet extends HttpServlet {
 		}
 
 		//セッションから値を取得
-		HttpSession session = request.getSession(true);
-		UserBean loginUserBean = (UserBean) session.getAttribute("LoginUser");
 		loginUserNo = loginUserBean.getUserNo();
 
 		if(request.getParameter("btnUserName")!=null){

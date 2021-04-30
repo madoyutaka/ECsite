@@ -19,8 +19,24 @@ public class LoginServlet extends HttpServlet {
 	//ログインの処理
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//MIMタイプとエンコーディング(文字コード)の設定をする
+		response.setContentType("text/html;charset=UTF-8");
 		//requestのエンコーディング
 		request.setCharacterEncoding("UTF-8");
+
+		RequestDispatcher req = null;
+		HttpSession session = request.getSession(false);
+
+	//セッションが継続している場合はマイページへ
+		if(session.getAttribute("loginUser") != null) {
+			//セッションから値を取得
+			UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
+			//request.setAttribute("userData", loginUserBean);
+			request.setAttribute("loginUser", loginUserBean);//パラメータ名はloginUser
+			//画面遷移
+			req = request.getRequestDispatcher("jsp/MyPage.jsp");
+			req.forward(request, response);
+		}
 
 		//それぞれPOSTされたものを変数に格納
 		String UserId = request.getParameter("user_id");
@@ -28,8 +44,8 @@ public class LoginServlet extends HttpServlet {
 
 		//インスタンス化
 		UserBean user = new UserBean();
-		user.setLoginId(UserId);
-		user.setLoginPass(UserPass);
+		user.setUserId(UserId);
+		user.setPassword(UserPass);
 
 		//インスタンス化
 		UserJdbc jdbc = new UserJdbc();
@@ -40,11 +56,11 @@ public class LoginServlet extends HttpServlet {
 	    if(returnUser != null) {
 
 	    	// セッションにアカウント情報
-            HttpSession session = request.getSession();
-            session.setAttribute("LoginUser", returnUser);
+	    	session = request.getSession();
+            session.setAttribute("loginUser", returnUser);
             System.out.println("session start");
 
-				request.setAttribute("LoginUser", returnUser);//パラメータ名はLoginUser
+				request.setAttribute("loginUser", returnUser);//パラメータ名はloginUser
 				//Mypage.jspに画面遷移
 				RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
 				rd.forward(request, response);
