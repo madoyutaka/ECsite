@@ -169,7 +169,7 @@ public class UserJdbc {
 
 
 //ログイン処理
-	public UserBean LoginAccount(UserBean user) {
+	public UserBean LoginAccount(String UserId, String UserPass) {
 
 		UserBean returnUser = new  UserBean();
 
@@ -187,8 +187,8 @@ public class UserJdbc {
 			 query = "SELECT user_no, user_id, password FROM user WHERE user_id = ? AND password = ?";
 		 	 pstmt = conn.prepareStatement(query);
 
-		 	 pstmt.setString(1, user.getUserId());
-	         pstmt.setString(2, user.getPassword());
+		 	 pstmt.setString(1, UserId);
+	         pstmt.setString(2, UserPass);
 
 			 rs = pstmt.executeQuery();
 
@@ -221,13 +221,13 @@ public class UserJdbc {
 		}
 		return returnUser;
 	}
-	
-	
+
+
 //新規登録
 	public void  insert(UserBean ub) {
 		try{
-			Class.forName("com.mysql.jdbc.Driver");		
-			conn = DriverManager.getConnection(url,id,pw);		
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url,id,pw);
 
 			stmt = conn.createStatement();
 
@@ -245,11 +245,11 @@ public class UserJdbc {
 
 		}catch(ClassNotFoundException ex){
 			//例外処理
-			ex.printStackTrace();		
+			ex.printStackTrace();
 		}catch(SQLException ex){
 			//例外処理
 			ex.printStackTrace();
-		}finally{	
+		}finally{
 			try{
 				if (stmt!=null)stmt.close();
 				if (rs!=null) rs.close();
