@@ -44,7 +44,6 @@ public class UserDataChangeServlet extends HttpServlet {
 		}catch(Exception ex) {
 			loginUserSession = null;
 		}
-
 		//	セッションが継続していなかったときは処理を行わずにログイン画面へ
 		if(loginUserSession == null) {
 			System.out.println("セッションが開始していません。");
@@ -54,12 +53,13 @@ public class UserDataChangeServlet extends HttpServlet {
 			return;
 		}
 
+		//セッションから値を取得
+		loginUserNo = loginUserBean.getUserNo();
+		UserJdbc userJdbc = new UserJdbc();
+		UserBean userBean = userJdbc.getUserData(loginUserNo);
+
 		//登録情報変更画面に遷移する。
 		if(request.getParameter("btnUserDataChange")!=null) {
-			//セッションから値を取得
-			loginUserNo = loginUserBean.getUserNo();
-			UserJdbc userJdbc = new UserJdbc();
-			UserBean userBean = userJdbc.getUserData(loginUserNo);
 			request.setAttribute("userData", userBean);
 			//画面遷移
 			System.out.println("登録情報変更画面に遷移します。");
@@ -68,36 +68,27 @@ public class UserDataChangeServlet extends HttpServlet {
 			return;
 		}
 
-		//セッションから値を取得
-		loginUserNo = loginUserBean.getUserNo();
-
 		if(request.getParameter("btnUserName")!=null){
-			System.out.println("名前を変更します");
 			btnName = "btnUserName";
 			newSetName = request.getParameter("newUserName");
 
 		}else if(request.getParameter("btnUserID")!=null) {
-			System.out.println("IDを変更します");
 			btnName = "btnUserID";
 			newSetName = request.getParameter("newUserID");
 
 		}else if(request.getParameter("btnPassword")!=null) {
-			System.out.println("パスワードを変更します");
 			btnName = "btnPassword";
 			newSetName = request.getParameter("newPassword");
 
 		}else if(request.getParameter("btnEmailAddress")!=null) {
-			System.out.println("メールアドレスを変更します");
 			btnName = "btnEmailAddress";
 			newSetName = request.getParameter("newEmailAddress");
 
 		}else if(request.getParameter("btnPostalCode")!=null) {
-			System.out.println("郵便番号を変更します");
 			btnName = "btnPostalCode";
 			newSetName = request.getParameter("newPostalCode");
 
 		}else if(request.getParameter("btnAddress")!=null) {
-			System.out.println("住所を変更します");
 			btnName = "btnAddress";
 			newSetName = request.getParameter("newAddress");
 
@@ -107,11 +98,7 @@ public class UserDataChangeServlet extends HttpServlet {
 		UserDataChangeLogic newLogic = new UserDataChangeLogic();
 		String resultText = newLogic.dataChangeLogic(btnName, newSetName, loginUserNo);
 
-		UserJdbc userJdbc = new UserJdbc();
-		UserBean userBean = new UserBean();
-
 		//再読み込みのために取得
-		userBean = userJdbc.getUserData(loginUserNo);
 		request.setAttribute("userData", userBean);
 
 			request.setAttribute("resultText", resultText);
