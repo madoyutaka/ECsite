@@ -99,6 +99,7 @@ public class UserDataChangeServlet extends HttpServlet {
 		String resultText = newLogic.dataChangeLogic(btnName, newSetName, loginUserNo);
 
 		//再読み込みのために取得
+		userBean = userJdbc.getUserData(loginUserNo);
 		request.setAttribute("userData", userBean);
 
 			request.setAttribute("resultText", resultText);
