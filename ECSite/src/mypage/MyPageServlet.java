@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.UserBean;
+
 @WebServlet("/MyPageServlet")
 public class MyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,13 +32,20 @@ public class MyPageServlet extends HttpServlet {
 	//保存用
 		RequestDispatcher req = null;
 		HttpSession session = request.getSession(false);
+		UserBean loginUserSession;
+		try {
+			loginUserSession = (UserBean)session.getAttribute("loginUser");
+		}catch(Exception ex) {
+			loginUserSession = null;
+		}
 
 	//セッションが継続していなかったときは処理を行わずにログイン画面へ
-		if(session.getAttribute("loginUser") == null) {
+		if(loginUserSession == null) {
 			System.out.println("セッションが開始していません。");
 			//画面遷移
-			req = request.getRequestDispatcher("jsp/login.jsp");
+			req = request.getRequestDispatcher("jsp/Login.jsp");
 			req.forward(request, response);
+			return;
 		}
 
 
@@ -46,6 +55,7 @@ public class MyPageServlet extends HttpServlet {
 			System.out.println("お気に入りリストに遷移します。");
 			req = request.getRequestDispatcher("jsp/Top.jsp");
 			req.forward(request, response);
+			return;
 
 		//購入履歴に遷移する
 		}else if(request.getParameter("btnItemBuyLog")!=null) {
@@ -53,7 +63,7 @@ public class MyPageServlet extends HttpServlet {
 			System.out.println("購入履歴に遷移します。");
 			req = request.getRequestDispatcher("jsp/Top.jsp");
 			req.forward(request, response);
-
+			return;
 		}
 
 	}

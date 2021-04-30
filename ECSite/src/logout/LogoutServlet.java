@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.UserBean;
+
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -30,16 +32,23 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher req = null;
 		HttpSession session = request.getSession();
+		UserBean loginUserSession;
+		try {
+			loginUserSession = (UserBean)session.getAttribute("loginUser");
+		}catch(Exception ex) {
+			loginUserSession = null;
+		}
 
 		if(request.getParameter("btnLogOut")!=null) {
 			System.out.println("ログアウトを行います。");
-			if(session.getAttribute("loginUser")!=null) {
+			if(loginUserSession!=null) {
 				session.invalidate();
 			}
 
 			System.out.println("ログアウトが完了しました、トップ画面に遷移します。");
 			req = request.getRequestDispatcher("jsp/Top.jsp");
 			req.forward(request, response);
+			return;
 		}
 
 	}

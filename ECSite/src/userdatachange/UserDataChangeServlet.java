@@ -38,6 +38,21 @@ public class UserDataChangeServlet extends HttpServlet {
 		int loginUserNo = -1;
 		HttpSession session = request.getSession();
 		UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
+		UserBean loginUserSession;
+		try {
+			loginUserSession = (UserBean)session.getAttribute("loginUser");
+		}catch(Exception ex) {
+			loginUserSession = null;
+		}
+
+		//	セッションが継続していなかったときは処理を行わずにログイン画面へ
+		if(loginUserSession == null) {
+			System.out.println("セッションが開始していません。");
+			//画面遷移
+			req = request.getRequestDispatcher("jsp/Login.jsp");
+			req.forward(request, response);
+			return;
+		}
 
 		//登録情報変更画面に遷移する。
 		if(request.getParameter("btnUserDataChange")!=null) {
@@ -50,14 +65,7 @@ public class UserDataChangeServlet extends HttpServlet {
 			System.out.println("登録情報変更画面に遷移します。");
 			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
 			req.forward(request, response);
-		}
-
-		//	セッションが継続していなかったときは処理を行わずにログイン画面へ
-		if(session.getAttribute("loginUser") == null) {
-			System.out.println("セッションが開始していません。");
-			//画面遷移
-			req = request.getRequestDispatcher("jsp/login.jsp");
-			req.forward(request, response);
+			return;
 		}
 
 		//セッションから値を取得
@@ -106,16 +114,10 @@ public class UserDataChangeServlet extends HttpServlet {
 		userBean = userJdbc.getUserData(loginUserNo);
 		request.setAttribute("userData", userBean);
 
-		if(resultText.equals("情報の更新が完了しました。")) {
 			request.setAttribute("resultText", resultText);
 			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
 			req.forward(request, response);
-		} else {
-			request.setAttribute("resultText", resultText);
-			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
-			req.forward(request, response);
-
-		}
+			return;
 
 	}
 
