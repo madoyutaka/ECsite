@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>登録情報変更</title>
 </head>
 <body>
 	<form action="http://localhost:8080/ECSite/UserDataChangeServlet" method="POST">
