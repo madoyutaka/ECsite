@@ -32,6 +32,14 @@ public class LoginServlet extends HttpServlet {
 		LoginLogic newlogic = new LoginLogic();
 		UserBean returnUser = newlogic.accountLoginLogic(UserId,UserPass);
 
+		if(request.getParameter("btnLoginTransition")!=null) {
+			//画面遷移
+			System.out.println("ログイン画面に遷移します。");
+			RequestDispatcher req = request.getRequestDispatcher("jsp/Login.jsp");
+			req.forward(request, response);
+			return;
+		}
+
 	    	if(returnUser != null){
 	    		// セッションにアカウント情報
 		    	session = request.getSession();
