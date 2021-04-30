@@ -50,7 +50,7 @@ public class MyPageServlet extends HttpServlet {
 
 
 		//お気に入りリストに遷移する。
-		if(request.getParameter("btnFavoriteList")!=null) {
+		if(request.getParameter("btnFavoriteListTransition")!=null) {
 			//画面遷移、仮
 			System.out.println("お気に入りリストに遷移します。");
 			req = request.getRequestDispatcher("jsp/Top.jsp");
@@ -58,7 +58,7 @@ public class MyPageServlet extends HttpServlet {
 			return;
 
 		//購入履歴に遷移する
-		}else if(request.getParameter("btnItemBuyLog")!=null) {
+		}else if(request.getParameter("btnItemBuyLogTransition")!=null) {
 			//画面遷移、仮
 			System.out.println("購入履歴に遷移します。");
 			req = request.getRequestDispatcher("jsp/Top.jsp");
