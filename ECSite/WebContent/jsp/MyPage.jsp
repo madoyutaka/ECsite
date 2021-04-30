@@ -17,13 +17,13 @@
 <br>
 
 <form action = "http://localhost:8080/ECSite/UserDataChangeServlet" method = "POST">
-	<input type = "submit" name="btnUserDataChange" value = "登録情報を変更する">
+	<input type = "submit" name="btnUserDataChangeTransition" value = "登録情報を変更する">
 	<br>
 </form>
 <form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
-	<input type = "submit" name="btnFavoriteList" value = "お気に入りリストを確認する">
+	<input type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを確認する">
 	<br>
-	<input type = "submit" name="btnItemBuyLog" value = "購入履歴を確認する">
+	<input type = "submit" name="btnItemBuyLogTransition" value = "購入履歴を確認する">
 	<br>
 </form>
 	<br>
