@@ -25,6 +25,6 @@ if(empty != null){
 		<input type="submit" value="ログイン">
 	</form>
 
-	<a href="SignUp.jsp">新規登録へ</a>
+	<a href="#"><button>新規アカウントはこちら</button></a>
 </body>
 </html>

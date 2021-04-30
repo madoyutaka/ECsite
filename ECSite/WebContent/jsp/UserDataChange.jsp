@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="http://localhost:8080/ECSite/UserDataChamgeServlet" method="POST">
+	<form action="http://localhost:8080/ECSite/UserDataChangeServlet" method="POST">
 		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
 		<c:choose>
 			<c:when test="${resultText != null}">
