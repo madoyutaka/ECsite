@@ -23,19 +23,7 @@ public class LoginServlet extends HttpServlet {
 		//requestのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
-		RequestDispatcher req = null;
 		HttpSession session = request.getSession(false);
-
-	//セッションが継続している場合はマイページへ
-		if(session.getAttribute("loginUser") != null) {
-			//セッションから値を取得
-			UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
-			//request.setAttribute("userData", loginUserBean);
-			request.setAttribute("loginUser", loginUserBean);//パラメータ名はloginUser
-			//画面遷移
-			req = request.getRequestDispatcher("jsp/MyPage.jsp");
-			req.forward(request, response);
-		}
 
 		//それぞれPOSTされたものを変数に格納
 		String UserId = request.getParameter("user_id");
@@ -43,9 +31,6 @@ public class LoginServlet extends HttpServlet {
 
 		LoginLogic newlogic = new LoginLogic();
 		UserBean returnUser = newlogic.accountLoginLogic(UserId,UserPass);
-
-
-
 
 	    	if(returnUser != null){
 	    		// セッションにアカウント情報
@@ -56,10 +41,12 @@ public class LoginServlet extends HttpServlet {
 				//Mypage.jspに画面遷移
 				RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
 				rd.forward(request, response);
+				return;
 			}else{
 				request.setAttribute("Empty", "ログインに失敗しました！");
 				RequestDispatcher rd = request.getRequestDispatcher("/jsp/Login.jsp");
 				rd.forward(request, response);
+				return;
 			}
 	}
 }
