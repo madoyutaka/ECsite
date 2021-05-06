@@ -19,7 +19,7 @@
 				<c:out value="${resultText}"/>
 			</c:when>
 			<c:when test="${resultText == null}">
-				<c:out value=""/>
+				<br>
 			</c:when>
 		</c:choose>
 
@@ -37,7 +37,7 @@
 
 
 
-		<br>
+
 	<table>
 		<tr>
 			<td>
