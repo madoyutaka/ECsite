@@ -13,7 +13,7 @@
 	<input type = "submit" name="btnLoginTransition" value = "ログイン">
 	<br>
 </form>
-<form>
+<form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
 	<input type = "submit" name="btnItemListTransition" value = "商品を見る">
 	<br>
 </form>
