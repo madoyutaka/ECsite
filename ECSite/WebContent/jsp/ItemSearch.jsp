@@ -36,7 +36,9 @@
 
 		<c:when test="${ fn:length(itemSearchList) >= 1}">
 			<c:forEach items="${itemSearchList}" var="item">
-				商品名：<c:out value="${item.itemName}" default="取得失敗"/><br>
+				<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+				<button type="submit" name="btnItemDetailTransition" value="${item.itemNo}">${item.itemName}</button>
+				</form>
 				商品説明：<c:out value="${item.itemDescription}" default="取得失敗"/><br>
 				商品価格：<c:out value="${item.itemPrice}" default="取得失敗"/><br>
 				商品画像：<c:out value="${item.itemImage}" default="取得失敗"/><br>
