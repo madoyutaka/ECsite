@@ -21,7 +21,7 @@
 	<br>
 </form>
 
-<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
 	<input type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを確認する">
 	<br>
 </form>
