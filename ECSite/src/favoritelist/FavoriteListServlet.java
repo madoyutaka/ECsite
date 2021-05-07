@@ -59,11 +59,11 @@ public class FavoriteListServlet extends HttpServlet {
 				ArrayList<FavoriteBean> faveList = faveLogic.favoriteGetLogic(loginUserNo);
 
 
-				//購入履歴画面に遷移する。
+				//お気に入りリスト画面に遷移する。
 				if(request.getParameter("btnFavoriteListTransition")!=null) {
 					request.setAttribute("loginUserFaves", faveList);
 					//画面遷移
-					System.out.println("購入履歴更画面に遷移します。");
+					System.out.println("お気に入りリスト画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/FavoriteList.jsp");
 					req.forward(request, response);
 					return;
