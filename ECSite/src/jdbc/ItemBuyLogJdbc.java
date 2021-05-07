@@ -47,7 +47,6 @@ public class ItemBuyLogJdbc {
 					itemBuyLogBean.setItemBuyCount(rs.getInt("item_buy_count"));
 					itemBuyLogBean.setItemBuyDate(rs.getDate("item_buy_date"));
 					itemBuyLogBean.setItemNo(rs.getInt("item_no"));
-					itemBuyLogBean.setUserNo(rs.getInt("user_no"));
 					itemBuyLogBean.setItemName(rs.getString("item_name"));
 					itemBuyLogBean.setItemImage(rs.getString("item_Image"));
 					itemBuyLogList.add(itemBuyLogBean);
