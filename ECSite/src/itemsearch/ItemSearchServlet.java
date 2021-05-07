@@ -65,15 +65,6 @@ public class ItemSearchServlet extends HttpServlet {
 			return;
 		}
 
-		//商品詳細画面に遷移
-		if(request.getParameter("btnItemDetailTransition")!=null) {
-			System.out.println("選択された商品のitemNo："+request.getParameter("btnItemDetailTransition"));
-			//値を渡す
-			request.setAttribute("itemNo", request.getParameter("btnItemDetailTransition"));
-			req = request.getRequestDispatcher("jsp/ItemDetail.jsp");
-			req.forward(request, response);
-			return;
-		}
 	}
 
 }
