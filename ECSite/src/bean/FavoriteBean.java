@@ -4,7 +4,7 @@ public class FavoriteBean {
 
 
 	String itemName=null;
-	int userNo;
+	int itemNo;
 	int favoriteNo;
 	String itemImage =null;
 
@@ -17,11 +17,11 @@ public class FavoriteBean {
 		this.itemName = itemName;
 	}
 
-	public int getUserNo() {
-		return userNo;
+	public int getitemNo() {
+		return itemNo;
 	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
 }
 
 	public int getFavoriteNo() {
