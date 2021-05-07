@@ -21,7 +21,58 @@ public class ItemJdbc {
 	String url = "jdbc:mysql://localhost/ec_site_db?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	String id = "root";
 	String pw = "1qaz2wSX?";
+	
+	//商品情報を取得する
+		public ItemBean getItemData(int ItemNo) {
+			ItemBean returnBean = new ItemBean();
+            System.out.println(ItemNo);
 
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+
+				conn = DriverManager.getConnection(url, id, pw);
+				stmt =conn.createStatement();
+			//SELECT文の用意
+				query = "SELECT * FROM item JOIN category ON item.category_no=category.category_no WHERE item_no=?;";
+
+			//PreparedStatementオブジェクトを使用
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, ItemNo);
+			//SQLの実行
+				rs = pstmt.executeQuery();
+
+			//値をセットする
+				while(rs.next()) {
+					returnBean.setItemNo(rs.getInt("item_no"));
+					returnBean.setItemName(rs.getString("item_name"));
+					returnBean.setItemDescription(rs.getString("item_description"));
+					returnBean.setItemPrice(rs.getInt("item_price"));
+					returnBean.setItemImage(rs.getString("item_image"));
+					returnBean.setItemStock(rs.getInt("item_stock"));
+					returnBean.setCategoryNo(rs.getInt("category_no"));
+					returnBean.setCategoryName(rs.getString("category_name"));
+				}
+
+
+			}catch(SQLException ex) {
+
+			}catch(Exception ex) {
+
+			}finally {
+				try {
+					if(conn != null) { conn.close(); }
+					if(stmt != null) { stmt.close(); }
+					if(pstmt != null) { pstmt.close(); }
+					if(rs != null) { rs.close(); }
+
+				}catch(SQLException ex){
+					ex.printStackTrace();
+
+					}
+
+			}
+			return returnBean;
+		}
 //商品検索
 	public ArrayList<ItemBean> itemSearch(String searchWord){
 		ArrayList<ItemBean> itemSearchList = new ArrayList<ItemBean>();
