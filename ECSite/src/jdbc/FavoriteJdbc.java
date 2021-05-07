@@ -47,6 +47,7 @@ public class FavoriteJdbc {
 			while(rs.next()){
 							FavoriteBean faveBean = new FavoriteBean();
 							faveBean.setItemName(rs.getString("item_name"));
+							faveBean.setItemNo(rs.getInt("item_no"));
 							faveList.add(faveBean);
 			}
 
