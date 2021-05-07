@@ -27,10 +27,10 @@
 		<% String passwordResultText = "エラーが発生しました";%>
 		<!-- passwordがnullではない場合と、passwordがnull(取得失敗)の場合 -->
 		<c:choose>
-			<c:when test="${userData.password != null }">
+			<c:when test="${loginUserData.password != null }">
 				<% passwordResultText="設定済み"; %>
 			</c:when>
-			<c:when test="${userData.password  == null}">
+			<c:when test="${loginUserData.password  == null}">
 				<% passwordResultText="取得失敗"; %>
 			</c:when>
 		</c:choose>
@@ -44,7 +44,7 @@
 				氏名：
 			</td>
 			<td>
-				<c:out value="${userData.userName}" default="取得失敗"/>
+				<c:out value="${loginUserData.userName}" default="取得失敗"/>
 			</td>
 		</tr>
 		<tr>
@@ -67,7 +67,7 @@
 				ユーザーID：
 			</td>
 			<td>
-				<c:out value="${userData.userId}" default="取得失敗"/>
+				<c:out value="${loginUserData.userId}" default="取得失敗"/>
 			</td>
 		</tr>
 		<tr>
@@ -114,7 +114,7 @@
 				メールアドレス：
 			</td>
 			<td>
-				<c:out value="${userData.emailAddress}" default="取得失敗"/>
+				<c:out value="${loginUserData.emailAddress}" default="取得失敗"/>
 			</td>
 		</tr>
 		<tr>
@@ -137,7 +137,7 @@
 				郵便番号
 			</td>
 			<td>
-				<c:out value="${userData.postalCode}" default="取得失敗"/>
+				<c:out value="${loginUserData.postalCode}" default="取得失敗"/>
 			</td>
 		</tr>
 		<tr>
@@ -160,7 +160,7 @@
 				住所
 			</td>
 			<td>
-				<c:out value="${userData.address}" default="取得失敗"/>
+				<c:out value="${loginUserData.address}" default="取得失敗"/>
 			</td>
 		</tr>
 		<tr>
