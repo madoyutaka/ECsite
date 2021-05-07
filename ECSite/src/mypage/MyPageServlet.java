@@ -56,14 +56,6 @@ public class MyPageServlet extends HttpServlet {
 			req = request.getRequestDispatcher("jsp/Top.jsp");
 			req.forward(request, response);
 			return;
-
-		//購入履歴に遷移する
-		}else if(request.getParameter("btnItemBuyLogTransition")!=null) {
-			//画面遷移、仮
-			System.out.println("購入履歴に遷移します。");
-			req = request.getRequestDispatcher("jsp/Top.jsp");
-			req.forward(request, response);
-			return;
 		}
 
 	}
