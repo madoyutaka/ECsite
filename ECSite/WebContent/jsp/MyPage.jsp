@@ -20,14 +20,20 @@
 	<input type = "submit" name="btnUserDataChangeTransition" value = "登録情報を変更する">
 	<br>
 </form>
+
 <form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
 	<input type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを確認する">
 	<br>
+</form>
+
+<form action = "http://localhost:8080/ECSite/ItemBuyLogServlet" method = "POST">
 	<input type = "submit" name="btnItemBuyLogTransition" value = "購入履歴を確認する">
 	<br>
 </form>
+
 	<br>
 	<br>
+
 <form action = "http://localhost:8080/ECSite/LogoutServlet" method = "POST">
 	<input type = "submit" name="btnLogOut" value = "ログアウト">
 </form>
