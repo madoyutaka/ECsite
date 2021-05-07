@@ -17,7 +17,7 @@
 <h1>商品詳細</h1>
 	<% ItemBean itemData = (ItemBean)request.getAttribute("itemData"); %>
 
-	${itemDate}
+	<img src="./img/${itemData.itemImage}">
 
 	<!-- ゲッターメソッドで変数の値を取得 -->
 	${itemData.itemNo}
