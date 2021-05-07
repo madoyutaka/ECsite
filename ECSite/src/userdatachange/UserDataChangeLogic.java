@@ -4,7 +4,7 @@ import jdbc.UserJdbc;
 
 public class UserDataChangeLogic {
 	public String dataChangeLogic(String btnName, String setNewData, int loginUserNo) {
-	//	returnする文章を入れるnewSetData
+	//	returnする文章を入れる
 		String returnText = null;
 		UserJdbc userjdbc = new UserJdbc();
 		//どの情報を更新するか判定し、
