@@ -36,7 +36,7 @@
 
 		<c:when test="${ fn:length(itemSearchList) >= 1}">
 			<c:forEach items="${itemSearchList}" var="item">
-				<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+				<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 				<button type="submit" name="btnItemDetailTransition" value="${item.itemNo}">${item.itemName}</button>
 				</form>
 				商品説明：<c:out value="${item.itemDescription}" default="取得失敗"/><br>
