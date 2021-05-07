@@ -25,13 +25,13 @@ public class UserJdbc {
 	String pw = "1qaz2wSX?";
 
 //登録情報変更
-	public String userDataChange(String columnName, String setNewName, int loginUserNo) {
+	public String userDataChange(String columnName, String setNewData, int loginUserNo) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
 			stmt =conn.createStatement();
 
-			System.out.println(columnName+"を"+setNewName+"に変更します");
+			System.out.println(columnName+"を"+setNewData+"に変更します");
 			//IDとメールアドレスは値が重複していないか確認する。
 			if(columnName.equals("user_id") || columnName.equals("email_address")) {
 				if(columnName.equals("user_id")) {
@@ -41,7 +41,7 @@ public class UserJdbc {
 				}
 				//PreparedStatementオブジェクトを使用
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1, setNewName);
+				pstmt.setString(1, setNewData);
 				//SQLの実行
 				rs = pstmt.executeQuery();
 				checkBoolean = rs.next();
@@ -71,11 +71,11 @@ public class UserJdbc {
 
 				//columnNameがpostal_codeの場合はINT
 				if(columnName.equals("postal_code")) {
-					pstmt.setInt(1, Integer.parseInt(setNewName));
+					pstmt.setInt(1, Integer.parseInt(setNewData));
 					pstmt.setInt(2, loginUserNo);
 
 				}else {
-					pstmt.setString(1, setNewName);
+					pstmt.setString(1, setNewData);
 					pstmt.setInt(2, loginUserNo);
 
 				}
