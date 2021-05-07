@@ -34,7 +34,7 @@ public class UserDataChangeServlet extends HttpServlet {
 	//保存用
 		RequestDispatcher req = null;
 		String btnName = null;
-		String newSetName = null;
+		String setNewData = null;
 		int loginUserNo = -1;
 		HttpSession session = request.getSession();
 		UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
@@ -60,7 +60,7 @@ public class UserDataChangeServlet extends HttpServlet {
 
 		//登録情報変更画面に遷移する。
 		if(request.getParameter("btnUserDataChangeTransition")!=null) {
-			request.setAttribute("userData", userBean);
+			request.setAttribute("loginUserData", userBean);
 			//画面遷移
 			System.out.println("登録情報変更画面に遷移します。");
 			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
@@ -70,37 +70,37 @@ public class UserDataChangeServlet extends HttpServlet {
 
 		if(request.getParameter("btnUserName")!=null){
 			btnName = "btnUserName";
-			newSetName = request.getParameter("newUserName");
+			setNewData = request.getParameter("newUserName");
 
 		}else if(request.getParameter("btnUserID")!=null) {
 			btnName = "btnUserID";
-			newSetName = request.getParameter("newUserID");
+			setNewData = request.getParameter("newUserID");
 
 		}else if(request.getParameter("btnPassword")!=null) {
 			btnName = "btnPassword";
-			newSetName = request.getParameter("newPassword");
+			setNewData = request.getParameter("newPassword");
 
 		}else if(request.getParameter("btnEmailAddress")!=null) {
 			btnName = "btnEmailAddress";
-			newSetName = request.getParameter("newEmailAddress");
+			setNewData = request.getParameter("newEmailAddress");
 
 		}else if(request.getParameter("btnPostalCode")!=null) {
 			btnName = "btnPostalCode";
-			newSetName = request.getParameter("newPostalCode");
+			setNewData = request.getParameter("newPostalCode");
 
 		}else if(request.getParameter("btnAddress")!=null) {
 			btnName = "btnAddress";
-			newSetName = request.getParameter("newAddress");
+			setNewData = request.getParameter("newAddress");
 
 		}
 
 		//インスタンスを生成し、処理を行った結果を格納する。
 		UserDataChangeLogic newLogic = new UserDataChangeLogic();
-		String resultText = newLogic.dataChangeLogic(btnName, newSetName, loginUserNo);
+		String resultText = newLogic.dataChangeLogic(btnName, setNewData, loginUserNo);
 
 		//再読み込みのために取得
 		userBean = userJdbc.getUserData(loginUserNo);
-		request.setAttribute("userData", userBean);
+		request.setAttribute("loginUserData", userBean);
 
 			request.setAttribute("resultText", resultText);
 			req = request.getRequestDispatcher("jsp/UserDataChange.jsp");
