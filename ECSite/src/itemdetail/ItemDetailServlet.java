@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import bean.ItemBean;
 import bean.UserBean;
-import jdbc.UserJdbc;
 
 @WebServlet("/ItemDetailServlet")
 public class ItemDetailServlet extends HttpServlet {
@@ -31,27 +30,18 @@ public class ItemDetailServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 			//保存用
 				RequestDispatcher req = null;
-				String btnName = null;
-				int loginUserNo = -1;
 				int ItemNo= 0;
 				System.out.println("確認中");
 				ItemBean itemBean = new ItemBean();
 
 				//セッション関連
 				HttpSession session = request.getSession();
-				UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
 				UserBean loginUserSession;
 				try {
 					loginUserSession = (UserBean)session.getAttribute("loginUser");
 				}catch(Exception ex) {
 					loginUserSession = null;
 				}
-
-				//セッションから値を取得
-//				loginUserNo = loginUserBean.getUserNo();
-				UserJdbc userJdbc = new UserJdbc();
-				UserBean userBean = userJdbc.getUserData(loginUserNo);
-
 
 				//カート画面に遷移する。
 				if(request.getParameter("btnCartIn")!=null) {
