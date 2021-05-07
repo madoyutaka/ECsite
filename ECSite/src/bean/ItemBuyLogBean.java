@@ -6,7 +6,6 @@ public class ItemBuyLogBean {
 	int itemBuyCount;
 	Date itemBuyDate;
 	int itemNo;
-	int userNo;
 	String itemName = null;
 	String itemImage = null;
 
@@ -29,13 +28,6 @@ public class ItemBuyLogBean {
 	}
 	public void setItemNo(int itemNo) {
 		this.itemNo = itemNo;
-	}
-
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
 	}
 
 	public String getItemName() {
