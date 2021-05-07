@@ -48,16 +48,6 @@ public class MyPageServlet extends HttpServlet {
 			return;
 		}
 
-
-		//お気に入りリストに遷移する。
-		if(request.getParameter("btnFavoriteListTransition")!=null) {
-			//画面遷移、仮
-			System.out.println("お気に入りリストに遷移します。");
-			req = request.getRequestDispatcher("jsp/Top.jsp");
-			req.forward(request, response);
-			return;
-		}
-
 	}
 
 }
