@@ -74,7 +74,7 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 					FavoriteBean faveBean = new FavoriteBean();
 					faveBean = faveLogic.deleteLogic(favoriteNo);
 					request.setAttribute("message", "お気に入りリストから商品を削除しました。");
-					req = request.getRequestDispatcher("jsp/FavoriteCompletionList.jsp");
+					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
 					req.forward(request, response);
 					return;
 				}
@@ -83,10 +83,11 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 
 					System.out.println("お気に入りリストに商品を追加しました。");
 					request.setAttribute("message", "お気に入りリストに商品を追加しました。");
-					req = request.getRequestDispatcher("jsp/FavoriteCompletionList.jsp");
+					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
 					req.forward(request, response);
 					return;
 				}
-	}
+
+		}
 
 }
