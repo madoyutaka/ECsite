@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.ItemBean;
 import bean.UserBean;
+import jdbc.ItemJdbc;
 
 @WebServlet("/WriteReviewServlet")
 public class WriteReviewServlet extends HttpServlet {
@@ -75,9 +77,25 @@ public class WriteReviewServlet extends HttpServlet {
 			WriteReviewLogic writeReviewLogic = new WriteReviewLogic();
 			reviewResultText = writeReviewLogic.writeReviewLogic(loginUserNo, setItemNo, reviewScore, reviewComment);
 			request.setAttribute("reviewResultText", reviewResultText);
+
+			if(reviewResultText.equals("レビューが完了しました。")) {
+				//画面遷移
+				System.out.println("商品詳細画面に遷移します。");
+				//商品情報を取得
+				ItemBean itemBean = new ItemBean();
+				ItemJdbc itemJebc = new ItemJdbc();
+				itemBean = itemJebc.getItemData(setItemNo);
+				request.setAttribute("itemBean", itemBean);
+				request.setAttribute("resultText", reviewResultText);
+				req = request.getRequestDispatcher("jsp/ItemDetail.jsp");
+				req.forward(request, response);
+				return;
+
+			}
 			//画面遷移
-			System.out.println("商品詳細画面に遷移します。");
-			req = request.getRequestDispatcher("jsp/ItemDetail.jsp");
+			System.out.println("レビュー画面に遷移します。");
+			req = request.getRequestDispatcher("jsp/WriteReview.jsp");
+			request.setAttribute("errorText", reviewResultText);
 			req.forward(request, response);
 			return;
 		}

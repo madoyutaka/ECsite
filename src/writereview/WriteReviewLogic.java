@@ -9,16 +9,16 @@ public class WriteReviewLogic {
 		ReviewJdbc reviewJdbc = new ReviewJdbc();
 
 		//レビューが150文字以内ではない場合
-		if(setReviewComment.length() >= 150) {
+		if(setReviewComment.length() > 150) {
 			resultText = "コメントは150文字以内で入力してください。";
 			return resultText;
 		//コメントが未入力のレビューの場合
 		}else if(setReviewComment.equals("")){
-			reviewJdbc.writeNoCommentReview(loginUserNo, setItemNo, setReviewScore);
+			resultText = reviewJdbc.writeNoCommentReview(loginUserNo, setItemNo, setReviewScore);
 			return resultText;
 		//コメントが入力されたレビューの場合
 		}else {
-			reviewJdbc.writeReview(loginUserNo, setItemNo, setReviewScore, setReviewComment);
+			resultText = reviewJdbc.writeReview(loginUserNo, setItemNo, setReviewScore, setReviewComment);
 			return resultText;
 		}
 
