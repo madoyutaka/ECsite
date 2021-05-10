@@ -18,9 +18,16 @@
 <c:choose>
 		<c:when test="${ fn:length(loginUserFaves) >= 1}">
 			<c:forEach items="${loginUserFaves}" var = "a">
-				<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
+				<table>
+				<tr>
+				<td><form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<button type="submit" name="btnItemDetailTransition" value="${a.itemNo}">${a.itemName}</button>
-				</form>
+				</form></td>
+				<td><form name="btnItemDetail" action="http://localhost:8080/ECSite/FavoriteListCompletionServlet" method="POST">
+					<button type="submit" name="btnFavoriteListDeleteTransition" value="${a.favoriteNo}">×</button>
+				</form></td>
+				</tr>
+				</table>
 			</c:forEach>
 		</c:when>
 

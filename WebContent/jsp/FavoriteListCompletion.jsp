@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,7 +30,7 @@
 
 	<br><br><br>
 
-	<div style="text-align:center;"><h1>お気に入りリストに追加しました</h1>
+	<div style="text-align:center;"><h1>${message}</h1>
 		<br><br><br>
 
 		<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
