@@ -52,7 +52,6 @@ public class FavoriteJdbc {
 							faveList.add(faveBean);
 			}
 
-
 		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
 			} finally {
@@ -64,9 +63,8 @@ public class FavoriteJdbc {
 
 				}
 		return faveList;
-
-
 	}
+
 
 
 //お気に入りリストから削除
@@ -99,7 +97,36 @@ public class FavoriteJdbc {
 				}
 
 		return null;
+	}
 
+
+
+//お気に入りに追加
+	public FavoriteBean addFaves(int itemNo,int loginUserNo) {
+		try {
+			//SQLの実行(発行)
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, id, pw);
+			stmt =conn.createStatement();
+				//SQl文の用意
+				query = "INSERT INTO favorite(item_no, user_no) VALUES(?, ?);";
+				//SQL文の実行
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, itemNo);
+				pstmt.setInt(2, loginUserNo);
+
+				pstmt.executeUpdate();
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			} finally {
+				try {
+					if (rs!=null) rs.close();
+					if (stmt!=null) stmt.close();
+					if (conn!=null) conn.close();			//接続の解除
+				}catch(Exception ex) {}
+				}
+		return null;
 	}
 }
 
