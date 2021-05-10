@@ -1,6 +1,7 @@
 package itemdetail;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.ItemBean;
+import bean.ReviewBean;
 import bean.UserBean;
+import jdbc.ReviewJdbc;
 
 @WebServlet("/ItemDetailServlet")
 public class ItemDetailServlet extends HttpServlet {
@@ -23,9 +26,6 @@ public class ItemDetailServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		//MIMタイプとエンコーディング(文字コード)の設定をする
-				response.setContentType("text/html;charset=UTF-8");
 			//requestで送られてきたパラメータのエンコーディングを設定する
 				request.setCharacterEncoding("UTF-8");
 			//保存用
@@ -83,12 +83,18 @@ public class ItemDetailServlet extends HttpServlet {
 				if(request.getParameter("btnItemDetailTransition")!=null) {
 					System.out.println("選択された商品のitemNo："+request.getParameter("btnItemDetailTransition"));
 					//値を渡す
-					int Item = Integer.parseInt(request.getParameter("btnItemDetailTransition"));
+					int item = Integer.parseInt(request.getParameter("btnItemDetailTransition"));
 					//インスタンスを生成し、処理を行った結果を格納する。
+					//商品詳細
 					ItemDetailLogic newLogic = new ItemDetailLogic();
-					itemBean = newLogic.detailLogic(Item);
+					itemBean = newLogic.detailLogic(item);
+					//レビュー一覧
+					ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
+					ReviewJdbc reviewJdbc = new ReviewJdbc();
+					reviewList = reviewJdbc.getReviewData(item);
 					//値を渡す
 					request.setAttribute("itemData", itemBean);
+					request.setAttribute("reviewList", reviewList);
 					req = request.getRequestDispatcher("/jsp/ItemDetail.jsp");
 					req.forward(request, response);
 					return;
