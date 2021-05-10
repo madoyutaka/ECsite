@@ -55,13 +55,15 @@ public class FavoriteListServlet extends HttpServlet {
 				loginUserNo = loginUserBean.getUserNo();
 
 				//インスタンスを生成し、処理を行った結果を格納する。
-				FavoriteLogic  faveLogic = new FavoriteLogic();
+				FavoriteListLogic  faveLogic = new FavoriteListLogic();
 				ArrayList<FavoriteBean> faveList = faveLogic.favoriteGetLogic(loginUserNo);
 
 
 				//お気に入りリスト画面に遷移する。
 				if(request.getParameter("btnFavoriteListTransition")!=null) {
 					request.setAttribute("loginUserFaves", faveList);
+
+
 					//画面遷移
 					System.out.println("お気に入りリスト画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/FavoriteList.jsp");

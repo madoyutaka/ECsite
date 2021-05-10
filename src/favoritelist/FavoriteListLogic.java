@@ -17,4 +17,15 @@ public class FavoriteListLogic {
 		return returnlist;
 	}
 
+	public FavoriteBean deleteLogic(int favoriteNo) {
+		FavoriteBean returnBean = null;
+		FavoriteJdbc favoriteJdbc = new FavoriteJdbc();
+		 returnBean = favoriteJdbc.daleteFaves(favoriteNo);
+		    System.out.println(returnBean);
+
+		return null;
+
+	}
+
+
 }
