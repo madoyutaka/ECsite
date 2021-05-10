@@ -4,7 +4,6 @@
 <%@ page import = "bean.ItemBean" %>
 <%@ page import = "itemdetail.ItemDetailServlet" %>
 <%@ page import = "itemsearch.ItemSearchServlet" %>
-<%@ page import = "writereview.WriteReviewServlet" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 
 <!DOCTYPE html>
@@ -16,17 +15,6 @@
 <body>
 
 <h1>商品詳細</h1>
-
-		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
-		<c:choose>
-			<c:when test="${resultText != null}">
-				<c:out value="${resultText}"/>
-			</c:when>
-			<c:when test="${resultText == null}">
-				<br>
-			</c:when>
-		</c:choose>
-
 	<% ItemBean itemData = (ItemBean)request.getAttribute("itemData"); %>
 
 	<img src="./img/${itemData.itemImage}">
@@ -53,15 +41,15 @@
 	<br>
 </form>
 <form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
-	<input type = "submit" name="btnFavoriteListAddTransition" value = "お気に入りに追加">
+	<button type="submit" name=btnFavoriteListAddTransition value="${itemData.itemNo}">お気に入りに追加</button>
 	<br>
-	<input type = "submit" name="btnFavoriteListDeleteTransition" value = "お気に入りから削除">
+	<button type="submit" name=btnFavoriteListDeleteTransition value="${itemData.itemNo}">お気に入りから削除</button>
 	<br>
 </form>
 	<br>
 	<br>
 <form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
-	<button type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
+	<input type = "submit" name="btnWriteReviewTransition" value = "レビュー">
 </form>
 
 <p>レビューのダミーテキストレビューのダミーテキストレビューのダミーテキスト<br>
