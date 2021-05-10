@@ -4,7 +4,9 @@
 <%@ page import = "bean.ItemBean" %>
 <%@ page import = "itemdetail.ItemDetailServlet" %>
 <%@ page import = "itemsearch.ItemSearchServlet" %>
+<%@ page import = "writereview.WriteReviewServlet" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,17 @@
 <body>
 
 <h1>商品詳細</h1>
+
+		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
+		<c:choose>
+			<c:when test="${resultText != null}">
+				<c:out value="${resultText}"/>
+			</c:when>
+			<c:when test="${resultText == null}">
+				<br>
+			</c:when>
+		</c:choose>
+
 	<% ItemBean itemData = (ItemBean)request.getAttribute("itemData"); %>
 
 	<img src="./img/${itemData.itemImage}">
@@ -41,21 +54,32 @@
 	<br>
 </form>
 <form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
-	<button type="submit" name=btnFavoriteListAddTransition value="${itemData.itemNo}">お気に入りに追加</button>
+	<input type = "submit" name="btnFavoriteListAddTransition" value = "お気に入りに追加">
 	<br>
-	<button type="submit" name=btnFavoriteListDeleteTransition value="${itemData.itemNo}">お気に入りから削除</button>
+	<input type = "submit" name="btnFavoriteListDeleteTransition" value = "お気に入りから削除">
 	<br>
 </form>
 	<br>
 	<br>
 <form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
-	<input type = "submit" name="btnWriteReviewTransition" value = "レビュー">
+	<button type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
 </form>
 
-<p>レビューのダミーテキストレビューのダミーテキストレビューのダミーテキスト<br>
-レビューのダミーテキストレビューのダミーテキストレビューのダミーテキストレビューのダミーテキスト<br>
-レビューのダミーテキストレビューのダミーテキストレビューのダミーテキストレビューのダミーテキスト</p>
+	<!-- loginUserItemBuyLogが0件の場合、1件以上の場合 -->
+	<c:choose>
+		<c:when test="${ fn:length(reviewList) >= 1}">
+			<c:forEach items="${reviewList}" var="review">
+				点数：<c:out value="${review.reviewScore}" default="取得失敗"/><br>
+				コメント：<c:out value="${review.reviewComment}" default="取得失敗"/><br>
+				<br>
+			</c:forEach>
+		</c:when>
 
+		<c:when test="${ fn:length(loginUserItemBuyLog) == 0}">
+			購入履歴はありません。
+		</c:when>
+
+	</c:choose>
 
 </body>
 
