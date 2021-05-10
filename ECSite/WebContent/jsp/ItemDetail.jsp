@@ -49,7 +49,7 @@
 	<br>
 	<br>
 <form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
-	<input type = "submit" name="btnWriteReviewTransition" value = "レビュー">
+	<button type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
 </form>
 
 <p>レビューのダミーテキストレビューのダミーテキストレビューのダミーテキスト<br>
