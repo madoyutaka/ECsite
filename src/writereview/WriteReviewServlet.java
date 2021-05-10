@@ -1,6 +1,7 @@
 package writereview;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.ItemBean;
+import bean.ReviewBean;
 import bean.UserBean;
-import jdbc.ItemJdbc;
+import itemdetail.ItemDetailLogic;
+import jdbc.ReviewJdbc;
 
 @WebServlet("/WriteReviewServlet")
 public class WriteReviewServlet extends HttpServlet {
@@ -29,8 +32,6 @@ public class WriteReviewServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//MIMタイプとエンコーディング(文字コード)の設定をする
-		response.setContentType("text/html;charset=UTF-8");
 		//requestで送られてきたパラメータのエンコーディングを設定する
 		request.setCharacterEncoding("UTF-8");
 		//保存用
@@ -83,9 +84,16 @@ public class WriteReviewServlet extends HttpServlet {
 				System.out.println("商品詳細画面に遷移します。");
 				//商品情報を取得
 				ItemBean itemBean = new ItemBean();
-				ItemJdbc itemJebc = new ItemJdbc();
-				itemBean = itemJebc.getItemData(setItemNo);
-				request.setAttribute("itemBean", itemBean);
+				ItemDetailLogic newLogic = new ItemDetailLogic();
+				itemBean = newLogic.detailLogic(setItemNo);
+				System.out.println("値を取得しました。"+itemBean);
+				//レビュー一覧を取得
+				ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
+				ReviewJdbc reviewJdbc = new ReviewJdbc();
+				reviewList = reviewJdbc.getReviewData(setItemNo);
+				//値を渡す
+				request.setAttribute("reviewList", reviewList);
+				request.setAttribute("itemData", itemBean);
 				request.setAttribute("resultText", reviewResultText);
 				req = request.getRequestDispatcher("jsp/ItemDetail.jsp");
 				req.forward(request, response);
