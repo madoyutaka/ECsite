@@ -48,6 +48,7 @@ public class FavoriteJdbc {
 							FavoriteBean faveBean = new FavoriteBean();
 							faveBean.setItemName(rs.getString("item_name"));
 							faveBean.setItemNo(rs.getInt("item_no"));
+							faveBean.setFavoriteNo(rs.getInt("favorite_no"));
 							faveList.add(faveBean);
 			}
 
@@ -69,22 +70,24 @@ public class FavoriteJdbc {
 
 
 //お気に入りリストから削除
-	public FavoriteBean daletefaves() {
+	public FavoriteBean daleteFaves(int favoriteNo) {
 		try {
 			//SQLの実行(発行)
-			stmt = conn.createStatement();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, id, pw);
+			stmt =conn.createStatement();
 				//SQl文の用意
-				String query = "delete from favorite where favorite_no = ?;";
+				query = "delete from favorite where favorite_no = ?";
 				//SQL文の実行
-			rs = stmt.executeQuery(query);
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, favoriteNo);
 
 
-//			int count = stmt.executeUpdate(query);
+				pstmt.executeUpdate();
 
 
-				rs.close();
 
-		} catch (SQLException ex) {
+		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
 			} finally {
 				try {
