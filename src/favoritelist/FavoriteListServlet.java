@@ -71,14 +71,7 @@ public class FavoriteListServlet extends HttpServlet {
 					return;
 				}
 
-				if(request.getParameter("btnFavoriteListAddTransition")!=null) {
 
-					System.out.println("お気に入りリストに商品を追加しました。");
-					request.setAttribute("message", "お気に入りリストに商品を追加しました。");
-					req = request.getRequestDispatcher("jsp/FavoriteCompletionList.jsp");
-					req.forward(request, response);
-					return;
-				}
 
 				if(request.getParameter("btnMyPageTransition")!=null) {
 

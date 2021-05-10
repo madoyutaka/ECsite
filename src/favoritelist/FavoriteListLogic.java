@@ -27,5 +27,15 @@ public class FavoriteListLogic {
 
 	}
 
+	public FavoriteBean addLogic(int itemNo,int loginUserNo) {
+		FavoriteBean returnBean = null;
+		FavoriteJdbc favoriteJdbc = new FavoriteJdbc();
+		 returnBean = favoriteJdbc.addFaves(itemNo,loginUserNo);
+		    System.out.println(returnBean);
+		return null;
+
+	}
+
+
 
 }
