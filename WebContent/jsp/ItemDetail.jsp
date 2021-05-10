@@ -4,6 +4,7 @@
 <%@ page import = "bean.ItemBean" %>
 <%@ page import = "itemdetail.ItemDetailServlet" %>
 <%@ page import = "itemsearch.ItemSearchServlet" %>
+<%@ page import = "writereview.WriteReviewServlet" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 
 <!DOCTYPE html>
@@ -15,6 +16,17 @@
 <body>
 
 <h1>商品詳細</h1>
+
+		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
+		<c:choose>
+			<c:when test="${resultText != null}">
+				<c:out value="${resultText}"/>
+			</c:when>
+			<c:when test="${resultText == null}">
+				<br>
+			</c:when>
+		</c:choose>
+
 	<% ItemBean itemData = (ItemBean)request.getAttribute("itemData"); %>
 
 	<img src="./img/${itemData.itemImage}">

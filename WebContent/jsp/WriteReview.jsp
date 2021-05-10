@@ -10,6 +10,16 @@
 <title>レビュー入力画面</title>
 </head>
 <body>
+		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
+		<c:choose>
+			<c:when test="${errorText != null}">
+				<c:out value="${errorText}"/>
+			</c:when>
+			<c:when test="${errorText == null}">
+				<br>
+			</c:when>
+		</c:choose>
+
 		<form action="http://localhost:8080/ECSite/WriteReviewServlet" method="POST">
 			<a>点数を選択</a>
 			<select name="reviewScore">
