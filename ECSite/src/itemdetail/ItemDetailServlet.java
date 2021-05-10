@@ -79,24 +79,6 @@ public class ItemDetailServlet extends HttpServlet {
 					return;
 				}
 
-				//レビュー画面に遷移する
-				if(request.getParameter("btnWriteReview")!=null) {
-					request.setAttribute("itemData", itemBean);
-					//ボタン押した時にセッションを確認
-					if(loginUserSession == null) {
-						//セッションがnullの場合
-						req = request.getRequestDispatcher("jsp/Login.jsp");
-						req.forward(request, response);
-						return;
-					}
-					//画面遷移
-					request.setAttribute("itemData", itemBean);
-					System.out.println("レビュー画面に遷移します。");
-					req = request.getRequestDispatcher("jsp/WriteReview.jsp");
-					req.forward(request, response);
-					return;
-				}
-
 				//商品詳細画面に遷移
 				if(request.getParameter("btnItemDetailTransition")!=null) {
 					System.out.println("選択された商品のitemNo："+request.getParameter("btnItemDetailTransition"));
