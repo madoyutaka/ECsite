@@ -38,7 +38,7 @@
 	</c:choose>
 
 
-	<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+	<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
 	<input type = "submit" name="btnMyPageTransition" value = "マイページへ">
 	</form>
 	</body>
