@@ -31,7 +31,6 @@ public class ItemBuyLogServlet extends HttpServlet {
 		RequestDispatcher req = null;
 		int loginUserNo;
 		HttpSession session = request.getSession();
-		UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
 		UserBean loginUserSession;
 		try {
 			loginUserSession = (UserBean)session.getAttribute("loginUser");
@@ -48,7 +47,7 @@ public class ItemBuyLogServlet extends HttpServlet {
 		}
 
 		//セッションから値を取得
-		loginUserNo = loginUserBean.getUserNo();
+		loginUserNo = loginUserSession.getUserNo();
 
 		//インスタンスを生成し、処理を行った結果を格納する。
 		ItemBuyLogLogic itemBuyLogLogic = new ItemBuyLogLogic();
