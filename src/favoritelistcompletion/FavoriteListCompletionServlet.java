@@ -73,6 +73,7 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 					int favoriteNo = Integer.parseInt(request.getParameter("btnFavoriteListDeleteTransition"));
 					FavoriteBean faveBean = new FavoriteBean();
 					faveBean = faveLogic.deleteLogic(favoriteNo);
+
 					request.setAttribute("message", "お気に入りリストから商品を削除しました。");
 					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
 					req.forward(request, response);
@@ -80,8 +81,12 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 				}
 
 				if(request.getParameter("btnFavoriteListAddTransition")!=null) {
+					System.out.println("itemNo："+request.getParameter("btnFavoriteListDeleteTransition")+"を追加");
+					int itemNo = Integer.parseInt(request.getParameter("btnFavoriteListAddTransition"));
+					System.out.println(itemNo+":"+loginUserNo);
+					FavoriteBean faveBean = new FavoriteBean();
+					faveBean = faveLogic.addLogic(itemNo,loginUserNo);
 
-					System.out.println("お気に入りリストに商品を追加しました。");
 					request.setAttribute("message", "お気に入りリストに商品を追加しました。");
 					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
 					req.forward(request, response);
