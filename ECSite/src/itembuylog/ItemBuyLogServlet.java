@@ -30,7 +30,7 @@ public class ItemBuyLogServlet extends HttpServlet {
 		//保存用
 		RequestDispatcher req = null;
 		int loginUserNo;
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		UserBean loginUserSession;
 		try {
 			loginUserSession = (UserBean)session.getAttribute("loginUser");
