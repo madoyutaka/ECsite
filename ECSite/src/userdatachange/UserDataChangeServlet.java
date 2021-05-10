@@ -37,7 +37,6 @@ public class UserDataChangeServlet extends HttpServlet {
 		String setNewData = null;
 		int loginUserNo = -1;
 		HttpSession session = request.getSession();
-		UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
 		UserBean loginUserSession;
 		try {
 			loginUserSession = (UserBean)session.getAttribute("loginUser");
@@ -54,7 +53,7 @@ public class UserDataChangeServlet extends HttpServlet {
 		}
 
 		//セッションから値を取得
-		loginUserNo = loginUserBean.getUserNo();
+		loginUserNo = loginUserSession.getUserNo();
 		UserJdbc userJdbc = new UserJdbc();
 		UserBean userBean = userJdbc.getUserData(loginUserNo);
 
