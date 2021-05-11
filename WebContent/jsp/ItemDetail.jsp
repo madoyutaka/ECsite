@@ -30,7 +30,8 @@
 
 	<% ItemBean itemData = (ItemBean)request.getAttribute("itemData"); %>
 
-	<img src="./img/${itemData.itemImage}">
+	<img src="./img/${itemData.itemImage}" height="300px">
+	<br>
 
 	<!-- ゲッターメソッドで変数の値を取得 -->
 	${itemData.itemNo}
@@ -79,7 +80,7 @@
 				</c:when>
 
 				<c:when test="${ fn:length(loginUserItemBuyLog) == 0}">
-					購入履歴はありません。
+					レビューはありません。
 				</c:when>
 
 			</c:choose>
