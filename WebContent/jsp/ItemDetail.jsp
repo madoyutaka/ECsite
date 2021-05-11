@@ -38,6 +38,21 @@
 	${itemData.itemName}
 	${itemData.itemPrice}
 	${itemData.categoryName}
+	<br>
+	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+		<a>個数選択</a>
+			<select name="itemNum">
+			<%
+				for(int itemNum = 1; itemNum <= 10; itemNum+=1){
+			%>
+			<option value=<%=itemNum%>><%=itemNum%></option>
+			<%
+				}
+			%>
+			</select>
+	<button type="submit" name="btnCartTransition" value="${itemData.itemNo}">カートに入れる</button>
+	<br>
+</form>
 
 
 
