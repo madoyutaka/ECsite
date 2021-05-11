@@ -59,10 +59,6 @@
 	<a href="http://localhost:8080/ECSite/TopServlet">TOP</a>
 	<br>
 
-	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-		<input type = "submit" name="btnCartInTransition" value = "カートに入れる">
-		<br>
-	</form>
 	<form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
 		<button type="submit" name="btnFavoriteListAddTransition" value="${itemData.itemNo}">お気に入りに追加</button>
 		<br>
