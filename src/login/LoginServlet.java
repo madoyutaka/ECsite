@@ -24,6 +24,9 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession(false);
+		//カート用
+		ArrayList<ItemBean> itemInCartList = new ArrayList<ItemBean>();
+
 
 		//それぞれPOSTされたものを変数に格納
 		String UserId = request.getParameter("user_id");
@@ -44,8 +47,10 @@ public class LoginServlet extends HttpServlet {
 	    		// セッションにアカウント情報
 		    	session = request.getSession();
 	            session.setAttribute("loginUser", returnUser);
+			
 	            System.out.println("session start");
 				request.setAttribute("loginUser",returnUser);//パラメータ名はloginUser
+				session.setAttribute("CartItem",itemInCartList);//パラメータ名はCartItem
 				//Mypage.jspに画面遷移
 				RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
 				rd.forward(request, response);
