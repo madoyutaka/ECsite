@@ -38,7 +38,7 @@
 	${itemData.itemName}
 	${itemData.itemPrice}
 	${itemData.categoryName}
-	<br>
+
 	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 		<a>個数選択</a>
 			<select name="itemNum">
@@ -52,34 +52,28 @@
 			</select>
 	<button type="submit" name="btnCartTransition" value="${itemData.itemNo}">カートに入れる</button>
 	<br>
-</form>
-
-
-
-<br>
-
-
-<!-- ブラウザ上にマイページ用の画面を表示 -->
-<a href="http://localhost:8080/ECSite/TopServlet">TOP</a>
-
-
-<br>
-
-<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-	<input type = "submit" name="btnCartInTransition" value = "カートに入れる">
+	</form>
 	<br>
-</form>
-<form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
-	<input type = "submit" name="btnFavoriteListAddTransition" value = "お気に入りに追加">
+
+	<!-- ブラウザ上にマイページ用の画面を表示 -->
+	<a href="http://localhost:8080/ECSite/TopServlet">TOP</a>
 	<br>
-	<input type = "submit" name="btnFavoriteListDeleteTransition" value = "お気に入りから削除">
-	<br>
-</form>
+
+	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+		<input type = "submit" name="btnCartInTransition" value = "カートに入れる">
+		<br>
+	</form>
+	<form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
+		<button type="submit" name="btnFavoriteListAddTransition" value="${itemData.itemNo}">お気に入りに追加</button>
+		<br>
+		<button type="submit" name="btnFavoriteListDeleteTransition" value="${itemData.itemNo}">お気に入りから削除</button>
+		<br>
+	</form>
 	<br>
 	<br>
-<form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
-	<button type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
-</form>
+	<form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
+		<button type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
+	</form>
 
 	<!-- loginUserItemBuyLogが0件の場合、1件以上の場合 -->
 	<details>
