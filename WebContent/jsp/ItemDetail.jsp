@@ -66,20 +66,25 @@
 </form>
 
 	<!-- loginUserItemBuyLogが0件の場合、1件以上の場合 -->
-	<c:choose>
-		<c:when test="${ fn:length(reviewList) >= 1}">
-			<c:forEach items="${reviewList}" var="review">
-				点数：<c:out value="${review.reviewScore}" default="取得失敗"/><br>
-				コメント：<c:out value="${review.reviewComment}" default="取得失敗"/><br>
-				<br>
-			</c:forEach>
-		</c:when>
+	<details>
+	<summary>レビュー</summary>
+		<p>
+			<c:choose>
+				<c:when test="${ fn:length(reviewList) >= 1}">
+					<c:forEach items="${reviewList}" var="review">
+							点数：<c:out value="${review.reviewScore}" default="取得失敗"/><br>
+							コメント：<c:out value="${review.reviewComment}" default="取得失敗"/><br>
+							<br>
+					</c:forEach>
+				</c:when>
 
-		<c:when test="${ fn:length(loginUserItemBuyLog) == 0}">
-			購入履歴はありません。
-		</c:when>
+				<c:when test="${ fn:length(loginUserItemBuyLog) == 0}">
+					購入履歴はありません。
+				</c:when>
 
-	</c:choose>
+			</c:choose>
+		</p>
+	</details>
 
 </body>
 
