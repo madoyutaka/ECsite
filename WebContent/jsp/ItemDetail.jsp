@@ -50,7 +50,18 @@
 				}
 			%>
 			</select>
-	<button type="submit" name="btnCartTransition" value="${itemData.itemNo}">カートに入れる</button>
+
+	<!-- 在庫がない場合は、カートに入れられないようにする。 -->
+		<c:choose>
+			<c:when test="${itemData.itemStock > 0}">
+				<button type="submit" name="btnCartTransition" value="${itemData.itemNo}">カートに入れる</button>
+			</c:when>
+
+			<c:when test="${itemData.itemStock == 0}">
+				<button type="submit" disabled name="btnCartTransition" value="${itemData.itemNo}">在庫なし</button>
+			</c:when>
+		</c:choose>
+
 	<br>
 	</form>
 	<br>
