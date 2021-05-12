@@ -12,7 +12,23 @@
 <title>購入完了画面</title>
 </head>
 <body>
-	${itemBuyResultText}
+		<c:choose>
+			<c:when test="${itemBuyResultText != null}">
+				<c:out value="${itemBuyResultText}"/>
+			</c:when>
+			<c:when test="${itemBuyResultText == null}">
+				<br>
+			</c:when>
+		</c:choose>
+
+				<c:choose>
+			<c:when test="${itemBuyLogResultText != null}">
+				<c:out value="${itemBuyLogResultText}"/>
+			</c:when>
+			<c:when test="${itemBuyLogResultText == null}">
+				<br>
+			</c:when>
+		</c:choose>
 
 	<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
 		<input type = "submit" name="btnMyPageTransition" value = "マイページへ">
