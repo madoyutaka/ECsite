@@ -1,6 +1,7 @@
 package login;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.CartBean;
 import bean.UserBean;
 
 
@@ -25,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		//カート用
-		ArrayList<ItemBean> itemInCartList = new ArrayList<ItemBean>();
+		ArrayList<CartBean> itemInCartList = new ArrayList<CartBean>();
 
 
 		//それぞれPOSTされたものを変数に格納
@@ -45,9 +47,9 @@ public class LoginServlet extends HttpServlet {
 
 	    	if(returnUser != null){
 	    		// セッションにアカウント情報
-		    	session = request.getSession();
+		    	session = request.getSession(false);
 	            session.setAttribute("loginUser", returnUser);
-			
+
 	            System.out.println("session start");
 				request.setAttribute("loginUser",returnUser);//パラメータ名はloginUser
 				session.setAttribute("CartItem",itemInCartList);//パラメータ名はCartItem
