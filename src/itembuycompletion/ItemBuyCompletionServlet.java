@@ -64,6 +64,15 @@ public class ItemBuyCompletionServlet extends HttpServlet {
 			String itemBuyResultText = itemBuyLogic.itemBuy(loginItemSession, ItemBeanList, loginUserNo);
 			//表示用のデータを取得し、パラメータ名set
 			request.setAttribute("itemBuyResultText", itemBuyResultText);
+			
+			//在庫数処理
+			int setItemNo = Integer.parseInt(request.getParameter("btnItemBuyCompletionTransition"));
+			//商品個数
+			int setItemBuyNum;
+
+			//インスタンスを生成し、処理を行った結果を格納する。
+			ItemBuyLogic buyLogic = new ItemBuyLogic();
+			itemBean = buyLogic.buyLogic(setItemNo,setItemBuyNum);
 
 			//画面遷移if文
 			if(itemBuyResultText.equals("購入処理が完了しました。")) {
