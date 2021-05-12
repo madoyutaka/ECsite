@@ -58,7 +58,7 @@ public class CartServlet extends HttpServlet {
 					//値を渡す
 					setItemNo = Integer.parseInt(request.getParameter("btnCartTransition"));
 					//テスト用
-					int setItemBuyCount = 1;
+					int setItemBuyCount = Integer.parseInt(request.getParameter("itemNum"));
 
 					//インスタンスを生成し、処理を行った結果を格納する。
 					CartLogic newLogic = new CartLogic();
