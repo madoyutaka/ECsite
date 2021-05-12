@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import bean.CartBean;
 import bean.ItemBuyLogBean;
 
 public class ItemBuyLogJdbc {
@@ -75,6 +76,52 @@ public class ItemBuyLogJdbc {
 
 	return itemBuyLogList;
 	}
+
+
+	//商品購入履歴の保存
+		public String setItemBuyLog(ArrayList<CartBean> cartList, String buyDate, int userNo) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection(url, id, pw);
+				stmt =conn.createStatement();
+
+				//履歴を保存する
+				query = "INSERT INTO itembuylog(item_buy_count, item_buy_date, item_no, user_no)"
+						+"VALUES(?, ?, ?, ?)";
+				//PreparedStatementオブジェクトを使用
+				pstmt = conn.prepareStatement(query);
+				for(CartBean list: cartList) {
+					pstmt.setInt(1, list.getItemBuyCount());
+					pstmt.setString(2, buyDate);
+					pstmt.setInt(3, list.getItemNo());
+					pstmt.setInt(4, userNo);
+					//SQLの実行
+					pstmt.executeUpdate();
+				}
+
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+			return "購入処理中にエラーが発生しました。";
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return "購入処理中にエラーが発生しました。";
+		}finally {
+			try {
+				if(conn != null) { conn.close(); }
+				if(stmt != null) { stmt.close(); }
+				if(pstmt != null) { pstmt.close(); }
+				if(rs != null) { rs.close(); }
+
+			}catch(SQLException ex){
+				ex.printStackTrace();
+				return "購入処理中にエラーが発生しました。";
+				}
+
+		}
+			return "購入処理が完了しました。";
+
+		}
+
 
 
 
