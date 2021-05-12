@@ -101,10 +101,10 @@ public class ItemBuyLogJdbc {
 
 		}catch(SQLException ex) {
 			ex.printStackTrace();
-			return "購入処理中にエラーが発生しました。";
+			return "履歴保存処理中にエラーが発生しました。";
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			return "購入処理中にエラーが発生しました。";
+			return "履歴保存処理中にエラーが発生しました。";
 		}finally {
 			try {
 				if(conn != null) { conn.close(); }
@@ -114,7 +114,7 @@ public class ItemBuyLogJdbc {
 
 			}catch(SQLException ex){
 				ex.printStackTrace();
-				return "購入処理中にエラーが発生しました。";
+				return "履歴処理中にエラーが発生しました。";
 				}
 
 		}

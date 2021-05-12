@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import bean.CartBean;
 import bean.ItemBean;
 
 public class ItemJdbc {
@@ -21,7 +22,7 @@ public class ItemJdbc {
 	String url = "jdbc:mysql://localhost/ec_site_db?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	String id = "root";
 	String pw = "1qaz2wSX?";
-	
+
 	//商品情報を取得する
 		public ItemBean getItemData(int ItemNo) {
 			ItemBean returnBean = new ItemBean();
@@ -125,10 +126,9 @@ public class ItemJdbc {
 
 		return itemSearchList;
 	}
-	
+
 	//購入した商品の在庫数を購入した分だけ減らす
-		public ItemBean  buy(int setItemNo, int setItemBuyNum) {
-			ItemBean returnBean = new ItemBean();
+		public String itemBuyStock(ArrayList<CartBean> loginItemSession) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(url, id, pw);
@@ -136,18 +136,21 @@ public class ItemJdbc {
 
 				//SQL文
 				query = "UPDATE item set  item_stock = item_stock - ?  WHERE item_no LIKE ?";
+				//PreparedStatementオブジェクトを使用
 				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, 1);
-				pstmt.setInt(2, 1);
-				System.out.println("確認中");
-				pstmt.executeUpdate();
-				System.out.println(pstmt);
-				conn.commit();
+				for(CartBean list: loginItemSession) {
+					pstmt.setInt(1, list.getItemBuyCount());
+					pstmt.setInt(2, list.getItemNo());
+					//SQLの実行
+					pstmt.executeUpdate();
+				}
 
 			}catch(ClassNotFoundException ex) {
 				ex.printStackTrace();
+				return "購入処理中にエラーが発生しました。";
 			}catch(SQLException ex) {
 				ex.printStackTrace();
+				return "購入処理中にエラーが発生しました。";
 			}finally {
 				try {
 					if(conn != null) { conn.close(); }
@@ -157,10 +160,11 @@ public class ItemJdbc {
 
 				}catch(SQLException ex){
 					ex.printStackTrace();
+					return "購入処理中にエラーが発生しました。";
 					}
 
 				}
-			return returnBean;
+			return "購入処理が完了しました。";
 		}
 
 }
