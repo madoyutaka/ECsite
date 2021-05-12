@@ -20,7 +20,7 @@
 			<input type = "submit" name="btnMyPageTransition" value = "マイページ">
 			</form></li>
 			<li><form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-			<input type = "submit" name="btnCartTransition2" value = "カート">
+			<input type = "submit" name="btnHeaderCartTransition" value = "カート">
 			</form></li>
 	        <li><form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
 			<input type = "submit" name="btnItemListTransition" value = "商品一覧">
