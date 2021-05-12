@@ -125,5 +125,42 @@ public class ItemJdbc {
 
 		return itemSearchList;
 	}
+	
+	//購入した商品の在庫数を購入した分だけ減らす
+		public ItemBean  buy(int setItemNo, int setItemBuyNum) {
+			ItemBean returnBean = new ItemBean();
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection(url, id, pw);
+				stmt =conn.createStatement();
+
+				//SQL文
+				query = "UPDATE item set  item_stock = item_stock - ?  WHERE item_no LIKE ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, 1);
+				pstmt.setInt(2, 1);
+				System.out.println("確認中");
+				pstmt.executeUpdate();
+				System.out.println(pstmt);
+				conn.commit();
+
+			}catch(ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}finally {
+				try {
+					if(conn != null) { conn.close(); }
+					if(stmt != null) { stmt.close(); }
+					if(pstmt != null) { pstmt.close(); }
+					if(rs != null) { rs.close(); }
+
+				}catch(SQLException ex){
+					ex.printStackTrace();
+					}
+
+				}
+			return returnBean;
+		}
 
 }
