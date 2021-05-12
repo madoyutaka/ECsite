@@ -3,6 +3,7 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "bean.ItemBean" %>
 <%@ page import = "itemsearch.ItemSearchServlet" %>
+<%@ page import = "cart.CartServlet" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 
@@ -14,21 +15,25 @@
 </head>
 <body>
 	<h1>ショッピングカート</h1>
-<%  ArrayList<ItemBean> cartList = (ArrayList<ItemBean>) request.getAttribute("itemCartData"); %>
 	<!-- カート一覧 -->
-	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 			<!-- カート内の商品こちら -->
-		<%for(ItemBean list: cartList) {%>
-				<%= list.getItemName() %>
-		 		<%= list.getItemPrice() %>
-			<button type="submit" name="btnCartRemoveTransition"  value="${itemData.itemNo}">削除</button>
-		<%} %>
-	</form>
+		<c:choose>
+			<c:when test="${ fn:length(cartItemData) >= 1}">
+				<c:forEach items="${cartItemData}" var="itemData" varStatus="status">
+					<form action = "http://localhost:8080/ECSite/ItemDetailServlet" method = "POST">
+						<button type="submit" name="btnItemDetailTransition" value="${itemData.itemNo}">${itemData.itemName}</button>
+					</form>
+						<c:out value="購入数：${cartData[status.index].itemBuyCount}"></c:out>
+						<c:out value="商品１個の金額：${itemData.itemPrice}"></c:out>
+					<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+						<button type="submit" name="btnCartRemoveTransition"  value="${itemData.itemNo}">削除</button>
+					</form>
+					<br>
+					<br>
+				</c:forEach>
+			</c:when>
+		</c:choose>
 
-	<!--  商品詳細画面に戻る-->
-	<form action = "http://localhost:8080/ECSite/ItemDetailServlet" method = "POST">
-		<button type="submit" name="btnItemDetailTransition"  value="${itemData.itemNo}">商品詳細に戻る</button>
-	</form>
 
 	<!-- 購入画面に進む -->
 	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
