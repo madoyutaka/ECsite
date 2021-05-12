@@ -3,6 +3,9 @@ package signup;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import bean.UserBean;
+import jdbc.UserJdbc;
+
 
 public class SignUpLogic implements Serializable {
 	public ArrayList<String> checkSULogic(String userId,String password,String emailAddress,String pCode,String address,String userName){
@@ -33,9 +36,25 @@ public class SignUpLogic implements Serializable {
 				list.add("！住所は40文字以内で入力してください");
 			}
 		}
-	return list;
-	}
-}
 
+		if(list.isEmpty()) {
+			UserBean ub = new UserBean();
+			//pCodeをint型に変換しそれぞれbeanにセット
+			int postalCode = Integer.parseInt(pCode);
+			ub.setUserId(userId);
+			ub.setPassword(password);
+			ub.setEmailAddress(emailAddress);
+			ub.setPostalCode(postalCode);
+			ub.setAddress(address);
+			ub.setUserName(userName);
+
+			UserJdbc uj = new UserJdbc();
+			uj.insert(ub);
+		}
+		return list;
+
+	}
+
+	}
 
 

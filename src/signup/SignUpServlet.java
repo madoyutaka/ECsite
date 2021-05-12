@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.UserBean;
-import jdbc.UserJdbc;
-
 @WebServlet("/SignUpServlet")
 public class SignUpServlet extends HttpServlet {
 
@@ -49,29 +46,14 @@ public class SignUpServlet extends HttpServlet {
 		SignUpLogic newlogic = new SignUpLogic();
 		ArrayList<String> list = newlogic.checkSULogic(userId,password,emailAddress,pCode,address,userName);
 
-
 		if(list.isEmpty()==false) {
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
-		}
-
-		UserBean ub = new UserBean();
-		//pCodeをint型に変換しそれぞれbeanにセット
-		int postalCode = Integer.parseInt(pCode);
-		ub.setUserId(userId);
-		ub.setPassword(password);
-		ub.setEmailAddress(emailAddress);
-		ub.setPostalCode(postalCode);
-		ub.setAddress(address);
-		ub.setUserName(userName);
-
-		UserJdbc uj = new UserJdbc();
-		uj.insert(ub);
-
-
+		}else {
 			//画面遷移
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
 			rd.forward(request, response);
+		}
 		}
 }
 
