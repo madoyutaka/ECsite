@@ -15,21 +15,22 @@ public class ItemBuyLogic {
 	public String itemBuy(ArrayList<CartBean> loginItemSession, ArrayList<ItemBean> cartItemData,  int userNo) {
 		ItemJdbc itemJdbc = new ItemJdbc();
 		ItemBuyLogJdbc itemBuyLogJdbc = new ItemBuyLogJdbc();
-		//ArrayList<ItemBean> cartItemList = loginItemSession;
+		int itemStock;
 		int cartItemNo;
-		int cartItemStock;
+		int cartItemBuyCount;
 
-		for(ItemBean itemData : cartItemData) {
+		for(CartBean cartItem: loginItemSession) {
 			//商品番号を取得
-			cartItemNo = itemData.getItemNo();
-			//最新の状態を取得
-			ItemBean item = itemJdbc.getItemData(cartItemNo);
+			cartItemNo = cartItem.getItemNo();
+			//購入希望数を取得
+			cartItemBuyCount = cartItem.getItemBuyCount();
 			//最新の在庫情報を取得
-			cartItemStock = item.getItemStock();
+			ItemBean item = itemJdbc.getItemData(cartItemNo);
+			itemStock = item.getItemStock();
 			//在庫数を比較する
-			if(cartItemStock == 0){
+			if(itemStock == 0){
 				return "商品は売り切れです。";
-			}else if(2 > cartItemStock) {
+			}else if(cartItemBuyCount > itemStock) {
 				return "購入希望数が在庫数を上回っています。";
 			}
 		}
