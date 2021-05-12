@@ -88,7 +88,7 @@ public class CartServlet extends HttpServlet {
 				}
 		
 				//ヘッダー用
-				if(request.getParameter("btnCartTransition2")!=null) {
+				if(request.getParameter("btnHeaderCartTransition")!=null) {
 					//画面遷移
 					request.setAttribute("itemCartData", loginItemSession);
 					System.out.println("カート画面に遷移します。");
