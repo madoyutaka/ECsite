@@ -42,7 +42,24 @@ public class ItemBuyLogic {
 		String stringDate = simpleDateFormat.format(date);
 		//問題が無ければ、購入処理を行う。loginItemSessionにはitemNo、itemBuyCountが入っている
 		return itemBuyLogJdbc.setItemBuyLog(loginItemSession, stringDate, userNo);
+		
+		
 
 
+	}
+	
+	//新しく追加したもの
+	//購入完了へ遷移する際に在庫数を減らす
+	public ItemBean buyLogic(int setItemNo,int setItemBuyNum) {
+		ItemBean returnBean = null;
+		ItemJdbc itemjdbc = new ItemJdbc();
+
+		//データベースに接続する。
+	    returnBean = itemjdbc.buy(setItemNo,setItemBuyNum);
+	    System.out.println(returnBean);
+
+
+		System.out.println(returnBean+"を返します。");
+		return returnBean;
 	}
 }
