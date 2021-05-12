@@ -1,6 +1,7 @@
 package itembuy;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.CartBean;
+import bean.ItemBean;
 import bean.UserBean;
+import cart.CartLogic;
 
 @WebServlet("/ItemBuyServlet")
 public class ItemBuyServlet extends HttpServlet {
@@ -27,17 +31,14 @@ public class ItemBuyServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//MIMタイプとエンコーディング(文字コード)の設定をする
-				response.setContentType("text/html;charset=UTF-8");
 			//requestで送られてきたパラメータのエンコーディングを設定する
 				request.setCharacterEncoding("UTF-8");
 			//保存用
 				RequestDispatcher req = null;
-				String btnName = null;
-				String setNewData = null;
-				int loginUserNo = -1;
-				HttpSession session = request.getSession();
+				CartLogic newLogic = new CartLogic();
+				HttpSession session = request.getSession(false);
 				UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
+				int loginUserNo = loginUserBean.getUserNo();
 				UserBean loginUserSession;
 				try {
 					loginUserSession = (UserBean)session.getAttribute("loginUser");
@@ -52,10 +53,19 @@ public class ItemBuyServlet extends HttpServlet {
 					req.forward(request, response);
 					return;
 				}
+				ArrayList<CartBean> loginItemSession= (ArrayList<CartBean>) session.getAttribute("CartItem");
+				ArrayList<ItemBean> ItemBeanList = newLogic.getCartItemData(loginItemSession);
 
 
-
-				//インスタンスを生成し、処理を行った結果を格納する。
+				//購入確認画面へ遷移する
+				if(request.getParameter("btnItemBuyTransition")!=null) {
+					//表示用のデータを取得し、パラメータ名set
+					request.setAttribute("cartData", loginItemSession);
+					request.setAttribute("cartItemData", ItemBeanList);
+					req = request.getRequestDispatcher("jsp/ItemBuy.jsp");
+					req.forward(request, response);
+					return;
+				}
 
 	}
 
