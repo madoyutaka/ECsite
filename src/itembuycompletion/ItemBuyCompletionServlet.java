@@ -66,14 +66,14 @@ public class ItemBuyCompletionServlet extends HttpServlet {
 			request.setAttribute("itemBuyResultText", itemBuyResultText);
 
 			//画面遷移if文
-			if(itemBuyResultText.equals("")) {
-				//中身をにする。
+			if(itemBuyResultText.equals("購入処理が完了しました。")) {
+				//中身を空にする。
 				session.setAttribute("CartItem",new ArrayList<CartBean>());
 				System.out.println("購入処理完了画面に遷移します。");
 				req = request.getRequestDispatcher("jsp/ItemBuyCompletion.jsp");
 				req.forward(request, response);
 				return;
-			}else {
+			}else{
 				//中身変更無し
 				session.setAttribute("CartItem",loginItemSession);
 				System.out.println("購入処理完了画面に遷移します。");
