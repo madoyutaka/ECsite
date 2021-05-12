@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "bean.ItemBean" %>
 <%@ page import = "itemsearch.ItemSearchServlet" %>
@@ -36,8 +36,8 @@
 
 
 	<!-- 購入画面に進む -->
-	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-			<input type = "submit" name="btnTransition" value ="購入確認に進む">
+	<form action = "http://localhost:8080/ECSite/ItemBuyServlet" method = "POST">
+			<input type = "submit" name="btnItemBuyTransition" value ="購入確認に進む">
 	</form>
 </body>
 </html>

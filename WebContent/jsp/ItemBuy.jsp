@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "bean.ItemBean" %>
+<%@ page import = "itembuy.ItemBuyServlet" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +15,17 @@
 	<h1>購入確認画面です。</h1>
 
 	<!-- カート内 -->
+			<c:choose>
+			<c:when test="${ fn:length(cartItemData) >= 1}">
+				<c:forEach items="${cartItemData}" var="itemData" varStatus="status">
+					<c:out value="商品名：${itemData.itemName}"></c:out>
+					<c:out value="購入数：${cartData[status.index].itemBuyCount}"></c:out>
+					<c:out value="商品１個の金額：${itemData.itemPrice}"></c:out>
+					<br>
+					<br>
+				</c:forEach>
+			</c:when>
+		</c:choose>
 
 
 	<!-- カート一覧 -->
