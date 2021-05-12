@@ -34,6 +34,8 @@ public class ItemBuyCompletionServlet extends HttpServlet {
 		//requestで送られてきたパラメータのエンコーディングを設定する
 		request.setCharacterEncoding("UTF-8");
 		//保存用
+		String itemBuyResultText;
+		String itemBuyLogResultText;
 		RequestDispatcher req = null;
 		CartLogic newLogic = new CartLogic();
 		HttpSession session = request.getSession(false);
@@ -61,21 +63,16 @@ public class ItemBuyCompletionServlet extends HttpServlet {
 
 			//インスタンスを生成し、処理を行った結果を格納する。
 			ItemBuyLogic itemBuyLogic = new ItemBuyLogic();
-			String itemBuyResultText = itemBuyLogic.itemBuy(loginItemSession, ItemBeanList, loginUserNo);
-			//表示用のデータを取得し、パラメータ名set
-			request.setAttribute("itemBuyResultText", itemBuyResultText);
-			
-			//在庫数処理
-			int setItemNo = Integer.parseInt(request.getParameter("btnItemBuyCompletionTransition"));
-			//商品個数
-			int setItemBuyNum;
-
-			//インスタンスを生成し、処理を行った結果を格納する。
-			ItemBuyLogic buyLogic = new ItemBuyLogic();
-			itemBean = buyLogic.buyLogic(setItemNo,setItemBuyNum);
+			//購入処理
+			itemBuyResultText = itemBuyLogic.itemBuyStockLogic(loginItemSession);
 
 			//画面遷移if文
 			if(itemBuyResultText.equals("購入処理が完了しました。")) {
+				//履歴保存処理
+				itemBuyLogResultText = itemBuyLogic.itemBuy(loginItemSession, ItemBeanList, loginUserNo);
+				//表示用のデータを取得し、パラメータ名set
+				request.setAttribute("itemBuyResultText", itemBuyResultText);
+				request.setAttribute("itemBuyLogResultText", itemBuyLogResultText);
 				//中身を空にする。
 				session.setAttribute("CartItem",new ArrayList<CartBean>());
 				System.out.println("購入処理完了画面に遷移します。");
@@ -85,6 +82,8 @@ public class ItemBuyCompletionServlet extends HttpServlet {
 			}else{
 				//中身変更無し
 				session.setAttribute("CartItem",loginItemSession);
+				//表示用のデータを取得し、パラメータ名set
+				request.setAttribute("itemBuyResultText", itemBuyResultText);
 				System.out.println("購入処理完了画面に遷移します。");
 				req = request.getRequestDispatcher("jsp/ItemBuyCompletion.jsp");
 				req.forward(request, response);
