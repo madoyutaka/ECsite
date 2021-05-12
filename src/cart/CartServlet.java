@@ -86,6 +86,16 @@ public class CartServlet extends HttpServlet {
 					req.forward(request, response);
 					return;
 				}
+		
+				//ヘッダー用
+				if(request.getParameter("btnCartTransition2")!=null) {
+					//画面遷移
+					request.setAttribute("itemCartData", loginItemSession);
+					System.out.println("カート画面に遷移します。");
+					req = request.getRequestDispatcher("jsp/Cart.jsp");
+					req.forward(request, response);
+					return;
+				}
 
 	}
 
