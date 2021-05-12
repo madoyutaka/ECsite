@@ -65,7 +65,8 @@ public class CartServlet extends HttpServlet {
 					loginItemSession = newLogic.cartIn(setItemNo, setItemBuyCount, loginItemSession);
 					session.setAttribute("CartItem",loginItemSession);
 					//表示用のデータを取得し、パラメータ名set
-					request.setAttribute("itemCartData", newLogic.getCartItemData(loginItemSession));
+					request.setAttribute("cartData", loginItemSession);
+					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/Cart.jsp");
@@ -75,13 +76,15 @@ public class CartServlet extends HttpServlet {
 
 				//削除ボタンでカート画面へ遷移する。
 				if(request.getParameter("btnCartRemoveTransition")!=null) {
+					setItemNo = Integer.parseInt(request.getParameter("btnCartRemoveTransition"));
 					//インスタンスを生成し、処理を行った結果を格納する。
 					CartLogic newLogic = new CartLogic();
 					System.out.println(loginItemSession);
 					loginItemSession = newLogic.remove(setItemNo, loginItemSession);
 					session.setAttribute("CartItem",loginItemSession);
 					//パラメータ名set
-					request.setAttribute("itemCartData", newLogic.getCartItemData(loginItemSession));
+					request.setAttribute("cartData", loginItemSession);
+					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/Cart.jsp");
