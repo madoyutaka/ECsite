@@ -44,7 +44,7 @@
 
 	<!--　購入ボタン -->
 	<form action = "http://localhost:8080/ECSite/ItemBuyCompletionServlet" method = "POST">
-			<input type = "submit" name="btnItemBuyCompletionTransition" value ="購入する">
+		<button type = "submit" name="btnItemBuyCompletionTransition" value ="${itemData.itemNo}">購入する</button>
 	</form>
 </body>
 </html>
