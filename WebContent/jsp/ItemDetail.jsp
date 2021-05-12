@@ -41,15 +41,19 @@
 
 	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 		<a>個数選択</a>
+		<c:if test = "${itemData.itemStock > 0}">
 			<select name="itemNum">
-			<%
-				for(int itemNum = 1; itemNum <= 10; itemNum+=1){
-			%>
-			<option value=<%=itemNum%>><%=itemNum%></option>
-			<%
-				}
-			%>
+						<c:forEach begin = "1" end = "${itemData.itemStock}" step ="1" var ="i">
+						 　<option><c:out value="${i}"/></option>
+			            </c:forEach>
 			</select>
+		</c:if>
+
+		<c:if test="${itemData.itemStock == 0}">
+				<select name="itemNum" disabled>
+				<option><c:out value="0"/></option>
+				</select>
+		</c:if>
 
 	<!-- 在庫がない場合は、カートに入れられないようにする。 -->
 		<c:choose>
