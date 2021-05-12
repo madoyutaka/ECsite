@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="java.util.ArrayList"%>
+     <%@ page isELIgnored ="false" %>
 <%String id = (String)request.getAttribute("id");%>
 <%String pass = (String)request.getAttribute("pass");%>
 <%String mail = (String)request.getAttribute("mail");%>
@@ -13,14 +14,35 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>新規登録</title>
-		<link rel="stylesheet"href="SignUp.css">
+		<link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 	</head>
 	<body>
+	<header>
+        <button type="button" onclick="location.href='http://localhost:8080/ECSite/TopServlet'">トップ</button>
+		<nav><ul>
+        <li><form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
+		<input type = "submit" name="btnMyPageTransition" value = "マイページ">
+		</form></li>
+		<li><form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+		<input type = "submit" name="btnHeaderCartTransition" value = "カート">
+		</form></li>
+        <li><form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
+		<input type = "submit" name="btnItemListTransition" value = "商品一覧">
+		</form></li>
+		</ul></nav>
+	</header>
 		<h1>新規会員登録</h1>
-
-
-
-			${message}<br>
+			<c:choose>
+			<c:when test="${list != null}">
+				<c:forEach items="${list}" var = "error">
+					<c:out value="${error}" /><br>
+				</c:forEach>
+			</c:when>
+			<c:when test="${list == null}">
+			<br>
+			</c:when>
+		</c:choose>
+		<br>
 		<form action="http://localhost:8080/ECSite/SignUpServlet"  method="post">
 
 		氏名(20文字以内)<input type="text" name="userName"  value="${name}"  placeholder="山田 太郎"><br>
@@ -35,7 +57,7 @@
 
 		住所(100文字以内)<input type="text" name="address"  size="70"  value="${add}"  placeholder="東京都○○区○○1丁目1番1号"><br>
 
-
+		<br>
 		<input type="submit" value="登録"><br><br>
 
 </form>
