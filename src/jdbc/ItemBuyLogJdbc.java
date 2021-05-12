@@ -114,11 +114,11 @@ public class ItemBuyLogJdbc {
 
 			}catch(SQLException ex){
 				ex.printStackTrace();
-				return "履歴処理中にエラーが発生しました。";
+				return "履歴保存処理中にエラーが発生しました。";
 				}
 
 		}
-			return "購入処理が完了しました。";
+			return "購入履歴はマイページからご確認ください。";
 
 		}
 
