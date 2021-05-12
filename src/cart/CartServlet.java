@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.ItemBean;
+import bean.CartBean;
 import bean.UserBean;
 
 @WebServlet("/CartServlet")
@@ -29,8 +29,6 @@ public class CartServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//MIMタイプとエンコーディング(文字コード)の設定をする
-				response.setContentType("text/html;charset=UTF-8");
 			//requestで送られてきたパラメータのエンコーディングを設定する
 				request.setCharacterEncoding("UTF-8");
 			//保存用
@@ -38,7 +36,7 @@ public class CartServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				UserBean loginUserSession;
 				@SuppressWarnings("unchecked")
-				ArrayList<ItemBean> loginItemSession= (ArrayList<ItemBean>) session.getAttribute("CartItem");
+				ArrayList<CartBean> loginItemSession= (ArrayList<CartBean>) session.getAttribute("CartItem");
 
 				try {
 					loginUserSession = (UserBean)session.getAttribute("loginUser");
@@ -59,12 +57,15 @@ public class CartServlet extends HttpServlet {
 
 					//値を渡す
 					setItemNo = Integer.parseInt(request.getParameter("btnCartTransition"));
+					//テスト用
+					int setItemBuyCount = 1;
 
 					//インスタンスを生成し、処理を行った結果を格納する。
 					CartLogic newLogic = new CartLogic();
-					loginItemSession = newLogic.cartIn(setItemNo, loginItemSession);
-					//パラメータ名set
-					request.setAttribute("itemCartData", loginItemSession);
+					loginItemSession = newLogic.cartIn(setItemNo, setItemBuyCount, loginItemSession);
+					session.setAttribute("CartItem",loginItemSession);
+					//表示用のデータを取得し、パラメータ名set
+					request.setAttribute("itemCartData", newLogic.getCartItemData(loginItemSession));
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/Cart.jsp");
@@ -78,15 +79,16 @@ public class CartServlet extends HttpServlet {
 					CartLogic newLogic = new CartLogic();
 					System.out.println(loginItemSession);
 					loginItemSession = newLogic.remove(setItemNo, loginItemSession);
+					session.setAttribute("CartItem",loginItemSession);
 					//パラメータ名set
-					request.setAttribute("itemCartData", loginItemSession);
+					request.setAttribute("itemCartData", newLogic.getCartItemData(loginItemSession));
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/Cart.jsp");
 					req.forward(request, response);
 					return;
 				}
-		
+
 				//ヘッダー用
 				if(request.getParameter("btnHeaderCartTransition")!=null) {
 					//画面遷移
