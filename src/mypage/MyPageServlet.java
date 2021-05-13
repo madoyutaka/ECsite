@@ -47,6 +47,13 @@ public class MyPageServlet extends HttpServlet {
 			req.forward(request, response);
 			return;
 		}
+		if(request.getParameter("btnMyPageTransition")!=null) {
+			System.out.println("btnMyPageTransitionが押されました。："+request.getParameter("btnMyPageTransition"));
+			//Mypage.jspに画面遷移
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
+			rd.forward(request, response);
+			return;
+		}
 
 	}
 
