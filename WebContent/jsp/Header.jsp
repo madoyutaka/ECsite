@@ -25,12 +25,12 @@
 				<nav><ul>
 				<li>
 					<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-					<input class ="header_cart_btn" type = "image" src="img/icon/cart.png" name="btnCartTransition" value="カート">
+					<input class ="header_cart_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/cart.png" name="btnCartTransition" value="カート">
 					</form>
 				</li>
 				<li>
 					<form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
-					<input class ="header_mypage_btn" type = "image" src="img/icon/home.png"  name="btnMyPageTransition" value = "マイページ">
+					<input class ="header_mypage_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/home.png"  name="btnMyPageTransition" value = "マイページ">
 					</form>
 				</li>
 				</ul></nav>
