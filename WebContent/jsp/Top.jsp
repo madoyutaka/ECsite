@@ -18,9 +18,10 @@
 			<li><form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 			<input type = "submit" name="btnHeaderCartTransition" value = "カート">
 			</form></li>
-	        <li><form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
-			<input type = "submit" name="btnItemListTransition" value = "商品一覧">
-			</form></li>
+	        <li>	<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+		<input type="text" name="itemSearchWord" placeholder="検索する言葉を入力"/>
+		<input type="submit" name="btnItemSearch" value="検索"/>
+		</form></li>
 			</ul></nav>
 	</header>
 

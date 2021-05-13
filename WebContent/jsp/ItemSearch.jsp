@@ -19,15 +19,8 @@
 				<c:out value="${errorText}"/>
 			</c:when>
 			<c:when test="${errorText == null}">
-				<br>
 			</c:when>
 		</c:choose>
-
-	<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
-		<input type="text" name="itemSearchWord" placeholder="検索する言葉を入力"/>
-		<input type="submit" name="btnItemSearch" value="検索"/>
-	</form>
-	<br>
 	<br>
 	<!-- itemSearchListがnullの場合、0件の場合、1件以上の場合 -->
 	<c:choose>
