@@ -28,17 +28,21 @@
 		</c:when>
 
 		<c:when test="${ fn:length(itemSearchList) >= 1}">
+			<h2 class="form_cover">
 			<c:forEach items="${itemSearchList}" var="item">
-				<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
-				<button type="submit" name="btnItemDetailTransition" value="${item.itemNo}">${item.itemName}</button>
-				</form>
-				商品説明：<c:out value="${item.itemDescription}" default="取得失敗"/><br>
-				商品価格：<c:out value="${item.itemPrice}" default="取得失敗"/><br>
-				商品画像：<c:out value="${item.itemImage}" default="取得失敗"/><br>
-				商品在庫：<c:out value="${item.itemStock}" default="取得失敗"/><br>
-				カテゴリ名：<c:out value="${item.categoryName}" default="取得失敗"/><br>
-				<br>
+					<!-- 商品画像 -->
+					<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
+					<h3 class="item_select_btn">
+						<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
+							<img src="./img/${item.itemImage}" >
+							<p class="item_name"><c:out value="${item.itemName}" default="取得失敗"/></p>
+						<p class="item_price">お値段：<c:out value="${item.itemPrice}" default="取得失敗"/>円</p>
+						</button>
+					</h3>
+					</form>
+					<br>
 			</c:forEach>
+		</h2>
 		</c:when>
 
 		<c:when test="${ fn:length(itemSearchList) == 0}">
