@@ -20,8 +20,6 @@ public class LoginServlet extends HttpServlet {
 	//ログインの処理
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//MIMタイプとエンコーディング(文字コード)の設定をする
-		response.setContentType("text/html;charset=UTF-8");
 		//requestのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
