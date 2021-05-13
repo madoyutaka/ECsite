@@ -259,5 +259,59 @@ public class UserJdbc {
 			}
 		}
 	}
+	
+	
+
+	//新規登録重複チェック
+	public  String checkJdbc(String emailAddress, String userId) {
+
+	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, id, pw);
+			stmt =conn.createStatement();
+
+			//user_id重複チェック
+		 	String query="select count(*) from user where user_id = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,userId);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int idCount = rs.getInt(1);
+
+			//メールアドレス重複チェック
+			query="select count(*) from user where email_address = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,emailAddress);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mailCount = rs.getInt(1);
+
+			if(idCount>=1) {
+				returnText="このIDは既に使用されています";
+			}else if(mailCount>=1){
+				returnText="このメールアドレスは既に使用されています";
+			}else {
+				returnText=null;
+			}
+	}
+
+	catch (ClassNotFoundException ex){//ドライバ登録時の例外処理
+		ex.printStackTrace();//例外処理
+
+	}catch (SQLException ex){//DBMSの接続時の例外処理
+
+	}finally {
+		try {
+			//接続の解除
+			if (rs !=null) rs.close();
+			if(pstmt !=null) pstmt.close();
+			if(conn !=null) conn.close();
+
+		}catch(Exception ex) {//例外処理
+
+		}
+	}
+	return returnText;
+	}
 
 }
