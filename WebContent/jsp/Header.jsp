@@ -8,7 +8,9 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 <!-- headの中に↓を追加してCSSを読み込む -->
-	<link rel="stylesheet"href="${pageContext.request.contextPath}//ECSiteLayout.css">
+	<link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
+	<link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
+<!-- headの中に↑を追加してCSSを読み込む -->
 	</head>
 
 	<body>
