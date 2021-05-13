@@ -8,8 +8,8 @@ import jdbc.UserJdbc;
 
 
 public class SignUpLogic implements Serializable {
+	//入力チェックのメソッド
 	public ArrayList<String> checkSULogic(String userId,String password,String emailAddress,String pCode,String address,String userName){
-	//入力チェック
 		//エラー用リスト
 		ArrayList<String> list = new ArrayList<String>();
 
@@ -38,23 +38,29 @@ public class SignUpLogic implements Serializable {
 		}
 
 		if(list.isEmpty()) {
-			UserBean ub = new UserBean();
-			//pCodeをint型に変換しそれぞれbeanにセット
-			int postalCode = Integer.parseInt(pCode);
-			ub.setUserId(userId);
-			ub.setPassword(password);
-			ub.setEmailAddress(emailAddress);
-			ub.setPostalCode(postalCode);
-			ub.setAddress(address);
-			ub.setUserName(userName);
+			String returnText=null;
+			UserJdbc jdbc = new UserJdbc();
+			returnText = jdbc.checkJdbc(emailAddress,userId);
 
-			UserJdbc uj = new UserJdbc();
-			uj.insert(ub);
+			if(returnText!=null) {
+				list.add(returnText);
+
+			}else if(returnText==null) {
+				UserBean ub = new UserBean();
+				//pCodeをint型に変換しそれぞれbeanにセット
+				int postalCode = Integer.parseInt(pCode);
+				ub.setUserId(userId);
+				ub.setPassword(password);
+				ub.setEmailAddress(emailAddress);
+				ub.setPostalCode(postalCode);
+				ub.setAddress(address);
+				ub.setUserName(userName);
+
+				UserJdbc uj = new UserJdbc();
+				uj.insert(ub);
+			}
 		}
 		return list;
 
 	}
-
-	}
-
-
+}

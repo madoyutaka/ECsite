@@ -26,7 +26,6 @@ public class SignUpServlet extends HttpServlet {
 			return;
 		}
 
-
 		//値の受け取りと格納
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
@@ -43,28 +42,35 @@ public class SignUpServlet extends HttpServlet {
 		request.setAttribute("add", address);
 		request.setAttribute("name", userName);
 
-		SignUpLogic newlogic = new SignUpLogic();
-		ArrayList<String> list = newlogic.checkSULogic(userId,password,emailAddress,pCode,address,userName);
 
-		if(list.isEmpty()==false) {
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
-		}else {
-			//画面遷移
-			RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
-			rd.forward(request, response);
-		}
-		}
+//		String returnText=null;
+//		UserJdbc jdbc = new UserJdbc();
+//		returnText = jdbc.checkJdbc(emailAddress,userId);
+
+//
+//		if(returnText!=null) {
+//			request.setAttribute("overlapping", returnText);
+//			request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
+//		}else {
+			SignUpLogic newlogic = new SignUpLogic();
+			ArrayList<String> list = newlogic.checkSULogic(userId,password,emailAddress,pCode,address,userName);
+
+			if(list.isEmpty()==false) {
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
+			}else {
+				//画面遷移
+				RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
+				rd.forward(request, response);
+			}
+
+	//	}
+
+
+
+
+
+
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
