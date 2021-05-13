@@ -1,10 +1,15 @@
 @charset "UTF-8";
 
 header{
-	height:50px;
+	height:70px;
 	background-color:#c1e4e9;
+	width: 100%
+}
+
+.header_wrap{
 	display: flex;
 	align-items: center;
+	margin: 0 30px;
 }
 
 header nav {
@@ -13,11 +18,11 @@ header nav {
 
 header ul {
 	display: flex;
-	list-style:none;
+	align-items: center;
 }
 
 header ul li {
-	margin-left: 20px;
+	margin-left: 40px;
 }
 
 button {
@@ -66,6 +71,18 @@ p {
 
 button .item {
 	padding: 0;
+}
+
+.header_cart_btn, .header_mypage_btn, .header_search_btn{
+	max-width: 40px;
+	max-height: 40px;
+}
+
+.header_word{
+	margin: 10px;
+	padding: 10px 0;
+	width: 250px;
+	text-align: left;
 }
 
 
