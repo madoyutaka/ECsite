@@ -27,8 +27,6 @@ public class UserDataChangeServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	//MIMタイプとエンコーディング(文字コード)の設定をする
-		response.setContentType("text/html;charset=UTF-8");
 	//requestで送られてきたパラメータのエンコーディングを設定する
 		request.setCharacterEncoding("UTF-8");
 	//保存用
@@ -36,7 +34,7 @@ public class UserDataChangeServlet extends HttpServlet {
 		String btnName = null;
 		String setNewData = null;
 		int loginUserNo = -1;
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		UserBean loginUserSession;
 		try {
 			loginUserSession = (UserBean)session.getAttribute("loginUser");
