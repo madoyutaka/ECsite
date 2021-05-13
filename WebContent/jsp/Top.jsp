@@ -11,19 +11,30 @@
 <body>
 <!-- ブラウザ上にトップの画面を表示 -->
 	<header>
-	        <button type="button" onclick="location.href='http://localhost:8080/ECSite/TopServlet'">検索</button>
-			<nav><ul>
-	        <li><form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
-			<input type = "submit" name="btnMyPageTransition" value = "マイページ">
-			</form></li>
-			<li><form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-			<input type = "submit" name="btnHeaderCartTransition" value = "カート">
-			</form></li>
-	        <li>	<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
-		<input type="text" name="itemSearchWord" placeholder="検索する言葉を入力"/>
-		<input type="submit" name="btnItemSearch" value="検索"/>
-		</form></li>
-			</ul></nav>
+	       <div class="header_wrap">
+		        <button type="button" onclick="location.href='http://localhost:8080/ECSite/TopServlet'">TOP</button>
+
+				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+								<input class ="header_word" type="text" name="itemSearchWord"/>
+								<input class ="header_search_btn" type="submit"  src="img/icon/search.png"  name="btnItemSearch" value="検索"/>
+				</form>
+
+				<nav>
+					<ul>
+						<li>
+							<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+								<input class ="header_cart_btn" type = "image" src="img/icon/cart.png" name="btnCartTransition" value="カート">
+							</form>
+						</li>
+
+						<li>
+		        			<form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
+								<input class ="header_mypage_btn" type = "image" src="img/icon/home.png"  name="btnMyPageTransition" value = "マイページ">
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
 	</header>
 
 <form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
