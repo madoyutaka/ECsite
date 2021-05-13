@@ -43,7 +43,7 @@ public class ItemSearchServlet extends HttpServlet {
 			}
 
 		//商品検索ボタンが押された場合の処理
-		if(request.getParameter("btnItemSearch")!=null) {
+		if(request.getParameter("btnItemSearchTransition")!=null) {
 			//入力された文字を取得
 			itemSearchWord = request.getParameter("itemSearchWord");
 
