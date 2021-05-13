@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>トップページ</title>
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">	
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
 <body>
