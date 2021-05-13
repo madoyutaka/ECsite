@@ -95,7 +95,8 @@ public class CartServlet extends HttpServlet {
 				//ヘッダー用
 				if(request.getParameter("btnHeaderCartTransition")!=null) {
 					//画面遷移
-					request.setAttribute("itemCartData", loginItemSession);
+					CartLogic newLogic = new CartLogic();
+					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
 					System.out.println("カート画面に遷移します。");
 					req = request.getRequestDispatcher("jsp/Cart.jsp");
 					req.forward(request, response);
