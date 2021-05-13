@@ -29,4 +29,44 @@ button {
 	padding: 0 20px;
 }
 
+img {
+	max-height: 300px;
+	max-width: 100%;
+}
+
+body{
+	background-color:#f8fbf8;
+}
+/*pタグ*/
+p {
+	text-align: left;
+}
+/*商品名*/
+.item_name{
+	font-size: 20px;
+	font-weight: bold;
+	color:  #302833;
+}
+
+/*商品価格*/
+.item_price {
+	font-size: 20px;
+}
+
+/* 商品hover時 */
+.item_select_btn :hover {
+	background-color: #f3f3f3;
+}
+
+/* 商品を横並べ */
+.form_cover{
+	display: flex;
+	/*flex-wrap: wrap; */
+}
+
+button .item {
+	padding: 0;
+}
+
+
 
