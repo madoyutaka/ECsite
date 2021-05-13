@@ -37,7 +37,15 @@
 
 	<!-- 購入画面に進む -->
 	<form action = "http://localhost:8080/ECSite/ItemBuyServlet" method = "POST">
-			<input type = "submit" name="btnItemBuyTransition" value ="購入確認に進む">
+		<c:choose>
+			<c:when test="${ fn:length(cartItemData) >= 1}">
+				<input type = "submit" name="btnItemBuyTransition" value ="購入確認に進む">
+			</c:when>
+
+			<c:when test="${ fn:length(cartItemData) == 0}">
+				<input type = "submit" disabled name="btnItemBuyTransition" value ="カートに商品が入っていません">
+			</c:when>
+		</c:choose>
 	</form>
 </body>
 </html>
