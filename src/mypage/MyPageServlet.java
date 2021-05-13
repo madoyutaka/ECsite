@@ -25,8 +25,6 @@ public class MyPageServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	//MIMタイプとエンコーディング(文字コード)の設定をする
-		response.setContentType("text/html;charset=UTF-8");
 	//requestで送られてきたパラメータのエンコーディングを設定する
 		request.setCharacterEncoding("UTF-8");
 	//保存用
