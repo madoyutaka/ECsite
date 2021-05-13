@@ -11,7 +11,16 @@ public class CartLogic {
 		ArrayList<CartBean> itemInCartList = new ArrayList<CartBean>();
 		itemInCartList = sessionItemList;
 
-		//カートに商品を追加する。
+		//同じ商品が入っているか確認する。
+		for(CartBean cart: itemInCartList) {
+			if(cart.getItemNo() == setItemNo) {
+				//同じ商品が入っている場合、購入希望数を増やす。
+				cart.setItemBuyCount(cart.getItemBuyCount()+setItemBuyCount);
+				return itemInCartList;
+			}
+		}
+
+		//同じ商品が入っていない場合は、カートに商品を追加する。
 		CartBean cartBean = new CartBean();
 		cartBean.setItemNo(setItemNo);
 		cartBean.setItemBuyCount(setItemBuyCount);
