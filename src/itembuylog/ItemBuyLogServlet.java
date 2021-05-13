@@ -27,6 +27,8 @@ public class ItemBuyLogServlet extends HttpServlet {
 }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//requestで送られてきたパラメータのエンコーディングを設定する
+		request.setCharacterEncoding("UTF-8");
 		//保存用
 		RequestDispatcher req = null;
 		int loginUserNo;
