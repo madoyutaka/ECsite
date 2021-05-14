@@ -99,6 +99,11 @@ button .item {
 	margin-top: 5px;
 }
 
+/*ログインボタンホバー時、カーソルの形状をポインタにする*/
+.login_btn:hover{
+	cursor: pointer;
+}
+
 /*ヘッダーロゴ*/
 .header_top_btn {
 	max-width: 60px;
