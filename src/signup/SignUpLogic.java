@@ -13,9 +13,9 @@ public class SignUpLogic implements Serializable {
 		//エラー用リスト
 		ArrayList<String> list = new ArrayList<String>();
 
-		if(userId=="" || password=="" || emailAddress=="" || pCode=="" || address=="" || userName=="") {
+			if(userId=="" || password=="" || emailAddress=="" || pCode=="" || address=="" || userName=="") {
 			list.add("！入力されていない項目があります");
-		}else {
+			}
 			if(address.length()>=100||userName.length()>=20){
 				list.add("！氏名は20文字以内で入力してください");
 			}
@@ -34,8 +34,9 @@ public class SignUpLogic implements Serializable {
 				list.add("！郵便番号はハイフンなし半角数字7文字で入力してください");
 			}
 			if(pCode.matches("^0+[0-9]+$")){
-				list.add("郵便番号は0以外から開始してください");
-			}if(address.length()>=100){
+				list.add("！郵便番号は0以外から開始してください");
+			}
+			if(address.length()>=100){
 				list.add("！住所は40文字以内で入力してください");
 			}
 
@@ -62,7 +63,6 @@ public class SignUpLogic implements Serializable {
 				uj.insert(ub);
 			}
 
-		}
 		return list;
 
 	}
