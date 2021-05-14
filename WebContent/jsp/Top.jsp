@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
+<%@ page import="top.TopServlet" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +58,7 @@
 			</form>
 		</div>
 	</div>
-	
+
 	<div class="section_wrap">
 		<section class="about">
 			<h2 class="section_ttl">About</h2>
@@ -66,15 +69,16 @@
 
 		<section class="random_item">
 		     <h2 class="section_ttl">オススメ家具</h2>
-		<div class="item_list">
-				<img src="${pageContext.request.contextPath}/img/sofa.jpg">
-				<div class="item_box">
-				 	<h3>ソファ</h3>
-				    <p>あああああああああ</p>
-					<p>あああああああああ</p>
-					<p>あああああああああ</p>
-				</div>
-		</div>
+
+		     	<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
+					<h3 class="item_select_btn">
+						<button class="item" type="submit" name="btnItemDetailTransition" value="${randomItem.itemNo}">
+							<img src="./img/${randomItem.itemImage}" >
+							<p class="item_name"><c:out value="${randomItem.itemName}" default="取得失敗"/></p>
+						<p class="item_price">お値段：<c:out value="${randomItem.itemPrice}" default="取得失敗"/>円</p>
+						</button>
+					</h3>
+				</form>
 
 		</section>
 	</div>
