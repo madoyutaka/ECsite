@@ -22,6 +22,8 @@ public class TopServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//requestで送られてきたパラメータのエンコーディングを設定する
+		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher req = null;
 		HttpSession session = request.getSession(false);
 		UserBean loginUserSession;
@@ -30,6 +32,13 @@ public class TopServlet extends HttpServlet {
 		}catch(Exception ex) {
 			loginUserSession = null;
 		}
+
+		//	トップボタンを押したとき
+			if(request.getParameter("btnTopTransition")!=null) {
+				req = request.getRequestDispatcher("jsp/Top.jsp");
+				req.forward(request, response);
+				return;
+			}
 
 		//	ログインボタンを押したとき
 		if(request.getParameter("btnLoginTransition")!=null) {
