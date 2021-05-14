@@ -45,7 +45,6 @@ public class SignUpServlet extends HttpServlet {
 			SignUpLogic newlogic = new SignUpLogic();
 			ArrayList<String> list = newlogic.checkSULogic(userId,password,emailAddress,pCode,address,userName);
 
-
 			if(list.isEmpty()==false) {
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
