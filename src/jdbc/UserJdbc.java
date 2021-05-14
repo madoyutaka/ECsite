@@ -286,10 +286,10 @@ public class UserJdbc {
 						int mailCount = rs.getInt(1);
 
 						if(idCount>=1) {
-							overlapCheck.add("このIDは既に使用されています");
+							overlapCheck.add("！このIDは既に使用されています");
 						}
 						if(mailCount>=1){
-							overlapCheck.add("このメールアドレスは既に使用されています");
+							overlapCheck.add("！このメールアドレスは既に使用されています");
 						}
 				}
 
