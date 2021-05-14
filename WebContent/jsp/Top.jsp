@@ -12,11 +12,14 @@
 <!-- ブラウザ上にトップの画面を表示 -->
 	<header>
 	       <div class="header_wrap">
-		        <button type="button" onclick="location.href='http://localhost:8080/ECSite/TopServlet'">TOP</button>
+		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
+									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
+									<input type ="hidden" name="btnTopTransition" value="topTransition">
+				</form>
 
 				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
 								<input class ="header_word" type="text" name="itemSearchWord"/>
-								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch" value="検索"/>
+								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
 								<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
 				</form>
 
@@ -39,7 +42,6 @@
 				</nav>
 			</div>
 	</header>
-
 <form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
 	<input type = "submit" name="btnLoginTransition" value = "ログイン">
 	<br>
