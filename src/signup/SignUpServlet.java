@@ -42,17 +42,17 @@ public class SignUpServlet extends HttpServlet {
 		request.setAttribute("add", address);
 		request.setAttribute("name", userName);
 
-
 			SignUpLogic newlogic = new SignUpLogic();
 			ArrayList<String> list = newlogic.checkSULogic(userId,password,emailAddress,pCode,address,userName);
+
 
 			if(list.isEmpty()==false) {
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/jsp/SignUp.jsp").forward(request, response);
 			}else {
-				//画面遷移
-				RequestDispatcher rd = request.getRequestDispatcher("/jsp/MyPage.jsp");
-				rd.forward(request, response);
+				request.setAttribute("password", password);
+				request.setAttribute("userId", userId);
+				request.getRequestDispatcher("/LoginServlet").forward(request, response);
 			}
 
 	}
