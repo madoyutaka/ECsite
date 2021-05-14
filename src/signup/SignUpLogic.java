@@ -33,7 +33,9 @@ public class SignUpLogic implements Serializable {
 			if(pCode.length()!=7||!pCode.matches("^[0-9]+$")){
 				list.add("！郵便番号はハイフンなし半角数字7文字で入力してください");
 			}
-			if(address.length()>=100){
+			if(pCode.matches("^0+[0-9]+$")){
+				list.add("郵便番号は0以外から開始してください");
+			}if(address.length()>=100){
 				list.add("！住所は40文字以内で入力してください");
 			}
 
@@ -45,21 +47,20 @@ public class SignUpLogic implements Serializable {
 				list.addAll(overlapCheck);
 			}
 
+			if(list.isEmpty()) {
+				UserBean ub = new UserBean();
+				//pCodeをint型に変換しそれぞれbeanにセット
+				int postalCode = Integer.parseInt(pCode);
+				ub.setUserId(userId);
+				ub.setPassword(password);
+				ub.setEmailAddress(emailAddress);
+				ub.setPostalCode(postalCode);
+				ub.setAddress(address);
+				ub.setUserName(userName);
 
-		if(list.isEmpty()) {
-			UserBean ub = new UserBean();
-			//pCodeをint型に変換しそれぞれbeanにセット
-			int postalCode = Integer.parseInt(pCode);
-			ub.setUserId(userId);
-			ub.setPassword(password);
-			ub.setEmailAddress(emailAddress);
-			ub.setPostalCode(postalCode);
-			ub.setAddress(address);
-			ub.setUserName(userName);
-
-			UserJdbc uj = new UserJdbc();
-			uj.insert(ub);
-		}
+				UserJdbc uj = new UserJdbc();
+				uj.insert(ub);
+			}
 
 		}
 		return list;
