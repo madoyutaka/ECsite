@@ -26,8 +26,6 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-				//MIMタイプとエンコーディング(文字コード)の設定をする
-				response.setContentType("text/html;charset=UTF-8");
 			//requestで送られてきたパラメータのエンコーディングを設定する
 				request.setCharacterEncoding("UTF-8");
 
@@ -67,6 +65,9 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 					return;
 				}
 
+
+
+
 				if(request.getParameter("btnFavoriteListDeleteTransition")!=null) {
 					System.out.println("favoriteNo："+request.getParameter("btnFavoriteListDeleteTransition")+"を削除");
 
@@ -74,23 +75,30 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 					FavoriteBean faveBean = new FavoriteBean();
 					faveBean = faveLogic.deleteLogic(favoriteNo);
 
-					request.setAttribute("message", "お気に入りリストから商品を削除しました。");
+					request.setAttribute("returnText", "お気に入りリストから商品を削除しました。");
 					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
 					req.forward(request, response);
 					return;
 				}
 
 				if(request.getParameter("btnFavoriteListAddTransition")!=null) {
-					System.out.println("itemNo："+request.getParameter("btnFavoriteListDeleteTransition")+"を追加");
+					System.out.println("itemNo："+request.getParameter("btnFavoriteListAddTransition")+"を追加");
 					int itemNo = Integer.parseInt(request.getParameter("btnFavoriteListAddTransition"));
 					System.out.println(itemNo+":"+loginUserNo);
-					FavoriteBean faveBean = new FavoriteBean();
-					faveBean = faveLogic.addLogic(itemNo,loginUserNo);
+					String returnText=null;
+					returnText = faveLogic.addLogic(itemNo,loginUserNo);
 
-					request.setAttribute("message", "お気に入りリストに商品を追加しました。");
-					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
-					req.forward(request, response);
-					return;
+					if(returnText!=null) {
+						request.setAttribute("returnText", returnText);
+						request.getRequestDispatcher("/jsp/FavoriteListCompletion.jsp").forward(request, response);
+					}else {
+						//画面遷移
+						request.setAttribute("returnText", "お気に入りリストに商品を追加しました。");
+						req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
+						req.forward(request, response);
+						return;
+					}
+
 				}
 
 		}
