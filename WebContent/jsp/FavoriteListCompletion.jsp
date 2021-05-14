@@ -30,7 +30,7 @@
 
 	<br><br><br>
 
-	<div style="text-align:center;"><h1>${message}</h1>
+	<div style="text-align:center;"><h1>${returnText}</h1>
 		<br><br><br>
 
 		<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
