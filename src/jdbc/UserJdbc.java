@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import bean.UserBean;
 
@@ -223,95 +224,94 @@ public class UserJdbc {
 	}
 
 
-//新規登録
-	public void  insert(UserBean ub) {
-		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(url,id,pw);
-
-			stmt = conn.createStatement();
-
-			String query = "insert into user(user_id,password,email_address,postal_code,address,user_name)"+"values(?,?,?,?,?,?)";
-			pstmt = conn.prepareStatement(query);
-
-			pstmt.setString(1,ub.getUserId());
-			pstmt.setString(2,ub.getPassword());
-			pstmt.setString(3,ub.getEmailAddress());
-			pstmt.setInt(4,ub.getPostalCode());
-			pstmt.setString(5,ub.getAddress());
-			pstmt.setString(6,ub.getUserName());
-			pstmt.executeUpdate();
-			 conn.commit();
-
-		}catch(ClassNotFoundException ex){
-			//例外処理
-			ex.printStackTrace();
-		}catch(SQLException ex){
-			//例外処理
-			ex.printStackTrace();
-		}finally{
+	//新規登録
+		public void  insert(UserBean ub) {
 			try{
-				if (stmt!=null)stmt.close();
-				if (rs!=null) rs.close();
-				if (stmt!=null) stmt.close();
-				if (conn!=null) conn.close();
-			}catch(Exception ex){
-			}
-		}
-	}
-	
-	
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection(url,id,pw);
 
-	//新規登録重複チェック
-	public  String checkJdbc(String emailAddress, String userId) {
+				stmt = conn.createStatement();
 
-	try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(url, id, pw);
-			stmt =conn.createStatement();
+				String query = "insert into user(user_id,password,email_address,postal_code,address,user_name)"+"values(?,?,?,?,?,?)";
+				pstmt = conn.prepareStatement(query);
 
-			//user_id重複チェック
-		 	String query="select count(*) from user where user_id = ?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,userId);
-			rs = pstmt.executeQuery();
-			rs.next();
-			int idCount = rs.getInt(1);
+				pstmt.setString(1,ub.getUserId());
+				pstmt.setString(2,ub.getPassword());
+				pstmt.setString(3,ub.getEmailAddress());
+				pstmt.setInt(4,ub.getPostalCode());
+				pstmt.setString(5,ub.getAddress());
+				pstmt.setString(6,ub.getUserName());
+				pstmt.executeUpdate();
+				 conn.commit();
 
-			//メールアドレス重複チェック
-			query="select count(*) from user where email_address = ?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,emailAddress);
-			rs = pstmt.executeQuery();
-			rs.next();
-			int mailCount = rs.getInt(1);
-
-			if(idCount>=1) {
-				returnText="このIDは既に使用されています";
-			}else if(mailCount>=1){
-				returnText="このメールアドレスは既に使用されています";
-			}else {
-				returnText=null;
+			}catch(ClassNotFoundException ex){
+				//例外処理
+				ex.printStackTrace();
+			}catch(SQLException ex){
+				//例外処理
+				ex.printStackTrace();
+			}finally{
+				try{
+					if (stmt!=null)stmt.close();
+					if (rs!=null) rs.close();
+					if (stmt!=null) stmt.close();
+					if (conn!=null) conn.close();
+				}catch(Exception ex){
+				}
 			}
 	}
 
-	catch (ClassNotFoundException ex){//ドライバ登録時の例外処理
-		ex.printStackTrace();//例外処理
+		//新規登録重複チェック
+				public  ArrayList<String> checkJdbc(String emailAddress, String userId) {
+					ArrayList<String> overlapCheck = new ArrayList<String>();
+				try {
+						Class.forName("com.mysql.jdbc.Driver");
+						conn = DriverManager.getConnection(url, id, pw);
+						stmt =conn.createStatement();
 
-	}catch (SQLException ex){//DBMSの接続時の例外処理
+						//user_id重複チェック
+					 	String query="select count(*) from user where user_id = ?";
+						pstmt = conn.prepareStatement(query);
+						pstmt.setString(1,userId);
+						rs = pstmt.executeQuery();
+						rs.next();
+						int idCount = rs.getInt(1);
 
-	}finally {
-		try {
-			//接続の解除
-			if (rs !=null) rs.close();
-			if(pstmt !=null) pstmt.close();
-			if(conn !=null) conn.close();
+						//メールアドレス重複チェック
+						query="select count(*) from user where email_address = ?";
+						pstmt = conn.prepareStatement(query);
+						pstmt.setString(1,emailAddress);
+						rs = pstmt.executeQuery();
+						rs.next();
+						int mailCount = rs.getInt(1);
 
-		}catch(Exception ex) {//例外処理
+						if(idCount>=1) {
+							overlapCheck.add("このIDは既に使用されています");
+						}
+						if(mailCount>=1){
+							overlapCheck.add("このメールアドレスは既に使用されています");
+						}
+				}
 
-		}
-	}
-	return returnText;
-	}
+				catch (ClassNotFoundException ex){//ドライバ登録時の例外処理
+					ex.printStackTrace();//例外処理
+
+				}catch (SQLException ex){//DBMSの接続時の例外処理
+
+				}finally {
+					try {
+						//接続の解除
+						if (rs !=null) rs.close();
+						if(pstmt !=null) pstmt.close();
+						if(conn !=null) conn.close();
+
+					}catch(Exception ex) {//例外処理
+
+					}
+				}
+				return overlapCheck;
+				}
 
 }
+
+
