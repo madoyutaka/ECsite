@@ -10,13 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.ItemBean;
 import bean.UserBean;
+import jdbc.ItemJdbc;
 
 @WebServlet("/TopServlet")
 public class TopServlet extends HttpServlet {
 	//トップの画面での処理を制御するサーブレット
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher req = null;
+		ItemJdbc itemJdbc = new ItemJdbc();
+		ItemBean randomItemBean = itemJdbc.randomItem();
+		//値を渡す
+		request.setAttribute("randomItem", randomItemBean);
 		req = request.getRequestDispatcher("jsp/Top.jsp");
 		req.forward(request, response);
 	}
@@ -35,6 +41,10 @@ public class TopServlet extends HttpServlet {
 
 		//	トップボタンを押したとき
 			if(request.getParameter("btnTopTransition")!=null) {
+				ItemJdbc itemJdbc = new ItemJdbc();
+				ItemBean randomItemBean = itemJdbc.randomItem();
+				//値を渡す
+				request.setAttribute("randomItem", randomItemBean);
 				req = request.getRequestDispatcher("jsp/Top.jsp");
 				req.forward(request, response);
 				return;
