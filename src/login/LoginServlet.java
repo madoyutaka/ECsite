@@ -31,6 +31,12 @@ public class LoginServlet extends HttpServlet {
 		//それぞれPOSTされたものを変数に格納
 		String UserId = request.getParameter("user_id");
 		String UserPass = request.getParameter("password");
+		
+		//新規登録したアカウントから値を受け取る場合
+		if(UserId==null||UserPass==null) {
+		UserId = (String)request.getAttribute("userId");
+		UserPass = (String)request.getAttribute("password");;
+		}
 
 		LoginLogic newlogic = new LoginLogic();
 		UserBean returnUser = newlogic.accountLoginLogic(UserId,UserPass);
