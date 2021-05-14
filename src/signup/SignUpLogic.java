@@ -36,30 +36,31 @@ public class SignUpLogic implements Serializable {
 			if(address.length()>=100){
 				list.add("！住所は40文字以内で入力してください");
 			}
-		}
+
+			//重複チェック
+			UserJdbc jdbc = new UserJdbc();
+			ArrayList<String> overlapCheck = jdbc.checkJdbc(emailAddress,userId);
+
+			if(overlapCheck!=null) {
+				list.addAll(overlapCheck);
+			}
+
 
 		if(list.isEmpty()) {
-			String returnText=null;
-			UserJdbc jdbc = new UserJdbc();
-			returnText = jdbc.checkJdbc(emailAddress,userId);
+			UserBean ub = new UserBean();
+			//pCodeをint型に変換しそれぞれbeanにセット
+			int postalCode = Integer.parseInt(pCode);
+			ub.setUserId(userId);
+			ub.setPassword(password);
+			ub.setEmailAddress(emailAddress);
+			ub.setPostalCode(postalCode);
+			ub.setAddress(address);
+			ub.setUserName(userName);
 
-			if(returnText!=null) {
-				list.add(returnText);
+			UserJdbc uj = new UserJdbc();
+			uj.insert(ub);
+		}
 
-			}else if(returnText==null) {
-				UserBean ub = new UserBean();
-				//pCodeをint型に変換しそれぞれbeanにセット
-				int postalCode = Integer.parseInt(pCode);
-				ub.setUserId(userId);
-				ub.setPassword(password);
-				ub.setEmailAddress(emailAddress);
-				ub.setPostalCode(postalCode);
-				ub.setAddress(address);
-				ub.setUserName(userName);
-
-				UserJdbc uj = new UserJdbc();
-				uj.insert(ub);
-			}
 		}
 		return list;
 
