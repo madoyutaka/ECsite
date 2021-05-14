@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		//新規登録したアカウントから値を受け取る場合
 		if(UserId==null||UserPass==null) {
 		UserId = (String)request.getAttribute("userId");
-		UserPass = (String)request.getAttribute("password");;
+		UserPass = (String)request.getAttribute("password");
 		}
 
 		LoginLogic newlogic = new LoginLogic();
