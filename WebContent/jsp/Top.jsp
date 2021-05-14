@@ -55,12 +55,33 @@
 			</form>
 		</div>
 	</div>
+	
+	<div class="section_wrap">
+		<section class="about">
+			<h2 class="section_ttl">About</h2>
+			<p>あああああああああ</p>
+			<p>あああああああああ</p>
+			<p>あああああああああ</p>
+		</section>
 
+		<section class="random_item">
+		     <h2 class="section_ttl">オススメ家具</h2>
+		<div class="item_list">
+				<img src="${pageContext.request.contextPath}/img/sofa.jpg">
+				<div class="item_box">
+				 	<h3>ソファ</h3>
+				    <p>あああああああああ</p>
+					<p>あああああああああ</p>
+					<p>あああああああああ</p>
+				</div>
+		</div>
 
-<form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
-	<input type = "submit" name="btnItemListTransition" value = "商品を見る">
-	<br>
-</form>
+		</section>
+	</div>
+
+	<footer>
+		<p class="footer_text">2021/05/14/ECSite</p>
+	</footer>
 
 </body>
 </html>
