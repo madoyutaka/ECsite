@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Random;
 
 import bean.CartBean;
 import bean.ItemBean;
@@ -126,6 +127,63 @@ public class ItemJdbc {
 
 		return itemSearchList;
 	}
+
+	//商品をランダムで1つ表示する
+		public ItemBean randomItem(){
+			//戻り値用
+			ItemBean rendomItemBean = new ItemBean();
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection(url, id, pw);
+				stmt =conn.createStatement();
+				//itemの数を取得する
+				query = "SELECT COUNT(item_no) AS item_count FROM item";
+				rs = stmt.executeQuery(query);
+				rs.next();
+				int itemCount = rs.getInt("item_count");
+				//取得用のrandomNo
+				Random random = new Random();
+				int randomNo = random.nextInt(itemCount)+1;
+				//商品情報をを取得する
+				query = "SELECT item_no, item_name, item_description, item_price, item_image, item_stock, item.category_no, category_name FROM item JOIN category ON item.category_no = category.category_no WHERE item_no = ?";
+				//PreparedStatementオブジェクトを使用
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,  randomNo);
+				//SQLの実行
+				rs = pstmt.executeQuery();
+				System.out.println("rs："+rs);
+
+				//取得した値を格納
+				rs.next();
+				rendomItemBean.setItemNo(rs.getInt("item_no"));
+				rendomItemBean.setItemName(rs.getString("item_name"));
+				rendomItemBean.setItemDescription(rs.getString("item_description"));
+				rendomItemBean.setItemPrice(rs.getInt("item_price"));
+				rendomItemBean.setItemImage(rs.getString("item_image"));
+				rendomItemBean.setItemStock(rs.getInt("item_stock"));
+				rendomItemBean.setCategoryNo(rs.getInt("item.category_no"));
+				rendomItemBean.setCategoryName(rs.getString("category_name"));
+
+			}catch(ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}finally {
+				try {
+					if(conn != null) { conn.close(); }
+					if(stmt != null) { stmt.close(); }
+					if(pstmt != null) { pstmt.close(); }
+					if(rs != null) { rs.close(); }
+
+				}catch(SQLException ex){
+					ex.printStackTrace();
+					}
+
+				}
+
+			return rendomItemBean;
+		}
+
 
 	//購入した商品の在庫数を購入した分だけ減らす
 		public String itemBuyStock(ArrayList<CartBean> loginItemSession) {
