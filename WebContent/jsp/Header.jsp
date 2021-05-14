@@ -16,8 +16,11 @@
 	<body>
 <!-- ここからヘッダー -->
 		<header>
-			 <div class="header_wrap">
-		        <button type="button" onclick="location.href='http://localhost:8080/ECSite/TopServlet'">TOP</button>
+	       <div class="header_wrap">
+		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
+									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
+									<input type ="hidden" name="btnTopTransition" value="topTransition">
+				</form>
 
 				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
 								<input class ="header_word" type="text" name="itemSearchWord"/>
@@ -43,7 +46,7 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
+	</header>
 <!-- ここまでヘッダー -->
 
 
