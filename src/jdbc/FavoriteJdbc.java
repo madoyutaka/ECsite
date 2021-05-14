@@ -101,13 +101,28 @@ public class FavoriteJdbc {
 
 
 
-//お気に入りに追加
-	public FavoriteBean addFaves(int itemNo,int loginUserNo) {
+//お気に入りに追加(重複チェック付き)
+	public String addFaves(int itemNo,int loginUserNo) {
+		String returnText=null;
 		try {
+
 			//SQLの実行(発行)
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
 			stmt =conn.createStatement();
+			//user_id重複チェック
+		 	String query=" select count(*) from favorite where user_no=? and item_no=?;";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,loginUserNo);
+			pstmt.setInt(2,itemNo);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int favoriteCount = rs.getInt(1);
+
+			if(favoriteCount>=1) {
+				returnText="！この商品はすでにお気に入りリストに追加されています";
+			}else if (favoriteCount==0){
+
 				//SQl文の用意
 				query = "INSERT INTO favorite(item_no, user_no) VALUES(?, ?);";
 				//SQL文の実行
@@ -116,6 +131,7 @@ public class FavoriteJdbc {
 				pstmt.setInt(2, loginUserNo);
 
 				pstmt.executeUpdate();
+				}
 
 		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
@@ -126,10 +142,6 @@ public class FavoriteJdbc {
 					if (conn!=null) conn.close();			//接続の解除
 				}catch(Exception ex) {}
 				}
-		return null;
+		return returnText;
 	}
 }
-
-
-
-
