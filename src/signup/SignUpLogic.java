@@ -26,10 +26,11 @@ public class SignUpLogic implements Serializable {
 				list.add("！パスワードは半角英数字20文字以内で入力してください");
 			}
 			if(emailAddress.length()>=40){
-				list.add("！メールアドレスは40文字以内、正しい方法で入力してください");
-				}else if(!emailAddress.matches("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+				list.add("！メールアドレスは40文字以内で入力してください");
+			}else if(!emailAddress.matches("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
 					list.add("！メールアドレスは正しい方法で入力してください");
-			}if(pCode.length()!=7||!pCode.matches("^[0-9]+$")){
+			}
+			if(pCode.length()!=7||!pCode.matches("^[0-9]+$")){
 				list.add("！郵便番号はハイフンなし半角数字7文字で入力してください");
 			}
 			if(address.length()>=100){
