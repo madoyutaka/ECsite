@@ -133,6 +133,7 @@ button .item {
 	font-size: 50px;
 }
 
+/*ログインボタン*/
 .login_btn {
 	padding: 5px 20px;
 	font-size: 25px;
@@ -147,4 +148,66 @@ button .item {
 .login_btn:hover {
 	opacity: 0.8;
 }
+
+
+/*section*/
+.section_wrap{
+ width: 100%;
+}
+
+section{
+	height: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background-color: white;
+	text-align: center;
+	padding-top: 30px;
+}
+
+/*各sectionのタイトル*/
+.section_ttl{
+	text-align: center;
+	font-size: 30px;
+	color: black
+	padding: 20px;
+	margin-bottom: 20px;
+	display: inline-block;
+	padding-bottom: 3px;
+	border-bottom: 3px solid black;
+	}
+
+/*About*/
+.about p{
+	text-align: center;
+}
+
+/*商品表示*/
+.random_item{
+	height: 500px;
+}
+
+.item_list {
+	display: flex;
+}
+
+.item_box{
+	text-align: center;
+	margin-left: 30px;
+}
+
+
+/*フッター*/
+footer {
+	line-height: 50px;
+	border-top: 1px solid black;
+	height: 50px;
+	background-color: white;
+}
+
+footer p{
+	text-align: center;
+}
+
+
 
