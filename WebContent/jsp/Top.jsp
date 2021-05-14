@@ -42,10 +42,21 @@
 				</nav>
 			</div>
 	</header>
-<form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
-	<input type = "submit" name="btnLoginTransition" value = "ログイン">
-	<br>
-</form>
+
+	<!-- トップ画像 -->
+	<div class="top_image">
+		<div class="login_text">
+			<h1>テスト</h1>
+			<p>あああああああああ</p>
+
+			<form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
+				<input  class="login_btn" type = "submit" name="btnLoginTransition" value = "ログイン">
+				<input type ="hidden" name="btnLoginTransition" value="loginTransition">
+			</form>
+		</div>
+	</div>
+
+
 <form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
 	<input type = "submit" name="btnItemListTransition" value = "商品を見る">
 	<br>
