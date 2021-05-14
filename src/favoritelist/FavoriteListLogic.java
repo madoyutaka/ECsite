@@ -27,14 +27,13 @@ public class FavoriteListLogic {
 
 	}
 
-	public FavoriteBean addLogic(int itemNo,int loginUserNo) {
-		FavoriteBean returnBean = null;
+	public String addLogic(int itemNo,int loginUserNo) {
+		String returnText=null;
 		FavoriteJdbc favoriteJdbc = new FavoriteJdbc();
-		 returnBean = favoriteJdbc.addFaves(itemNo,loginUserNo);
-		    System.out.println(returnBean);
-		return null;
+		returnText = favoriteJdbc.addFaves(itemNo, loginUserNo);
+			return returnText;
 
-	}
+		}
 
 
 
