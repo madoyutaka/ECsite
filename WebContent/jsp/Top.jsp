@@ -62,9 +62,10 @@
 	<div class="section_wrap">
 		<section class="about">
 			<h2 class="section_ttl">About</h2>
-			<p>あああああああああ</p>
-			<p>あああああああああ</p>
-			<p>あああああああああ</p>
+			<p class="about_text">このECサイトは、ECサイト開発という名目で研修中に作成されました。</p>
+			<p class="about_text">このサイトでは家具を閲覧可能です。好きな家具をご覧ください。</p>
+			<p class="about_text">商品の詳細を閲覧したい場合や購入、お気に入りレビューするためにはログインが必要です。</p>
+			<p  class="about_text">このECサイトは少数メンバーで作成されております。どうぞ、ご覧ください。</p>
 		</section>
 
 		<section class="random_item">
@@ -73,7 +74,7 @@
 		     	<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<h3 class="item_select_btn">
 						<button class="item" type="submit" name="btnItemDetailTransition" value="${randomItem.itemNo}">
-							<img src="./img/${randomItem.itemImage}" >
+							<img class="item_image"　src="./img/${randomItem.itemImage}" >
 							<p class="item_name"><c:out value="${randomItem.itemName}" default="取得失敗"/></p>
 						<p class="item_price">お値段：<c:out value="${randomItem.itemPrice}" default="取得失敗"/>円</p>
 						</button>
