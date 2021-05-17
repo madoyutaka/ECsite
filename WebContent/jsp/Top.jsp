@@ -83,6 +83,8 @@
 
 		</section>
 	</div>
+	
+	<div id="page_top"><a href="#"></a></div>
 
 	<footer>
 		<p class="footer_text">2021/05/14/ECSite</p>
