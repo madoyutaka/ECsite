@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+*{
+	 font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+}
+
 /*img*/
 img {
 	max-height: 300px;
@@ -111,7 +115,7 @@ header ul li {
   background: rgba(0,0,0, 0.1);
 }
 
-.login_text {
+.top_text {
 	position:absolute;
 	top: 50px;
 	left: 50px;
@@ -120,7 +124,7 @@ header ul li {
 }
 
 /*ログインボタン*/
-.login_btn {
+.top_login_btn {
 	padding: 5px 20px;
 	font-size: 25px;
 	border-radius: 5px;
@@ -132,7 +136,7 @@ header ul li {
 }
 
 /*ログインボタンホバー時、カーソルの形状をポインタにする*/
-.login_btn:hover{
+.top_login_btn:hover{
 	cursor: pointer;
 	opacity: 0.8;
 }
@@ -172,7 +176,7 @@ section{
 .section_ttl{
 	text-align: center;
 	font-size: 30px;
-	color: black
+	color: black;
 	padding: 20px;
 	margin-bottom: 20px;
 	display: inline-block;
@@ -223,6 +227,72 @@ button .item {
 
 
 
+/*ログイン画面関連*/
+.login_layout{
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.login_wrap{
+	width: 500px;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.login_ttl {
+	text-align: center;
+	padding-top: 30px;
+	margin-bottom:50px;
+	font-size: 30px;
+}
+
+.error_text.error_login {
+	padding-top:10px;
+	margin-bottom:20px;
+	font-size: 30px;
+}
+
+.login_text{
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.login_text:last-of-type{
+	margin-bottom: 30px;
+}
+
+.login_text input {
+	margin-left: 10px;
+}
+
+.login_form{
+	margin-bottom: 20px;
+}
+
+/*ログインボタン装飾*/
+.login_btn {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #c1e4e9;
+  background-color: #fff;
+  font-size: 16px;
+  color:  #c1e4e9;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.login_btn:hover {
+  background-color: #c1e4e9;
+  border-color:#c1e4e9;
+  color: #FFF;
+}
+
+
 /*フッター関連*/
 footer {
 	line-height: 50px;
@@ -231,12 +301,13 @@ footer {
 	background-color: white;
 }
 
+
 footer p{
 	text-align: center;
 }
 
 
-/*新しく追加　各ページ共通エラーメッセージ用*/
+/*各ページ共通エラーメッセージ用*/
 .error_text{
 	margin-top:100px;
 	text-align: center;
@@ -250,3 +321,11 @@ footer p{
 	object-fit: cover;
 }
 
+
+/*新しく追加　各ページ共通　top以外*/
+.page_layout {
+	height: 500px;
+	max-width: 1080px;
+	background-color: white;
+	margin: 0 auto;
+	}
