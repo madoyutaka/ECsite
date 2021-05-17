@@ -32,7 +32,6 @@ public class CartServlet extends HttpServlet {
 			//requestで送られてきたパラメータのエンコーディングを設定する
 				request.setCharacterEncoding("UTF-8");
 			//保存用
-				RequestDispatcher req = null;
 				HttpSession session = request.getSession();
 				UserBean loginUserSession;
 				@SuppressWarnings("unchecked")
@@ -47,8 +46,7 @@ public class CartServlet extends HttpServlet {
 				if(loginUserSession == null) {
 					System.out.println("セッションが開始していません。");
 					//画面遷移
-					req = request.getRequestDispatcher("jsp/Login.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 					return;
 				}
 
@@ -69,8 +67,7 @@ public class CartServlet extends HttpServlet {
 					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
-					req = request.getRequestDispatcher("jsp/Cart.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
 					return;
 				}
 
@@ -87,8 +84,7 @@ public class CartServlet extends HttpServlet {
 					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
-					req = request.getRequestDispatcher("jsp/Cart.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
 					return;
 				}
 
@@ -98,8 +94,7 @@ public class CartServlet extends HttpServlet {
 					CartLogic newLogic = new CartLogic();
 					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
 					System.out.println("カート画面に遷移します。");
-					req = request.getRequestDispatcher("jsp/Cart.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
 					return;
 				}
 
