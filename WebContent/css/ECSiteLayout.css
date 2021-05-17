@@ -265,31 +265,7 @@ button .item {
 	margin-bottom: 20px;
 }
 
-/*ログインボタン装飾*/
-.login_btn {
-  border: 2px solid #c1e4e9;
-  color:  #c1e4e9;
-}
 
-.login_btn:hover {
-  background-color: #c1e4e9;
-  border-color:#c1e4e9;
-  color: #FFF;
-}
-
-/*新規登録ボタン装飾*/
-.sinup_btn{
-  border: 2px solid #c1e4e9;
-  color:  #c1e4e9;
-}
-
-.sinup_btn:hover {
-  background-color: #c1e4e9;
-  border-color:#c1e4e9;
-  color: #FFF;
-}
-
-/*新しい追加*/
 /*新規会員登録関連*/
 .page_ttl.signup_ttl{
 	margin-bottom:30px;
@@ -335,28 +311,16 @@ button .item {
 .signup_btn_cover,.signup_back{
 	text-align: center;
 }
-/*新規登録画面のボタン*/
-.btn.signup_btn{
-	border: 2px solid #c1e4e9;
-    color:  #c1e4e9;
+
+
+/*マイページ関連*/
+.back_btn{
+	text-align: center;
 }
 
-.btn.signup_btn:hover{
-  background-color: #c1e4e9;
-  border-color:#c1e4e9;
-  color: #FFF;
-}
-
-/*登録済みボタン*/
-.btn.signup_back_btn{
-	border: 2px solid #c1e4e9;
-    color:  #c1e4e9;
-}
-
-.btn.signup_back_btn:hover{
-  background-color: #c1e4e9;
-  border-color:#c1e4e9;
-  color: #FFF;
+.mypage_container form{
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 
@@ -372,7 +336,6 @@ footer p{
 	text-align: center;
 }
 
-/*新しい追加*/
 /*トップに戻るボタン*/
 #page_top{
 	width: 40px;
@@ -406,7 +369,7 @@ footer p{
 	margin: auto;
 	text-align: center;
 }
-/*ここまで*/
+
 
 /*各ページ共通エラーメッセージ用*/
 .error_text{
@@ -448,5 +411,13 @@ footer p{
   font-weight: bold;
   padding: 8px 16px;
   border-radius: 4px;
+  border: 2px solid #84a2d4;
+  color:  #84a2d4;
+}
+
+.btn:hover{
+  background-color: #84a2d4;
+  border-color:#84a2d4;
+  color: #FFF;
 }
 
