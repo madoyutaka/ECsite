@@ -48,12 +48,12 @@
 
 	<!-- トップ画像 -->
 	<div class="top_image">
-		<div class="login_text">
+		<div class="top_text">
 			<h1>テスト</h1>
 			<p>あああああああああ</p>
 
 			<form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
-				<input  class="login_btn" type = "submit" name="btnLoginTransition" value = "ログイン">
+				<input  class="top_login_btn" type = "submit" name="btnLoginTransition" value = "ログイン">
 				<input type ="hidden" name="btnLoginTransition" value="loginTransition">
 			</form>
 		</div>
