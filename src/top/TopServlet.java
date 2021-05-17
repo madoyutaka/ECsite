@@ -18,13 +18,11 @@ import jdbc.ItemJdbc;
 public class TopServlet extends HttpServlet {
 	//トップの画面での処理を制御するサーブレット
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher req = null;
 		ItemJdbc itemJdbc = new ItemJdbc();
 		ItemBean randomItemBean = itemJdbc.randomItem();
 		//値を渡す
 		request.setAttribute("randomItem", randomItemBean);
-		req = request.getRequestDispatcher("jsp/Top.jsp");
-		req.forward(request, response);
+		request.getRequestDispatcher("jsp/Top.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,8 +43,7 @@ public class TopServlet extends HttpServlet {
 				ItemBean randomItemBean = itemJdbc.randomItem();
 				//値を渡す
 				request.setAttribute("randomItem", randomItemBean);
-				req = request.getRequestDispatcher("jsp/Top.jsp");
-				req.forward(request, response);
+				request.getRequestDispatcher("jsp/Top.jsp").forward(request, response);
 				return;
 			}
 
@@ -55,12 +52,10 @@ public class TopServlet extends HttpServlet {
 			//セッションが継続している場合はマイページへ
 				if(loginUserSession == null) {
 				//セッションがnullの場合
-				req = request.getRequestDispatcher("jsp/Login.jsp");
-				req.forward(request, response);
+				request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 				return;
 			}
-			req = request.getRequestDispatcher("jsp/MyPage.jsp");
-			req.forward(request, response);
+			request.getRequestDispatcher("jsp/MyPage.jsp").forward(request, response);
 			return;
 		}
 
