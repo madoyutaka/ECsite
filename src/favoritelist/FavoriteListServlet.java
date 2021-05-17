@@ -3,7 +3,6 @@ package favoritelist;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +29,6 @@ public class FavoriteListServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 
 				//保存用
-				RequestDispatcher req = null;
 				int loginUserNo;
 				HttpSession session = request.getSession();
 				UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
@@ -44,8 +42,7 @@ public class FavoriteListServlet extends HttpServlet {
 				if(loginUserSession == null) {
 					System.out.println("セッションが開始していません。");
 					//画面遷移
-					req = request.getRequestDispatcher("jsp/Login.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 					return;
 				}
 
@@ -64,8 +61,7 @@ public class FavoriteListServlet extends HttpServlet {
 
 					//画面遷移
 					System.out.println("お気に入りリスト画面に遷移します。");
-					req = request.getRequestDispatcher("jsp/FavoriteList.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/FavoriteList.jsp").forward(request, response);
 					return;
 				}
 
@@ -74,8 +70,7 @@ public class FavoriteListServlet extends HttpServlet {
 				if(request.getParameter("btnMyPageTransition")!=null) {
 
 					System.out.println("マイページへ遷移します");
-					req = request.getRequestDispatcher("jsp/MyPage.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/MyPage.jsp").forward(request, response);
 					return;
 				}
 
