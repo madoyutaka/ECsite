@@ -28,7 +28,6 @@ public class MyPageServlet extends HttpServlet {
 	//requestで送られてきたパラメータのエンコーディングを設定する
 		request.setCharacterEncoding("UTF-8");
 	//保存用
-		RequestDispatcher req = null;
 		HttpSession session = request.getSession(false);
 		UserBean loginUserSession;
 		try {
@@ -41,8 +40,7 @@ public class MyPageServlet extends HttpServlet {
 		if(loginUserSession == null) {
 			System.out.println("セッションが開始していません。");
 			//画面遷移
-			req = request.getRequestDispatcher("jsp/Login.jsp");
-			req.forward(request, response);
+			request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 			return;
 		}
 		if(request.getParameter("btnMyPageTransition")!=null) {
