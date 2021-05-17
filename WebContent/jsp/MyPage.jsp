@@ -10,35 +10,71 @@
 <title>マイページ</title>
 </head>
 <body>
-<!-- ブラウザ上にマイページ用の画面を表示 -->
-<a href="http://localhost:8080/ECSite/TopServlet">TOP</a>
+<header>
+	       <div class="header_wrap">
+		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
+									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
+									<input type ="hidden" name="btnTopTransition" value="topTransition">
+				</form>
 
+				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+								<input class ="header_word" type="text" name="itemSearchWord"/>
+								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
+								<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
+				</form>
 
-<br>
+				<nav>
+					<ul>
+						<li>
+							<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+								<input class ="header_cart_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/cart.png" name="btnCartTransition">
+								<input type ="hidden" name="btnHeaderCartTransition" value="headerCartTransition">
+							</form>
+						</li>
 
-<form action = "http://localhost:8080/ECSite/UserDataChangeServlet" method = "POST">
-	<input type = "submit" name="btnUserDataChangeTransition" value = "登録情報を変更する">
-	<br>
-</form>
+						<li>
+		        			<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+								<input class ="header_mypage_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/home.png"  name="btnMyPageTransition">
+								<input type ="hidden" name="btnMyPageTransition" value="myPageTransition">
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
 
-<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
-	<input type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを確認する">
-	<br>
-</form>
+	<!-- ブラウザ上にマイページ用の画面を表示 -->
 
-<form action = "http://localhost:8080/ECSite/ItemBuyLogServlet" method = "POST">
-	<input type = "submit" name="btnItemBuyLogTransition" value = "購入履歴を確認する">
-	<br>
-</form>
+	<div class="page_layout">
+			<h1 class="page_ttl">マイページ</h1>
 
-	<br>
-	<br>
+        <div class="mypage_container">
+				<form action = "http://localhost:8080/ECSite/UserDataChangeServlet" method = "POST">
+			       <input  class="btn" type = "submit" name="btnUserDataChangeTransition" value = "登録情報を変更する">
+		         </form>
 
-<form action = "http://localhost:8080/ECSite/LogoutServlet" method = "POST">
-	<input type = "submit" name="btnLogOut" value = "ログアウト">
-</form>
+				<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
+					<input  class="btn" type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを確認する">
+				</form>
 
+				<form action = "http://localhost:8080/ECSite/ItemBuyLogServlet" method = "POST">
+					<input class="btn" type = "submit" name="btnItemBuyLogTransition" value = "購入履歴を確認する">
+				</form>
 
+				<form action = "http://localhost:8080/ECSite/LogoutServlet" method = "POST">
+					<input class="btn" type = "submit" name="btnLogOut" value = "ログアウト">
+				</form>
+
+				<div class="back_btn">
+				     <input class="btn" type="button" value="戻る" onclick="history.go(-2)"/>
+				</div>
+
+		</div>
+	</div>
+
+	<footer>
+		<p class="footer_text">2021/05/14/ECSite</p>
+	</footer>
 </body>
 
 </html>
