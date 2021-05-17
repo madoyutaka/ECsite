@@ -159,7 +159,8 @@ header ul li {
 
 /*section関連*/
 .section_wrap{
- width: 100%;
+	width: 100%;
+	margin-bottom:20px;
 }
 
 section{
@@ -194,6 +195,7 @@ section{
 
 /*商品一覧画面関連*/
 /*商品一覧画面のフォーム*/
+
 .item_form {
 	margin: 50px;
 }
@@ -226,7 +228,6 @@ button .item {
 }
 
 
-
 /*ログイン画面関連*/
 .login_layout{
 	text-align: center;
@@ -238,13 +239,6 @@ button .item {
 	width: 500px;
 	display: inline-block;
 	margin: 0 auto;
-}
-
-.login_ttl {
-	text-align: center;
-	padding-top: 30px;
-	margin-bottom:50px;
-	font-size: 30px;
 }
 
 .error_text.error_login {
@@ -273,20 +267,93 @@ button .item {
 
 /*ログインボタン装飾*/
 .login_btn {
-  display: inline-block;
-  max-width: 180px;
-  text-align: left;
   border: 2px solid #c1e4e9;
-  background-color: #fff;
-  font-size: 16px;
   color:  #c1e4e9;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: .4s;
 }
 
 .login_btn:hover {
+  background-color: #c1e4e9;
+  border-color:#c1e4e9;
+  color: #FFF;
+}
+
+/*新規登録ボタン装飾*/
+.sinup_btn{
+  border: 2px solid #c1e4e9;
+  color:  #c1e4e9;
+}
+
+.sinup_btn:hover {
+  background-color: #c1e4e9;
+  border-color:#c1e4e9;
+  color: #FFF;
+}
+
+/*新しい追加*/
+/*新規会員登録関連*/
+.page_ttl.signup_ttl{
+	margin-bottom:30px;
+}
+
+/*新規登録時のエラーメッセージ装飾*/
+.error_text.error_signup {
+	padding-top:10px;
+	margin-bottom:10px;
+	font-size: 15px;
+}
+
+/*新規登録*/
+.page_layout.signup {
+	height: 800px;
+	margin-bottom: 50px;
+}
+
+.page_container{
+	width: 600px;
+	margin: 0 auto;
+	text-align: left;
+	height: 800px;
+}
+
+.signup_container{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.signup_text {
+	font-size: 18px;
+}
+
+.signup_container input{
+	width: 50%;
+}
+
+.signup_btn_cover {
+	margin-bottom: 20px;
+}
+.signup_btn_cover,.signup_back{
+	text-align: center;
+}
+/*新規登録画面のボタン*/
+.btn.signup_btn{
+	border: 2px solid #c1e4e9;
+    color:  #c1e4e9;
+}
+
+.btn.signup_btn:hover{
+  background-color: #c1e4e9;
+  border-color:#c1e4e9;
+  color: #FFF;
+}
+
+/*登録済みボタン*/
+.btn.signup_back_btn{
+	border: 2px solid #c1e4e9;
+    color:  #c1e4e9;
+}
+
+.btn.signup_back_btn:hover{
   background-color: #c1e4e9;
   border-color:#c1e4e9;
   color: #FFF;
@@ -301,15 +368,49 @@ footer {
 	background-color: white;
 }
 
-
 footer p{
 	text-align: center;
 }
 
+/*新しい追加*/
+/*トップに戻るボタン*/
+#page_top{
+	width: 40px;
+	height: 40px;
+	position: fixed;
+	right: 30px;
+	bottom: 10px;
+	background:#83ccd2;
+}
+#page_top a{
+	position: relative;
+	display: block;
+	width: 40px;
+	height: 40px;
+	text-decoration: none;
+}
+#page_top:hover{
+	opacity: 0.6;
+}
+
+#page_top a::after{
+	content: '▲';
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	top: 10px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	text-align: center;
+}
+/*ここまで*/
 
 /*各ページ共通エラーメッセージ用*/
 .error_text{
-	margin-top:100px;
+	padding-top:100px;
 	text-align: center;
 	font-size: 40px;
 }
@@ -321,11 +422,31 @@ footer p{
 	object-fit: cover;
 }
 
-
-/*新しく追加　各ページ共通　top以外*/
+/*各ページ共通　top以外*/
 .page_layout {
 	height: 500px;
 	max-width: 1080px;
 	background-color: white;
 	margin: 0 auto;
-	}
+}
+
+.page_ttl {
+	text-align: center;
+	padding-top: 30px;
+	margin-bottom:50px;
+	font-size: 30px;
+}
+
+
+/*各ページ共通　ボタン装飾*/
+/*ボタンの背景色と文字色はご自由に*/
+.btn {
+  display: inline-block;
+  text-align: left;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
