@@ -34,7 +34,6 @@ public class ItemBuyServlet extends HttpServlet {
 			//requestで送られてきたパラメータのエンコーディングを設定する
 				request.setCharacterEncoding("UTF-8");
 			//保存用
-				RequestDispatcher req = null;
 				CartLogic newLogic = new CartLogic();
 				HttpSession session = request.getSession(false);
 				UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
@@ -49,8 +48,7 @@ public class ItemBuyServlet extends HttpServlet {
 				if(loginUserSession == null) {
 					System.out.println("セッションが開始していません。");
 					//画面遷移
-					req = request.getRequestDispatcher("jsp/Login.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 					return;
 				}
 				ArrayList<CartBean> loginItemSession= (ArrayList<CartBean>) session.getAttribute("CartItem");
@@ -62,8 +60,7 @@ public class ItemBuyServlet extends HttpServlet {
 					//表示用のデータを取得し、パラメータ名set
 					request.setAttribute("cartData", loginItemSession);
 					request.setAttribute("cartItemData", ItemBeanList);
-					req = request.getRequestDispatcher("jsp/ItemBuy.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/ItemBuy.jsp").forward(request, response);
 					return;
 				}
 
