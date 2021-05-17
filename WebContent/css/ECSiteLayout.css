@@ -1,5 +1,22 @@
 @charset "UTF-8";
 
+/*img*/
+img {
+	max-height: 300px;
+	max-width: 100%;
+}
+
+/*body*/
+body{
+	background-color:#f8fbf8;
+}
+
+/*pタグ*/
+p {
+	text-align: left;
+}
+
+/*ヘッダー*/
 header{
 	height: 70px;
 	background-color:#c1e4e9;
@@ -33,46 +50,6 @@ header ul li {
 	padding: 0 20px;
 }
 
-
-
-img {
-	max-height: 300px;
-	max-width: 100%;
-}
-
-body{
-	background-color:#f8fbf8;
-}
-/**/
-p {
-	text-align: left;
-}
-/**/
-.item_name{
-	font-size: 20px;
-	font-weight: bold;
-	color:  #302833;
-}
-
-.item_price {
-	font-size: 20px;
-}
-
-/* 商品hover時 */
-.item_select_btn :hover {
-	background-color: #f3f3f3;
-}
-
-/* 商品を横並べ */
-.form_cover{
-	display: flex;
-	/*flex-wrap: wrap; */
-}
-
-button .item {
-	padding: 0;
-}
-
 /*ヘッダーbutton*/
 .header_cart_btn, .header_mypage_btn, .header_search_btn{
 	max-width: 40px;
@@ -99,11 +76,6 @@ button .item {
 	margin-top: 5px;
 }
 
-/*ログインボタンホバー時、カーソルの形状をポインタにする*/
-.login_btn:hover{
-	cursor: pointer;
-}
-
 /*ヘッダーロゴ*/
 .header_top_btn {
 	max-width: 60px;
@@ -115,6 +87,7 @@ button .item {
 	*/
 }
 
+
 /*トップ*/
 .top_image{
 	height: 400px;
@@ -123,6 +96,19 @@ button .item {
 	background-position: center;
 	background-size: cover;
 	position: relative;
+	margin-bottom: 50px;
+}
+
+/*トップ画像の文字を見やすくするため少し暗くする*/
+.top_image::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, 0.1);
 }
 
 .login_text {
@@ -130,7 +116,7 @@ button .item {
 	top: 50px;
 	left: 50px;
 	color: white;
-	font-size: 50px;
+	font-size: 45px;
 }
 
 /*ログインボタン*/
@@ -145,12 +131,29 @@ button .item {
 	font-weight: bold;
 }
 
-.login_btn:hover {
+/*ログインボタンホバー時、カーソルの形状をポインタにする*/
+.login_btn:hover{
+	cursor: pointer;
 	opacity: 0.8;
 }
 
+/*トップページでの商品表示*/
+.random_item{
+	height: 500px;
+}
 
-/*section*/
+.item_list {
+	display: flex;
+}
+
+.item_box{
+	text-align: center;
+	margin-left: 30px;
+}
+
+
+
+/*section関連*/
 .section_wrap{
  width: 100%;
 }
@@ -177,27 +180,50 @@ section{
 	border-bottom: 3px solid black;
 	}
 
-/*About*/
-.about p{
+/*About関連*/
+.about_text {
 	text-align: center;
+	margin-bottom: 10px;
+	font-size: 18px;
 }
 
-/*商品表示*/
-.random_item{
-	height: 500px;
+
+/*商品一覧画面関連*/
+/*商品一覧画面のフォーム*/
+.item_form {
+	margin: 50px;
 }
 
-.item_list {
+
+/*商品一覧画面の商品のついて*/
+.item_name{
+	font-size: 20px;
+	font-weight: bold;
+	color:  #302833;
+}
+
+.item_price {
+	font-size: 20px;
+}
+
+/* 商品画像hover時 */
+.item_select_btn :hover {
+	background-color: #f3f3f3;
+}
+
+/* 商品を横並べ */
+.form_cover{
 	display: flex;
+	/*flex-wrap: wrap; */
 }
 
-.item_box{
-	text-align: center;
-	margin-left: 30px;
+button .item {
+	padding: 0;
 }
 
 
-/*フッター*/
+
+/*フッター関連*/
 footer {
 	line-height: 50px;
 	border-top: 1px solid black;
@@ -210,4 +236,17 @@ footer p{
 }
 
 
+/*新しく追加　各ページ共通エラーメッセージ用*/
+.error_text{
+	margin-top:100px;
+	text-align: center;
+	font-size: 40px;
+}
+
+/*商品画像サイズ統一用*/
+.item_image {
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+}
 
