@@ -3,12 +3,6 @@
    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="java.util.ArrayList"%>
      <%@ page isELIgnored ="false" %>
-<%String id = (String)request.getAttribute("id");%>
-<%String pass = (String)request.getAttribute("pass");%>
-<%String mail = (String)request.getAttribute("mail");%>
-<%String add = (String)request.getAttribute("add");%>
-<%String pcode = (String)request.getAttribute("pcode");%>
-<%String name = (String)request.getAttribute("name");%>
 <!DOCTYPE html>
 <html>
 	<head>
