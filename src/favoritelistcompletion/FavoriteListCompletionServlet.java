@@ -3,7 +3,6 @@ package favoritelistcompletion;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +29,6 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 
 				//保存用
-				RequestDispatcher req = null;
 				int loginUserNo;
 				HttpSession session = request.getSession();
 				UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
@@ -44,8 +42,7 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 				if(loginUserSession == null) {
 					System.out.println("セッションが開始していません。");
 					//画面遷移
-					req = request.getRequestDispatcher("jsp/Login.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 					return;
 				}
 
@@ -58,10 +55,8 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 
 
 				if(request.getParameter("btnFavoriteListTransition")!=null) {
-
 					System.out.println("お気に入りリスト画面に遷移します。");
-					req = request.getRequestDispatcher("jsp/FavoriteList.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/FavoriteList.jsp").forward(request, response);
 					return;
 				}
 
@@ -70,14 +65,11 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 
 				if(request.getParameter("btnFavoriteListDeleteTransition")!=null) {
 					System.out.println("favoriteNo："+request.getParameter("btnFavoriteListDeleteTransition")+"を削除");
-
 					int favoriteNo = Integer.parseInt(request.getParameter("btnFavoriteListDeleteTransition"));
 					FavoriteBean faveBean = new FavoriteBean();
 					faveBean = faveLogic.deleteLogic(favoriteNo);
-
 					request.setAttribute("returnText", "お気に入りリストから商品を削除しました。");
-					req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
-					req.forward(request, response);
+					request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp").forward(request, response);
 					return;
 				}
 
@@ -87,15 +79,13 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 					System.out.println(itemNo+":"+loginUserNo);
 					String returnText=null;
 					returnText = faveLogic.addLogic(itemNo,loginUserNo);
-
 					if(returnText!=null) {
 						request.setAttribute("returnText", returnText);
 						request.getRequestDispatcher("/jsp/FavoriteListCompletion.jsp").forward(request, response);
 					}else {
 						//画面遷移
 						request.setAttribute("returnText", "お気に入りリストに商品を追加しました。");
-						req = request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp");
-						req.forward(request, response);
+						request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp").forward(request, response);
 						return;
 					}
 
