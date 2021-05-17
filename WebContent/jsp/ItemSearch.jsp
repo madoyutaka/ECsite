@@ -45,10 +45,11 @@
 			</div>
 	</header>
 
+	<div class="page_layout">
 		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
 		<c:choose>
 			<c:when test="${errorText != null}">
-				<c:out value="${errorText}"/>
+				<h1 class="error_text"><c:out value="${errorText}"/></h1>
 			</c:when>
 			<c:when test="${errorText == null}">
 			</c:when>
@@ -60,10 +61,10 @@
 		</c:when>
 
 		<c:when test="${ fn:length(itemSearchList) >= 1}">
-		<h2 class="form_cover">
+		 class="form_cover">
 			<c:forEach items="${itemSearchList}" var="item">
 					<!-- 商品画像 -->
-					<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
+					<form class="item_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<h3 class="item_select_btn">
 						<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
 							<img src="./img/${item.itemImage}" >
@@ -74,7 +75,7 @@
 					</form>
 					<br>
 			</c:forEach>
-		</h2>
+	</div>
 
 		</c:when>
 
@@ -83,7 +84,7 @@
 		</c:when>
 
 	</c:choose>
-
+	</div>
 
 
 </body>
