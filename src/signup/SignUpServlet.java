@@ -3,7 +3,6 @@ package signup;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +20,7 @@ public class SignUpServlet extends HttpServlet {
 		if(request.getParameter("btnSignUpTransition")!=null) {
 			//画面遷移
 			System.out.println("新規登録画面に遷移します。");
-			RequestDispatcher req = request.getRequestDispatcher("jsp/SignUp.jsp");
-			req.forward(request, response);
+			request.getRequestDispatcher("jsp/SignUp.jsp").forward(request, response);
 			return;
 		}
 
@@ -44,6 +42,7 @@ public class SignUpServlet extends HttpServlet {
 
 			SignUpLogic newlogic = new SignUpLogic();
 			ArrayList<String> list = newlogic.checkSULogic(userId,password,emailAddress,pCode,address,userName);
+
 
 			if(list.isEmpty()==false) {
 				request.setAttribute("list", list);
