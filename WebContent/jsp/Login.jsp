@@ -65,13 +65,13 @@
 							 パスワード：<input type="password" name="password">
 						</p>
 
-						 <input class="login_btn" type="submit" value="ログイン">
+						 <input class="btn" type="submit" value="ログイン">
 
 					</div>
 				</form>
 
 				<form action = "http://localhost:8080/ECSite/SignUpServlet" method = "POST">
-					<input class="sinup_btn" type = "submit" name="btnSignUpTransition" value = "新規登録はこちら">
+					<input class="btn" type = "submit" name="btnSignUpTransition" value = "新規登録はこちら">
 				</form>
 			</div>
 
