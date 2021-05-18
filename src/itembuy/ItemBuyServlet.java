@@ -3,7 +3,6 @@ package itembuy;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +14,7 @@ import bean.CartBean;
 import bean.ItemBean;
 import bean.UserBean;
 import cart.CartLogic;
+import jdbc.UserJdbc;
 
 @WebServlet("/ItemBuyServlet")
 public class ItemBuyServlet extends HttpServlet {
@@ -51,13 +51,22 @@ public class ItemBuyServlet extends HttpServlet {
 					request.getRequestDispatcher("jsp/Login.jsp").forward(request, response);
 					return;
 				}
+
+				//セッションから値を取得
+				loginUserNo = loginUserSession.getUserNo();
+				UserJdbc userJdbc = new UserJdbc();
+				UserBean userBean = userJdbc.getUserData(loginUserNo);
+
 				ArrayList<CartBean> loginItemSession= (ArrayList<CartBean>) session.getAttribute("CartItem");
 				ArrayList<ItemBean> ItemBeanList = newLogic.getCartItemData(loginItemSession);
+
 
 
 				//購入確認画面へ遷移する
 				if(request.getParameter("btnItemBuyTransition")!=null) {
 					//表示用のデータを取得し、パラメータ名set
+					userBean = userJdbc.getUserData(loginUserNo);
+					request.setAttribute("loginUserData", userBean);
 					request.setAttribute("cartData", loginItemSession);
 					request.setAttribute("cartItemData", ItemBeanList);
 					request.getRequestDispatcher("jsp/ItemBuy.jsp").forward(request, response);
