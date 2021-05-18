@@ -49,8 +49,8 @@
 	<!-- トップ画像 -->
 	<div class="top_image">
 		<div class="top_text">
-			<h1>テスト</h1>
-			<p>あああああああああ</p>
+			<h1>何かタイトル的なの</h1>
+			<p>何かキャッチコピー</p>
 
 			<form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
 				<input  class="top_login_btn" type = "submit" name="btnLoginTransition" value = "ログイン">
@@ -62,9 +62,9 @@
 	<div class="section_wrap">
 		<section class="about">
 			<h2 class="section_ttl">About</h2>
-			<p class="about_text">このECサイトは、ECサイト開発という名目で研修中に作成されました。</p>
+			<p class="about_text">このECサイトは、ECサイト開発の研修中に作成されました。</p>
 			<p class="about_text">このサイトでは家具を閲覧可能です。好きな家具をご覧ください。</p>
-			<p class="about_text">商品の詳細を閲覧したい場合や購入、お気に入りレビューするためにはログインが必要です。</p>
+			<p class="about_text">商品の詳細を閲覧したい場合や購入、お気に入り、レビューするためにはログインが必要です。</p>
 			<p  class="about_text">このECサイトは少数メンバーで作成されております。どうぞ、ご覧ください。</p>
 		</section>
 
@@ -74,7 +74,7 @@
 		     	<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<h3 class="item_select_btn">
 						<button class="item" type="submit" name="btnItemDetailTransition" value="${randomItem.itemNo}">
-							<img class="item_image"　src="./img/${randomItem.itemImage}" >
+							<img class="item_image" src="./img/${randomItem.itemImage}" >
 							<p class="item_name"><c:out value="${randomItem.itemName}" default="取得失敗"/></p>
 						<p class="item_price">お値段：<c:out value="${randomItem.itemPrice}" default="取得失敗"/>円</p>
 						</button>
@@ -83,8 +83,8 @@
 
 		</section>
 	</div>
-	
-	<div id="page_top"><a href="#"></a></div>
+
+　　<div id="page_top"><a href="#"></a></div>
 
 	<footer>
 		<p class="footer_text">2021/05/14/ECSite</p>
