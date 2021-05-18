@@ -23,6 +23,7 @@
 				<td><form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<button type="submit" name="btnItemDetailTransition" value="${a.itemNo}">${a.itemName}</button>
 				</form></td>
+		<!-- 画像 -->	<td><img src="${pageContext.request.contextPath}/img/${a.itemImage}" height="50px"></td>
 				<td><form name="btnItemDetail" action="http://localhost:8080/ECSite/FavoriteListCompletionServlet" method="POST">
 					<button type="submit" name="btnFavoriteListDeleteTransition" value="${a.favoriteNo}">×</button>
 				</form></td>
