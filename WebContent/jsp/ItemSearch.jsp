@@ -17,11 +17,14 @@
 <body>
 	<header>
 	       <div class="header_wrap">
-		        <button type="button" onclick="location.href='http://localhost:8080/ECSite/TopServlet'">TOP</button>
+		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
+									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
+									<input type ="hidden" name="btnTopTransition" value="topTransition">
+				</form>
 
 				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
 								<input class ="header_word" type="text" name="itemSearchWord"/>
-								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch" value="検索"/>
+								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
 								<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
 				</form>
 
@@ -46,45 +49,50 @@
 	</header>
 
 	<div class="page_layout">
-		<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
+			<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
+			<c:choose>
+				<c:when test="${errorText != null}">
+						<h1 class="error_text"><c:out value="${errorText}"/></h1>
+				</c:when>
+				<c:when test="${errorText == null}">
+				</c:when>
+			</c:choose>
+		<br>
+		<!-- itemSearchListがnullの場合、0件の場合、1件以上の場合 -->
 		<c:choose>
-			<c:when test="${errorText != null}">
-				<h1 class="error_text"><c:out value="${errorText}"/></h1>
+			<c:when test="${itemSearchList == null}">
 			</c:when>
-			<c:when test="${errorText == null}">
+
+			<c:when test="${ fn:length(itemSearchList) >= 1}">
+			<div class="form_cover">
+				<c:forEach items="${itemSearchList}" var="item">
+						<!-- 商品画像 -->
+						<form  class="item_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
+						<h3 class="item_select_btn">
+							<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
+								<img src="./img/${item.itemImage}" class="item_image">
+								<p class="item_name"><c:out value="${item.itemName}" default="取得失敗"/></p>
+							<p class="item_price">お値段：<c:out value="${item.itemPrice}" default="取得失敗"/>円</p>
+							</button>
+						</h3>
+						</form>
+						<br>
+				</c:forEach>
+			</div>
+
 			</c:when>
+
+			<c:when test="${ fn:length(itemSearchList) == 0}">
+				お探しの商品はありません。
+			</c:when>
+
 		</c:choose>
-	<br>
-	<!-- itemSearchListがnullの場合、0件の場合、1件以上の場合 -->
-	<c:choose>
-		<c:when test="${itemSearchList == null}">
-		</c:when>
-
-		<c:when test="${ fn:length(itemSearchList) >= 1}">
-		 class="form_cover">
-			<c:forEach items="${itemSearchList}" var="item">
-					<!-- 商品画像 -->
-					<form class="item_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
-					<h3 class="item_select_btn">
-						<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
-							<img src="./img/${item.itemImage}" >
-							<p class="item_name"><c:out value="${item.itemName}" default="取得失敗"/></p>
-						<p class="item_price">お値段：<c:out value="${item.itemPrice}" default="取得失敗"/>円</p>
-						</button>
-					</h3>
-					</form>
-					<br>
-			</c:forEach>
 	</div>
 
-		</c:when>
+	<footer>
+		<p class="footer_text">2021/05/14/ECSite</p>
+	</footer>
 
-		<c:when test="${ fn:length(itemSearchList) == 0}">
-			お探しの商品はありません。
-		</c:when>
-
-	</c:choose>
-	</div>
 
 
 </body>
