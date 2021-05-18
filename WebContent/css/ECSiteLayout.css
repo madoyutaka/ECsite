@@ -497,14 +497,22 @@ footer p{
 
 .review_flex{
  display:flex;
-  flex-flow: column;
+ flex-flow: column;
 }
 
 .review_area{
 　width: 100%;
-margin: 20px 0 30px;
+  margin: 20px 0 30px;
 }
 
-.btn.review_btn{
-text-align: center;
+.btn.review_btn,.favorite_form{
+  text-align: center;
+}
+
+.favorite_form{
+	margin-top: 30px;
+}
+
+.favorite_comp_text{
+	font-size: 25px;
 }
