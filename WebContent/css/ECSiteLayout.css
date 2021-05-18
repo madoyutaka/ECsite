@@ -1,0 +1,431 @@
+@charset "UTF-8";
+
+*{
+	 font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+}
+
+/*img*/
+img {
+	max-height: 300px;
+	max-width: 100%;
+}
+
+/*body*/
+body{
+	background-color:#f8fbf8;
+}
+
+/*pタグ*/
+p {
+	text-align: left;
+}
+
+/*ヘッダー*/
+header{
+	height: 70px;
+	background-color:#c1e4e9;
+	width: 100%
+}
+.header_wrap{
+	display: flex;
+	align-items: center;
+	margin: 0 30px;
+}
+
+header nav {
+	margin-left: auto;
+}
+
+header ul {
+	display: flex;
+	align-items: center;
+}
+
+header ul li {
+	margin-left: 40px;
+}
+
+.header_word {
+	color: #000;
+	background-color: #fff;
+	border-radius: 5px;
+	margin: 20px;
+	font-size: 20px;
+	padding: 0 20px;
+}
+
+/*ヘッダーbutton*/
+.header_cart_btn, .header_mypage_btn, .header_search_btn{
+	max-width: 40px;
+	max-height: 40px;
+}
+
+/*ヘッダーの検索部分*/
+.header_word{
+	margin: 10px;
+	margin-left: 40px;
+	padding: 10px 0;
+	width: 250px;
+	text-align: left;
+}
+
+/*ヘッダーのボタンホバー時*/
+.header_cart_btn:hover, .header_mypage_btn:hover,.header_search_btn:hover{
+	opacity: 0.8;
+}
+
+/*ヘッダーのボタンクリック時*/
+.header_cart_btn:active, .header_mypage_btn:active,.header_search_btn:active{
+	opacity: 0.5;
+	margin-top: 5px;
+}
+
+/*ヘッダーロゴ*/
+.header_top_btn {
+	max-width: 60px;
+	max-height: 60px;
+	/**
+	background-image: url(img/icon/logo.png);
+	background-position: center;
+	background-size: cover;
+	*/
+}
+
+
+/*トップ*/
+.top_image{
+	height: 400px;
+	width:100%;
+	background-image: url(../img/topimage.jpg);
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	margin-bottom: 50px;
+}
+
+/*トップ画像の文字を見やすくするため少し暗くする*/
+.top_image::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, 0.1);
+}
+
+.top_text {
+	position:absolute;
+	top: 50px;
+	left: 50px;
+	color: white;
+	font-size: 45px;
+}
+
+/*ログインボタン*/
+.top_login_btn {
+	padding: 5px 20px;
+	font-size: 25px;
+	border-radius: 5px;
+	border: hidden;
+	background-color: transparent;
+	font-size: 30px;
+	color: white;
+	font-weight: bold;
+}
+
+/*ログインボタンホバー時、カーソルの形状をポインタにする*/
+.top_login_btn:hover{
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+/*トップページでの商品表示*/
+.random_item{
+	height: 500px;
+}
+
+.item_list {
+	display: flex;
+}
+
+.item_box{
+	text-align: center;
+	margin-left: 30px;
+}
+
+
+
+/*section関連*/
+.section_wrap{
+	width: 100%;
+	margin-bottom:20px;
+}
+
+section{
+	height: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background-color: white;
+	text-align: center;
+	padding-top: 30px;
+}
+
+/*各sectionのタイトル*/
+.section_ttl{
+	text-align: center;
+	font-size: 30px;
+	color: black;
+	padding: 20px;
+	margin-bottom: 20px;
+	display: inline-block;
+	padding-bottom: 3px;
+	border-bottom: 3px solid black;
+	}
+
+/*About関連*/
+.about_text {
+	text-align: center;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+
+/*商品一覧画面関連*/
+/*商品一覧画面のフォーム*/
+
+.item_form {
+	margin: 50px;
+}
+
+
+/*商品一覧画面の商品のついて*/
+.item_name{
+	font-size: 20px;
+	font-weight: bold;
+	color:  #302833;
+}
+
+.item_price {
+	font-size: 20px;
+}
+
+/* 商品画像hover時 */
+.item_select_btn :hover {
+	background-color: #f3f3f3;
+}
+
+/* 商品を横並べ */
+.form_cover{
+	display: flex;
+	/*flex-wrap: wrap; */
+}
+
+button .item {
+	padding: 0;
+}
+
+
+/*ログイン画面関連*/
+.login_layout{
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.login_wrap{
+	width: 500px;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.error_text.error_login {
+	padding-top:10px;
+	margin-bottom:20px;
+	font-size: 30px;
+}
+
+.login_text{
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.login_text:last-of-type{
+	margin-bottom: 30px;
+}
+
+.login_text input {
+	margin-left: 10px;
+}
+
+.login_form{
+	margin-bottom: 20px;
+}
+
+
+/*新規会員登録関連*/
+.page_ttl.signup_ttl{
+	margin-bottom:30px;
+}
+
+/*新規登録時のエラーメッセージ装飾*/
+.error_text.error_signup {
+	padding-top:10px;
+	margin-bottom:10px;
+	font-size: 15px;
+}
+
+/*新規登録関連*/
+.page_layout.signup {
+	height: 800px;
+	margin-bottom: 50px;
+}
+
+.page_container{
+	width: 600px;
+	margin: 0 auto;
+	text-align: left;
+	height: 800px;
+}
+
+.signup_container{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.signup_text {
+	font-size: 18px;
+}
+
+.signup_container input{
+	width: 50%;
+}
+
+.signup_btn_cover {
+	margin-bottom: 20px;
+}
+.signup_btn_cover,.signup_back{
+	text-align: center;
+}
+
+
+/*マイページ関連*/
+.back_btn{
+	text-align: center;
+}
+
+.mypage_container form{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+/*フッター関連*/
+footer {
+	line-height: 50px;
+	border-top: 1px solid black;
+	height: 50px;
+	background-color: white;
+}
+
+footer p{
+	text-align: center;
+}
+
+/*トップに戻るボタン*/
+#page_top{
+	width: 40px;
+	height: 40px;
+	position: fixed;
+	right: 30px;
+	bottom: 10px;
+	background:#83ccd2;
+}
+#page_top a{
+	position: relative;
+	display: block;
+	width: 40px;
+	height: 40px;
+	text-decoration: none;
+}
+#page_top:hover{
+	opacity: 0.6;
+}
+
+#page_top a::after{
+	content: '▲';
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	top: 10px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	text-align: center;
+}
+
+
+/*各ページ共通エラーメッセージ用*/
+.error_text{
+	padding-top:100px;
+	text-align: center;
+	font-size: 40px;
+}
+
+
+/*商品画像サイズ統一用*/
+.item_image {
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+}
+
+
+/*各ページ共通　top以外*/
+.page_layout {
+	height: 500px;
+	max-width: 1080px;
+	background-color: white;
+	margin: 0 auto;
+}
+
+/*各ページ共通*/
+.page_ttl {
+	text-align: center;
+	padding-top: 30px;
+	margin-bottom:50px;
+	font-size: 30px;
+}
+
+
+/*各ページ共通　ボタン装飾*/
+/*ボタンの背景色と文字色はご自由に*/
+.btn {
+  display: inline-block;
+  text-align: left;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  border: 2px solid #84a2d4;
+  color:  #84a2d4;
+}
+
+.btn:hover{
+  background-color: #84a2d4;
+  border-color:#84a2d4;
+  color: #FFF;
+}
+
+/*新しい追加*/
+/*購入完了ページ用*/
+.ItemBuyCompletion form{
+	text-align: center;
+}
