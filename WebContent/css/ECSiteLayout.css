@@ -450,7 +450,7 @@ footer p{
 	height: 100%;
 	padding-bottom:30px;
 }
-.item_detail_container{
+.item_detail_container,.review_container{
 	width: 50%;
 	text-align: center;
 	margin: 0 auto;
@@ -487,4 +487,24 @@ footer p{
 .btn.cart_in_btn{
 	margin-left: 10px;
 	padding: 4px 20px;
+}
+
+/*商品詳細画面関連*/
+.review_select{
+	font-size: 15px;
+	margin: 10px 0 20px;
+}
+
+.review_flex{
+ display:flex;
+  flex-flow: column;
+}
+
+.review_area{
+　width: 100%;
+margin: 20px 0 30px;
+}
+
+.btn.review_btn{
+text-align: center;
 }
