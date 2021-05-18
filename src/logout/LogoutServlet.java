@@ -44,10 +44,12 @@ public class LogoutServlet extends HttpServlet {
 			if(loginUserSession!=null) {
 				session.invalidate();
 			}
-
+			ItemJdbc itemJdbc = new ItemJdbc();
+			ItemBean randomItemBean = itemJdbc.randomItem();
+			//値を渡す
 			System.out.println("ログアウトが完了しました、トップ画面に遷移します。");
-			req = request.getRequestDispatcher("jsp/Top.jsp");
-			req.forward(request, response);
+			request.setAttribute("randomItem", randomItemBean);
+			request.getRequestDispatcher("jsp/Top.jsp").forward(request, response);
 			return;
 		}
 
