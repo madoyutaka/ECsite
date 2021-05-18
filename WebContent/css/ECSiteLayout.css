@@ -327,6 +327,7 @@ button .item {
 footer {
 	line-height: 50px;
 	border-top: 1px solid black;
+	margin-top:30px;
 	height: 50px;
 	background-color: white;
 }
@@ -424,12 +425,12 @@ footer p{
   color: #FFF;
 }
 
-/*新しい追加*/
 /*購入完了ページ用*/
 .ItemBuyCompletion form{
 	text-align: center;
 }
 
+/*登録情報変更関連*/
 .user_data_change{
 	width: 70%;
     margin: 0 auto;
@@ -442,4 +443,48 @@ footer p{
 
 .page_layout.userdatachange_layout{
 	height: 600px;
+}
+
+/*商品詳細画面関連*/
+.page_layout.itemdetail_layout{
+	height: 100%;
+	padding-bottom:30px;
+}
+.item_detail_container{
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.item_detail_text{
+	margin:10px 0;
+	font-size: 18px;
+	text-align: center;
+}
+
+.item_quantity{
+	font-size: 18px;
+}
+
+.btn.favorite_add_btn,.btn.favorite_del_btn{
+	padding: 4px 10px;
+	margin-top: 15px;
+}
+.btn.review_btn{
+	padding: 4px 20px;
+	margin-bottom: 20px;
+}
+
+.review_click{
+	font-size: 18px;
+}
+
+.review_point,.review_comment,.review_text{
+	margin-top:10px;
+	text-align: center;
+	font-size: 18px;
+}
+.btn.cart_in_btn{
+	margin-left: 10px;
+	padding: 4px 20px;
 }
