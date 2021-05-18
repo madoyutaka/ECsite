@@ -49,6 +49,7 @@ public class FavoriteJdbc {
 							faveBean.setItemName(rs.getString("item_name"));
 							faveBean.setItemNo(rs.getInt("item_no"));
 							faveBean.setFavoriteNo(rs.getInt("favorite_no"));
+							faveBean.setItemImage(rs.getString("item_image"));
 							faveList.add(faveBean);
 			}
 
