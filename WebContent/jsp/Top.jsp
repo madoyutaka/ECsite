@@ -86,9 +86,12 @@
 
 　　<div id="page_top"><a href="#"></a></div>
 
-	<footer>
-		<p class="footer_text">2021/05/14/ECSite</p>
-	</footer>
+	<div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
+
 
 </body>
 </html>

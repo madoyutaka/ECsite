@@ -8,9 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>マイページ</title>
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
 <body>
-<header>
+
+	<header>
 	       <div class="header_wrap">
 		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
 									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
@@ -45,7 +48,7 @@
 
 	<!-- ブラウザ上にマイページ用の画面を表示 -->
 
-	<div class="page_layout">
+	<div class="page_layout mypage_layout">
 			<h1 class="page_ttl">マイページ</h1>
 
         <div class="mypage_container">
@@ -65,16 +68,17 @@
 					<input class="btn" type = "submit" name="btnLogOut" value = "ログアウト">
 				</form>
 
-				<div class="back_btn">
-				     <input class="btn" type="button" value="戻る" onclick="history.go(-2)"/>
-				</div>
-
 		</div>
 	</div>
 
-	<footer>
-		<p class="footer_text">2021/05/14/ECSite</p>
-	</footer>
+	<div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
+
+
+
 </body>
 
 </html>

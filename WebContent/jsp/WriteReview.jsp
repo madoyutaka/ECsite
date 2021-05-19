@@ -46,7 +46,7 @@
 			</div>
 	</header>
 
-    <div class="page_layout">
+    <div class="page_layout review_layout">
 			<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
 			<c:choose>
 				<c:when test="${errorText != null}">
@@ -81,9 +81,11 @@
 			</div>
 	</div>
 
-	<footer>
-	  <p class="footer_text">2021/05/14/ECSite</p>
-    </footer>
+	<div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
 
 </body>
 </html>
