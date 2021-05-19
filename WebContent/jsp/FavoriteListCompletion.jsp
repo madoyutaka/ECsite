@@ -47,6 +47,7 @@
 			<h1 class="error_text favorite_comp_text">${returnText}</h1>
 			<form class="favorite_form"action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
 				<input class="btn" type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを見る">
+				<input type ="hidden" name="selectFavoriteListPageNo" value="1">
 			</form>
 
 		</div>

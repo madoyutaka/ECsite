@@ -58,6 +58,7 @@
 
 				<form action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
 					<input  class="btn" type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを確認する">
+					<input type ="hidden" name="selectFavoriteListPageNo" value="1">
 				</form>
 
 				<form action = "http://localhost:8080/ECSite/ItemBuyLogServlet" method = "POST">

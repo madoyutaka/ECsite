@@ -81,6 +81,18 @@
 			</c:choose>
 	</div>
 
+	<c:choose>
+		<c:when test="${ fn:length(loginUserFaves) >= 1}">
+			<form name="btnFavoritePagination" action="http://localhost:8080/ECSite/FavoriteListServlet" method="POST">
+				<ul class="favorite_pagination">
+					<c:forEach begin="1" end="${favoriteListTotalPageNo}" step="1" var = "a">
+						<li><button class="btn" type="submit" name="selectFavoriteListPageNo" value="${a}">${a}</button></li>
+					</c:forEach>
+				</ul>
+			</form>
+		</c:when>
+	</c:choose>
+
 
 		<form class="favoritelist_form" action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
 		  <input class="btn mypage_back_btn" type = "submit" name="btnMyPageTransition" value = "マイページへ">
