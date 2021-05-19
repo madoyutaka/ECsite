@@ -44,7 +44,7 @@ public class ReviewJdbc {
 				while(rs.next()) {
 					ReviewBean reviewBean = new ReviewBean();
 					reviewBean.setReviewComment(rs.getString("review_comment"));
-					reviewBean.setReviewScore(rs.getInt("review_score"));
+					reviewBean.setReviewScore(rs.getDouble("review_score"));
 					reviewBean.setItemNo(rs.getInt("item_no"));
 					reviewList.add(reviewBean);
 					System.out.println(reviewBean+"を追加しました。");
