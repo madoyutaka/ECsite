@@ -48,17 +48,26 @@ public class FavoriteListServlet extends HttpServlet {
 
 				//セッションから値を取得
 				loginUserNo = loginUserBean.getUserNo();
-
 				//インスタンスを生成し、処理を行った結果を格納する。
 				FavoriteListLogic  faveLogic = new FavoriteListLogic();
 				ArrayList<FavoriteBean> faveList = faveLogic.favoriteGetLogic(loginUserNo);
-
-
+				//選択されたページ番号
+				int selectNo = 0;
 				//お気に入りリスト画面に遷移する。
-				if(request.getParameter("btnFavoriteListTransition")!=null) {
-					request.setAttribute("loginUserFaves", faveList);
-
-
+				if(request.getParameter("selectFavoriteListPageNo")!=null) {
+					selectNo = Integer.parseInt(request.getParameter("selectFavoriteListPageNo"));
+					//お気に入り数が1以上の場合
+					if(faveList.size() >= 1) {
+						//ページ数を渡す
+						request.setAttribute("favoriteListTotalPageNo", faveLogic.getFavoriteListTotalPageNo(faveList));
+						//値を渡し、1ページ目を表示
+						request.setAttribute("favoriteListPageNo", 1);
+						//表示するためのリストを渡す
+						request.setAttribute("loginUserFaves", faveLogic.getShowList(faveList, selectNo));
+					}else {
+						//表示するためのリストを渡す
+						request.setAttribute("loginUserFaves", faveList);
+					}
 					//画面遷移
 					System.out.println("お気に入りリスト画面に遷移します。");
 					request.getRequestDispatcher("jsp/FavoriteList.jsp").forward(request, response);
