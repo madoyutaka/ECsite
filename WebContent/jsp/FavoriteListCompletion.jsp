@@ -43,7 +43,7 @@
 				</div>
 		</header>
 
-		<div class="page_layout">
+		<div class="page_layout completion_layout">
 			<h1 class="error_text favorite_comp_text">${returnText}</h1>
 			<form class="favorite_form"action = "http://localhost:8080/ECSite/FavoriteListServlet" method = "POST">
 				<input class="btn" type = "submit" name="btnFavoriteListTransition" value = "お気に入りリストを見る">
@@ -51,8 +51,10 @@
 
 		</div>
 
-		<footer>
-			<p class="footer_text">2021/05/14/ECSite</p>
-		</footer>
+		<div class="footer_wrapper">
+		    <footer>
+				<p class="footer_text">2021/05/14/ECSite</p>
+			</footer>
+		</div>
 	</body>
 </html>

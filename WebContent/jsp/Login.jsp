@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>ログインページ</title>
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
 <body>
-	
-	<header>
+　　<header>
 	       <div class="header_wrap">
 		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
 									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
@@ -40,41 +41,48 @@
 				</nav>
 			</div>
 	</header>
-	
+
 	<div class="page_layout">
-			<h1 class="login_ttl">ログイン画面</h1>
-			<!-- is or password miss  -->
+		<h1 class="page_ttl login_ttl">ログイン画面</h1>
+		<!-- is or password miss  -->
 
-			<% String empty = (String)request.getAttribute("Empty");
-			if(empty != null){
-			  %>
-			<!-- ブラウザ上にログイン画面を表示 -->
-			<h1 class="error_text error_login"><%= empty%></h1>
-			<% } %>
+		<% String empty = (String)request.getAttribute("Empty");
+		if(empty != null){
+		  %>
+		<!-- ブラウザ上にログイン画面を表示 -->
+		<h1 class="error_text error_login"><%= empty%></h1>
+		<% } %>
 
-			<!-- IDとPassWordを入力 -->
-			<!-- actionで指定した場所に値をPOST -->
-			<div class="login_layout">
-				<form class="login_form"action="http://localhost:8080/ECSite/LoginServlet" method="POST">
-					<div class="login_wrap">
-						<p class="login_text">
-							 ユーザーID:<input type="text" name="user_id">
-						</p>
+		<!-- IDとPassWordを入力 -->
+		<!-- actionで指定した場所に値をPOST -->
+		<div class="page_layout login_layout">
+			<form class="login_form"action="http://localhost:8080/ECSite/LoginServlet" method="POST">
+				<div class="login_wrap">
+					<p class="login_text">
+						 ユーザーID:<input type="text" name="user_id">
+					</p>
 
-						<p class="login_text">
-							 パスワード：<input type="password" name="password">
-						</p>
+					<p class="login_text">
+						 パスワード:<input type="password" name="password">
+					</p>
 
-						 <input class="btn" type="submit" value="ログイン">
+					 <input class="btn login_btn" type="submit" value="ログイン">
 
-					</div>
-				</form>
+				</div>
+			</form>
 
-				<form action = "http://localhost:8080/ECSite/SignUpServlet" method = "POST">
-					<input class="btn" type = "submit" name="btnSignUpTransition" value = "新規登録はこちら">
-				</form>
-			</div>
-
+			<form action = "http://localhost:8080/ECSite/SignUpServlet" method = "POST">
+				<input class="btn sinup_btn" type = "submit" name="btnSignUpTransition" value = "新規登録はこちら">
+			</form>
 		</div>
+
+	</div>
+
+	<div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
+
 </body>
 </html>

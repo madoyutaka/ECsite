@@ -103,12 +103,9 @@
 
 			<form action = "http://localhost:8080/ECSite/FavoriteListCompletionServlet" method = "POST">
 				<button class="btn favorite_add_btn" type="submit" name="btnFavoriteListAddTransition" value="${itemData.itemNo}">お気に入りに追加</button>
-				<br>
 				<button class="btn  favorite_del_btn" type="submit" name="btnFavoriteListDeleteTransition" value="${itemData.itemNo}">お気に入りから削除</button>
-				<br>
 			</form>
-			<br>
-			<br>
+
 			<form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
 				<button class="btn review_btn" type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
 			</form>
@@ -122,7 +119,6 @@
 							<c:forEach items="${reviewList}" var="review">
 									<p class="review_point">点数：<c:out value="${review.reviewScore}" default="取得失敗"/></p>
 									<p class="review_comment">コメント：<c:out value="${review.reviewComment}" default="取得失敗"/></p>
-									<br>
 							</c:forEach>
 						</c:when>
 
@@ -137,11 +133,11 @@
 
 	</div>
 
-	<div id="page_top"><a href="#"></a></div>
-
-	<footer>
-		<p class="footer_text">2021/05/14/ECSite</p>
-	</footer>
+    <div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
 
 </body>
 

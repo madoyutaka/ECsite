@@ -3,6 +3,7 @@
    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="java.util.ArrayList"%>
      <%@ page isELIgnored ="false" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +13,7 @@
 		<link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 	</head>
 	<body>
+
 	<header>
 	       <div class="header_wrap">
 		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
@@ -106,9 +108,11 @@
 
     </div>
 
-	<footer>
-		<p class="footer_text">2021/05/14/ECSite</p>
-	</footer>
+	<div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
 
 	</body>
 </html>
