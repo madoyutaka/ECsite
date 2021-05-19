@@ -4,6 +4,66 @@
 	 font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
 }
 
+/*各ページ共通*/
+/*各ページ共通エラーメッセージ用*/
+.error_text{
+	padding-top:100px;
+	text-align: center;
+	font-size: 40px;
+}
+
+
+/*商品画像サイズ統一用*/
+.item_image {
+	height: 300px;
+	width: 300px;
+	object-fit: cover;
+}
+
+
+/*各ページ共通　top以外*/
+.page_layout {
+	height:100%;
+	max-width: 1080px;
+	background-color: white;
+	margin: 0 auto;
+}
+
+/*各ページ共通*/
+.page_ttl {
+	text-align: center;
+	padding-top: 30px;
+	margin-bottom:50px;
+	font-size: 30px;
+}
+
+
+/*各ページ共通　ボタン装飾*/
+/*ボタンの背景色と文字色はご自由に*/
+.btn {
+  display: inline-block;
+  text-align: left;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  border: 2px solid #84a2d4;
+  color:  #84a2d4;
+}
+
+.btn:hover{
+  background-color: #84a2d4;
+  border-color:#84a2d4;
+  color: #FFF;
+  cursor: pointer !important;
+}
+
+button:hover{
+	cursor: pointer !important;
+}
+
 /*img*/
 img {
 	max-height: 300px;
@@ -20,7 +80,8 @@ p {
 	text-align: left;
 }
 
-/*ヘッダー*/
+
+/*ヘッダー周り*/
 header{
 	height: 70px;
 	background-color:#c1e4e9;
@@ -84,15 +145,10 @@ header ul li {
 .header_top_btn {
 	max-width: 60px;
 	max-height: 60px;
-	/**
-	background-image: url(img/icon/logo.png);
-	background-position: center;
-	background-size: cover;
-	*/
 }
 
 
-/*トップ*/
+/*トップここから*/
 .top_image{
 	height: 400px;
 	width:100%;
@@ -115,24 +171,36 @@ header ul li {
   background: rgba(0,0,0, 0.1);
 }
 
+/*トップ画面のテキスト*/
 .top_text {
 	position:absolute;
 	top: 50px;
 	left: 50px;
 	color: white;
 	font-size: 45px;
+	line-height: 1.2;
 }
 
-/*ログインボタン*/
+/*トップ画面のログインボタン*/
 .top_login_btn {
 	padding: 5px 20px;
-	font-size: 25px;
 	border-radius: 5px;
 	border: hidden;
-	background-color: transparent;
+	background-color: #00a3af;
+    position:relative;
+    margin-top: 20px;
+    left: 50px;
+	border-bottom: solid 5px #778899;
 	font-size: 30px;
 	color: white;
 	font-weight: bold;
+}
+
+.top_login_btn:active{
+  box-shadow: none;
+  position:relative;
+  border-bottom:none;
+  top:7px;
 }
 
 /*ログインボタンホバー時、カーソルの形状をポインタにする*/
@@ -185,7 +253,7 @@ section{
 	border-bottom: 3px solid black;
 	}
 
-/*About関連*/
+/*トップページのabout関連*/
 .about_text {
 	text-align: center;
 	margin-bottom: 10px;
@@ -196,12 +264,21 @@ section{
 /*商品一覧画面関連*/
 /*商品一覧画面のフォーム*/
 
+button.item{
+	border-style: none;
+}
+
 .item_form {
 	margin: 50px;
 }
 
 
 /*商品一覧画面の商品のついて*/
+
+.page_layout.search_layout{
+	height: 100vh;
+}
+
 .item_name{
 	font-size: 20px;
 	font-weight: bold;
@@ -229,10 +306,9 @@ button .item {
 
 
 /*ログイン画面関連*/
-.login_layout{
+.page_layout.login_layout{
 	text-align: center;
-	width: 100%;
-	margin: 0 auto;
+	height:  100vh;
 }
 
 .login_wrap{
@@ -280,8 +356,7 @@ button .item {
 
 /*新規登録関連*/
 .page_layout.signup {
-	height: 800px;
-	margin-bottom: 50px;
+	height: 100%;
 }
 
 .page_container{
@@ -314,6 +389,10 @@ button .item {
 
 
 /*マイページ関連*/
+.page_layout.mypage_layout{
+	height: 100vh;
+}
+
 .back_btn{
 	text-align: center;
 }
@@ -324,17 +403,23 @@ button .item {
 }
 
 /*フッター関連*/
+.footer_wrapper{
+    position: relative;
+}
+
 footer {
-	line-height: 50px;
-	border-top: 1px solid black;
-	margin-top:30px;
-	height: 50px;
-	background-color: white;
+	width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    padding: 30px 0;
+    position: absolute;
+    bottom: 0;
 }
 
 footer p{
 	text-align: center;
 }
+
 
 /*トップに戻るボタン*/
 #page_top{
@@ -371,60 +456,6 @@ footer p{
 }
 
 
-/*各ページ共通エラーメッセージ用*/
-.error_text{
-	padding-top:100px;
-	text-align: center;
-	font-size: 40px;
-}
-
-
-/*商品画像サイズ統一用*/
-.item_image {
-	height: 300px;
-	width: 300px;
-	object-fit: cover;
-}
-
-
-/*各ページ共通　top以外*/
-.page_layout {
-	height: 500px;
-	max-width: 1080px;
-	background-color: white;
-	margin: 0 auto;
-}
-
-/*各ページ共通*/
-.page_ttl {
-	text-align: center;
-	padding-top: 30px;
-	margin-bottom:50px;
-	font-size: 30px;
-}
-
-
-/*各ページ共通　ボタン装飾*/
-/*ボタンの背景色と文字色はご自由に*/
-.btn {
-  display: inline-block;
-  text-align: left;
-  background-color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 4px;
-
-  border: 2px solid #84a2d4;
-  color:  #84a2d4;
-}
-
-.btn:hover{
-  background-color: #84a2d4;
-  border-color:#84a2d4;
-  color: #FFF;
-}
-
 /*購入完了ページ用*/
 .ItemBuyCompletion form{
 	text-align: center;
@@ -442,18 +473,15 @@ footer p{
 }
 
 .page_layout.userdatachange_layout{
-	height: 600px;
+	height: 100vh;
 }
 
 /*商品詳細画面関連*/
-.page_layout.itemdetail_layout{
-	height: 100%;
-	padding-bottom:30px;
-}
 .item_detail_container,.review_container{
 	width: 50%;
 	text-align: center;
 	margin: 0 auto;
+	height: 100vh;
 }
 
 .item_detail_text{
@@ -468,15 +496,19 @@ footer p{
 
 .btn.favorite_add_btn,.btn.favorite_del_btn{
 	padding: 4px 10px;
-	margin-top: 15px;
+	margin: 15px 0;
 }
 .btn.review_btn{
 	padding: 4px 20px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .review_click{
 	font-size: 18px;
+}
+
+details:open{
+	height: 100vh;
 }
 
 .review_point,.review_comment,.review_text{
@@ -489,7 +521,7 @@ footer p{
 	padding: 4px 20px;
 }
 
-/*商品詳細画面関連*/
+/*レビュー画面関連*/
 .review_select{
 	font-size: 15px;
 	margin: 10px 0 20px;
@@ -509,10 +541,54 @@ footer p{
   text-align: center;
 }
 
+.page_layout.review_layout{
+	height: 100vh;
+}
+
+/*お気に入り完了画面関連*/
 .favorite_form{
 	margin-top: 30px;
 }
 
+.page_layout.completion_layout{
+	height: 100vh;
+}
+
 .favorite_comp_text{
 	font-size: 25px;
+}
+
+/*お気に入り一覧画面関連*/
+.favoritelist_form{
+	text-align: center;
+}
+
+.page_layout.favoritelist_layout{
+	height: 100vh;
+}
+
+.favoritelist_table{
+	display:flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 10px;
+}
+
+.favoritelist_table tr{
+	display:flex;
+	flex-direction:column;
+}
+
+.favoritelist_td{
+	margin-top:5px;
+	display: flex;
+	justify-content: center;
+}
+
+.btn.delete_btn{
+	margin-left: 15px;
+}
+
+.btn.mypage_back_btn{
+	margin-top:30px;
 }
