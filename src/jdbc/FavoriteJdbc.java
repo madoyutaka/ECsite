@@ -69,17 +69,18 @@ public class FavoriteJdbc {
 
 
 //お気に入りリストから削除
-	public FavoriteBean daleteFaves(int favoriteNo) {
+	public FavoriteBean daleteFaves(int itemNo,int loginUserNo) {
 		try {
 			//SQLの実行(発行)
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
 			stmt =conn.createStatement();
 				//SQl文の用意
-				query = "delete from favorite where favorite_no = ?";
+				query= "delete from favorite where item_no=? and user_no=?";
 				//SQL文の実行
 				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, favoriteNo);
+				pstmt.setInt(1, loginUserNo);
+				pstmt.setInt(2,itemNo);
 
 
 				pstmt.executeUpdate();
