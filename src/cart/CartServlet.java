@@ -3,7 +3,6 @@ package cart;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -92,7 +91,11 @@ public class CartServlet extends HttpServlet {
 				if(request.getParameter("btnHeaderCartTransition")!=null) {
 					//画面遷移
 					CartLogic newLogic = new CartLogic();
-					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
+					//カートの情報を取得
+					ArrayList<CartBean> cartItem = (ArrayList<CartBean>) session.getAttribute("CartItem");
+					//表示用のデータを取得し、パラメータ名set
+					request.setAttribute("cartData", cartItem);
+					request.setAttribute("cartItemData", newLogic.getCartItemData(cartItem));
 					System.out.println("カート画面に遷移します。");
 					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
 					return;
