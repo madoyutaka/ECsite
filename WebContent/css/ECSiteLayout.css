@@ -592,3 +592,45 @@ details:open{
 .btn.mypage_back_btn{
 	margin-top:30px;
 }
+
+/*カート画面関連*/
+.page_layout.cart_layout{
+	height: 100vh;
+}
+.cart_container{
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.cart_container .cart_form{
+	display:flex;
+	flex-direction:column;
+	 justify-content: center;
+}
+
+.btn.cart_item_btn{
+	text-align: center;
+	margin: 20px auto;
+}
+
+.btn.cart_delete{
+	padding: 5px 20px;
+	margin-top:15px;
+	margin-bottom: 35px;
+}
+
+.cart_item{
+	font-size: 20px;
+	text-align: center;
+	line-height: 1.2;
+}
+
+
+.cart_text{
+	text-align: center;
+	margin: 0 auto;
+}
+.item_image.cart_img{
+	margin: 0 auto;
+}
