@@ -17,10 +17,10 @@ public class FavoriteListLogic {
 		return returnlist;
 	}
 
-	public FavoriteBean deleteLogic(int favoriteNo) {
+	public FavoriteBean deleteLogic(int loginUserNo,int itemNo) {
 		FavoriteBean returnBean = null;
 		FavoriteJdbc favoriteJdbc = new FavoriteJdbc();
-		 returnBean = favoriteJdbc.daleteFaves(favoriteNo);
+		 returnBean = favoriteJdbc.daleteFaves(loginUserNo,itemNo);
 		    System.out.println(returnBean);
 
 		return null;
