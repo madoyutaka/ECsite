@@ -634,3 +634,40 @@ details:open{
 .item_image.cart_img{
 	margin: 0 auto;
 }
+
+/*購入確認画面関連*/
+.item_buy_wrap{
+	display: flex;
+	align-items: center;
+}
+.item_buy_image{
+	margin-bottom: 40px;
+}
+
+.item_text_wrap{
+	display: flex;
+	flex-direction:column;
+	padding-left: 15px;
+}
+
+.item_buy_list{
+	font-size: 20px;
+	line-height: 1.1;
+	text-align: left;
+	margin-bottom:10px;
+}
+
+.item_check_wrap{
+	display: flex;
+	justify-content:space-around;
+	margin-top: 30px;
+}
+.item_check_wrap input {
+	width: 50%;
+}
+
+/*購入ボタン*/
+.item_buy_form{
+	margin-top: 30px;
+	text-align: center;
+}
