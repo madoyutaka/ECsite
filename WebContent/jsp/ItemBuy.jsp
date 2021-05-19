@@ -47,40 +47,62 @@
 				</nav>
 			</div>
 	</header>
+	<div class="page_layout cart_layout">
+		<h1 class="page_ttl">購入確認</h1>
 
-	<h1>購入確認画面です。</h1>
+		<div class="cart_container">
 
-	<!-- カート内 -->
-			<c:choose>
-			<c:when test="${ fn:length(cartItemData) >= 1}">
-				<c:forEach items="${cartItemData}" var="itemData" varStatus="status">
-					<c:out value="商品名：${itemData.itemName}"></c:out>
-					<c:out value="購入数：${cartData[status.index].itemBuyCount}"></c:out>
-					<c:out value="商品１個の金額：${itemData.itemPrice}"></c:out>
-					<br>
-					<br>
-				</c:forEach>
-			</c:when>
-		</c:choose>
-
-
-	<!-- カート一覧 -->
+			<!-- カート内 -->
+					<c:choose>
+					<c:when test="${ fn:length(cartItemData) >= 1}">
+						<c:forEach items="${cartItemData}" var="itemData" varStatus="status">
+						<div class="item_buy_wrap">
+							 <img class="item_image item_buy_image" src="img/${itemData.itemImage}">
+							 <div class="item_text_wrap">
+							 	<p class="item_buy_list">商品名：<c:out value="${itemData.itemName}"></c:out></p>
+								<p class="item_buy_list">購入数：<c:out value="${cartData[status.index].itemBuyCount}"></c:out>個</p>
+								<p class="item_buy_list">商品１個の金額：<c:out value="${itemData.itemPrice}"></c:out>円</p>
+							 </div>
+						</div>
 
 
-	<!--　注文者情報入力 -->
-	<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-		氏名：<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.userName}" default="取得失敗"/>">
+						</c:forEach>
+					</c:when>
+				</c:choose>
 
-		メールアドレス：<input type = "email" name="btnTransition" value ="<c:out value="${loginUserData.emailAddress}" default="取得失敗"/>">
 
-		郵便番号：<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.postalCode}" default="取得失敗"/>">
+			<!-- カート一覧 -->
 
-		住所：<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.address}" default="取得失敗"/>">
-	</form>
 
-	<!--　購入ボタン -->
-	<form action = "http://localhost:8080/ECSite/ItemBuyCompletionServlet" method = "POST">
-		<button type = "submit" name="btnItemBuyCompletionTransition" value ="${itemData.itemNo}">購入する</button>
-	</form>
+			<!--　注文者情報入力 -->
+			<form class="item_buy_check" action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+				<div class="item_check_wrap">
+					<p class="item_buy_list">氏名：</p>
+					<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.userName}" default="取得失敗"/>">
+				</div>
+
+
+			<div class="item_check_wrap">
+				<p class="item_buy_list">メールアドレス：</p>
+				<input type = "email" name="btnTransition" value ="<c:out value="${loginUserData.emailAddress}" default="取得失敗"/>">
+			</div>
+
+			 <div class="item_check_wrap">
+				<p class="item_buy_list">郵便番号：</p>
+				<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.postalCode}" default="取得失敗"/>">
+			</div>
+
+			<div class="item_check_wrap">
+				<p class="item_buy_list">住所：</p>
+				<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.address}" default="取得失敗"/>">
+			</div>
+			</form>
+		</div>
+
+		<!--　購入ボタン -->
+		<form class="item_buy_form"action = "http://localhost:8080/ECSite/ItemBuyCompletionServlet" method = "POST">
+			<button class="btn" type = "submit" name="btnItemBuyCompletionTransition" value ="${itemData.itemNo}">購入する</button>
+		</form>
+	</div>
 </body>
 </html>
