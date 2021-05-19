@@ -67,7 +67,7 @@
 										</form>
 
 										<form name="btnItemDetail" action="http://localhost:8080/ECSite/FavoriteListCompletionServlet" method="POST">
-											<button class="btn delete_btn" type="submit" name="btnFavoriteListDeleteTransition" value="${a.favoriteNo}">×</button>
+											<button class="btn delete_btn" type="submit" name="btnFavoriteListDeleteTransition" value="${a.itemNo}">×</button>
 										</form>
 								    </td>
 								</tr>
