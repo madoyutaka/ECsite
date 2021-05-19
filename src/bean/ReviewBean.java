@@ -3,7 +3,7 @@ package bean;
 public class ReviewBean {
 
 	String reviewComment;
-	int reviewScore;
+	double reviewScore;
 	int itemNo;
 
 	public String getReviewComment() {
@@ -13,10 +13,10 @@ public class ReviewBean {
 		this.reviewComment = reviewComment;
 	}
 
-	public int getReviewScore() {
+	public double getReviewScore() {
 		return reviewScore;
 	}
-	public void setReviewScore(int reviewScore) {
+	public void setReviewScore(double reviewScore) {
 		this.reviewScore = reviewScore;
 	}
 
