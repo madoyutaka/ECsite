@@ -52,10 +52,24 @@
 			<h1>何かタイトル的なの</h1>
 			<p>何かキャッチコピー</p>
 
-			<form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
-				<input  class="top_login_btn" type = "submit" name="btnLoginTransition" value = "ログイン">
-				<input type ="hidden" name="btnLoginTransition" value="loginTransition">
-			</form>
+
+
+
+		<c:choose>
+			<c:when test="${LoginButton != null}">
+				<form action = "http://localhost:8080/ECSite/TopServlet" method = "POST">
+					<input  class="top_login_btn" type = "submit" name="btnLoginTransition" value = "ログイン">
+					<input type ="hidden" name="btnLoginTransition" value="loginTransition">
+				</form>
+			</c:when>
+
+			<c:when test="${LoginButton == null}">
+				<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+					<input  class="top_login_btn" type = "submit" name="btnLoginTransition" value = "マイページ">
+					<input type ="hidden" name="btnMyPageTransition" value="MyPageTransition">
+				</form>
+			</c:when>
+		</c:choose>
 		</div>
 	</div>
 
