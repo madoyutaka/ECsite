@@ -84,11 +84,11 @@
 	<c:choose>
 		<c:when test="${ fn:length(loginUserFaves) >= 1}">
 			<form name="btnFavoritePagination" action="http://localhost:8080/ECSite/FavoriteListServlet" method="POST">
-				<ul class="favorite_pagination">
+				<div class="favorite_pagination">
 					<c:forEach begin="1" end="${favoriteListTotalPageNo}" step="1" var = "a">
-						<li><button class="btn" type="submit" name="selectFavoriteListPageNo" value="${a}">${a}</button></li>
+						<button class="btn page_btn" type="submit" name="selectFavoriteListPageNo" value="${a}">${a}</button>
 					</c:forEach>
-				</ul>
+				</div>
 			</form>
 		</c:when>
 	</c:choose>
