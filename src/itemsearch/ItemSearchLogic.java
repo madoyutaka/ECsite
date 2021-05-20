@@ -15,4 +15,14 @@ public class ItemSearchLogic {
 		return itemSearchList ;
 	}
 
+	public ArrayList<ItemBean> categorySearch(int categoryNo) {
+		ArrayList<ItemBean> itemSearchList = new ArrayList<ItemBean>();
+
+		ItemJdbc itemJdbc = new ItemJdbc();
+		itemSearchList = itemJdbc.categorySearch(categoryNo);
+
+		return itemSearchList ;
+	}
+
+
 }

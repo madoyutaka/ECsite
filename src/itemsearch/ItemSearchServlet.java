@@ -40,6 +40,18 @@ public class ItemSearchServlet extends HttpServlet {
 				return;
 			}
 
+
+		if(request.getParameter("btnCategorySelect")!=null) {
+			int categoryNo = Integer.parseInt(request.getParameter("btnCategorySelect"));
+			ItemSearchLogic itemSearchLogic = new ItemSearchLogic();
+			itemSearchList = itemSearchLogic.categorySearch(categoryNo);
+			//値を渡す
+			request.setAttribute("itemSearchList", itemSearchList);
+			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
+			req.forward(request, response);
+			return;
+		}
+
 		//商品検索ボタンが押された場合の処理
 		if(request.getParameter("btnItemSearchTransition")!=null) {
 			//入力された文字を取得
@@ -52,6 +64,7 @@ public class ItemSearchServlet extends HttpServlet {
 				req.forward(request, response);
 				return;
 			}
+
 
 			//検索する。
 			ItemSearchLogic itemSearchLogic = new ItemSearchLogic();
@@ -66,3 +79,4 @@ public class ItemSearchServlet extends HttpServlet {
 	}
 
 }
+
