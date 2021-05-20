@@ -69,6 +69,11 @@ button:hover{
 	margin: 0 10px;
 }
 
+/*ページネーション共通処理*/
+.pagination{
+	text-align: center;
+}
+
 /*img*/
 img {
 	max-height: 300px;
@@ -597,10 +602,6 @@ details:open{
 
 .btn.mypage_back_btn{
 	margin-top:30px;
-}
-
-.favorite_pagination{
-	text-align: center;
 }
 
 /*カート画面関連*/
