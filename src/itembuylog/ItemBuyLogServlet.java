@@ -55,6 +55,29 @@ public class ItemBuyLogServlet extends HttpServlet {
 		ItemBuyLogLogic itemBuyLogLogic = new ItemBuyLogLogic();
 		ArrayList<ItemBuyLogBean> itemBuyLogList = itemBuyLogLogic.itemBuyLogGetLogic(loginUserNo);
 
+		//選択されたページ番号
+		int selectNo = 0;
+		//購入履歴画面に遷移する。
+		if(request.getParameter("selectItemBuyLogPageNo")!=null) {
+			selectNo = Integer.parseInt(request.getParameter("selectItemBuyLogPageNo"));
+			//お気に入り数が1以上の場合
+			if(itemBuyLogList.size() >= 1) {
+				//ページ数を渡す
+				request.setAttribute("itemBuyLogListTotalPageNo", itemBuyLogLogic.getItemBuyLogListTotalPageNo(itemBuyLogList));
+				//値を渡し、1ページ目を表示
+				request.setAttribute("itemBuyLogListPageNo", 1);
+				//表示するためのリストを渡す
+				request.setAttribute("loginUserItemBuyLog", itemBuyLogLogic.getShowList(itemBuyLogList, selectNo));
+			}else {
+				//表示するためのリストを渡す
+				request.setAttribute("loginUserItemBuyLog", itemBuyLogList);
+			}
+			//画面遷移
+			System.out.println("購入履歴画面に遷移します。");
+			request.getRequestDispatcher("jsp/ItemBuyLog.jsp").forward(request, response);
+			return;
+		}
+
 		//購入履歴画面に遷移する。
 		if(request.getParameter("btnItemBuyLogTransition")!=null) {
 			request.setAttribute("loginUserItemBuyLog", itemBuyLogList);
