@@ -671,3 +671,26 @@ details:open{
 	margin-top: 30px;
 	text-align: center;
 }
+
+/*購入履歴画面*/
+.item_buylog_container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.item_buylog_wrap{
+	margin-bottom: 100px;
+}
+
+.item_buylog_text{
+	display: flex;
+	justify-content: space-around;
+}
+
+.item_buylog_form {
+	text-align: center;
+}
+
+.btn.item_buylog_btn{
+	margin: 15px 0 20px;
+}
