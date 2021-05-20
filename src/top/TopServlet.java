@@ -18,6 +18,19 @@ import jdbc.ItemJdbc;
 public class TopServlet extends HttpServlet {
 	//トップの画面での処理を制御するサーブレット
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//ボタンの文字変更処理
+		HttpSession session = request.getSession(false);
+		UserBean loginUserSession;
+		try {
+			loginUserSession = (UserBean)session.getAttribute("loginUser");
+		}catch(Exception ex) {
+			loginUserSession = null;
+		}
+		if(loginUserSession == null) {
+			System.out.println("ログインボタンを表示します");
+			request.setAttribute("LoginButton", "LoginButton");
+		}
+
 		ItemJdbc itemJdbc = new ItemJdbc();
 		ItemBean randomItemBean = itemJdbc.randomItem();
 		//値を渡す
