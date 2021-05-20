@@ -35,7 +35,7 @@ public class ItemBuyLogJdbc {
 
 			System.out.println(loginUserNo+"の購入履歴を取得します。");
 			//履歴を取得する
-			query = "SELECT * FROM itembuylog JOIN item ON itembuylog.item_no = item.item_no WHERE user_no=?";
+			query = "SELECT * FROM itembuylog JOIN item ON itembuylog.item_no = item.item_no WHERE user_no=? ORDER BY item_buy_log_no DESC";
 			//PreparedStatementオブジェクトを使用
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, loginUserNo);
