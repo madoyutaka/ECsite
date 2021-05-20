@@ -90,6 +90,18 @@
 						</c:choose>
 			</div>
 
+					<c:choose>
+						<c:when test="${ fn:length(loginUserItemBuyLog) >= 1}">
+							<form name="btnFavoritePagination" action="http://localhost:8080/ECSite/ItemBuyLogServlet" method="POST">
+								<div class="pagination">
+									<c:forEach begin="1" end="${itemBuyLogListTotalPageNo}" step="1" var = "a">
+										<button class="btn page_btn" type="submit" name="selectItemBuyLogPageNo" value="${a}">${a}</button>
+									</c:forEach>
+								</div>
+							</form>
+						</c:when>
+					</c:choose>
+
 	</div>
 
 	　<div id="page_top"><a href="#"></a></div>

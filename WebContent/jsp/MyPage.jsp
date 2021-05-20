@@ -63,6 +63,7 @@
 
 				<form action = "http://localhost:8080/ECSite/ItemBuyLogServlet" method = "POST">
 					<input class="btn" type = "submit" name="btnItemBuyLogTransition" value = "購入履歴を確認する">
+					<input type ="hidden" name="selectItemBuyLogPageNo" value="1">
 				</form>
 
 				<form action = "http://localhost:8080/ECSite/LogoutServlet" method = "POST">
