@@ -31,11 +31,11 @@ public class LoginServlet extends HttpServlet {
 		//それぞれPOSTされたものを変数に格納
 		String UserId = request.getParameter("user_id");
 		String UserPass = request.getParameter("password");
-		
+
 		//新規登録したアカウントから値を受け取る場合
 		if(UserId==null||UserPass==null) {
 		UserId = (String)request.getAttribute("userId");
-		UserPass = (String)request.getAttribute("password");
+		UserPass = (String)request.getAttribute("password");;
 		}
 
 		LoginLogic newlogic = new LoginLogic();
@@ -53,6 +53,9 @@ public class LoginServlet extends HttpServlet {
 	    		// セッションにアカウント情報
 		    	session = request.getSession(false);
 	            session.setAttribute("loginUser", returnUser);
+	            session.setMaxInactiveInterval(60*60*24);
+	            int intervalTime = session.getMaxInactiveInterval();
+	            System.out.println(intervalTime);
 
 	            System.out.println("session start");
 				request.setAttribute("loginUser",returnUser);//パラメータ名はloginUser
