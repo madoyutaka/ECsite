@@ -2,7 +2,6 @@ package logout;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.ItemBean;
 import bean.UserBean;
+import jdbc.ItemJdbc;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -30,7 +31,6 @@ public class LogoutServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher req = null;
 		HttpSession session = request.getSession();
 		UserBean loginUserSession;
 		try {
@@ -44,9 +44,12 @@ public class LogoutServlet extends HttpServlet {
 			if(loginUserSession!=null) {
 				session.invalidate();
 			}
+
 			ItemJdbc itemJdbc = new ItemJdbc();
 			ItemBean randomItemBean = itemJdbc.randomItem();
 			//値を渡す
+			System.out.println("トップにログインボタンを表示します");
+			request.setAttribute("LoginButton", "LoginButton");
 			System.out.println("ログアウトが完了しました、トップ画面に遷移します。");
 			request.setAttribute("randomItem", randomItemBean);
 			request.getRequestDispatcher("jsp/Top.jsp").forward(request, response);
