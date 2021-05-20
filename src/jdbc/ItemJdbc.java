@@ -225,4 +225,51 @@ public class ItemJdbc {
 			return "購入処理が完了しました。";
 		}
 
+
+
+public ArrayList<ItemBean> categorySearch(int categoryNo){
+	ArrayList<ItemBean> itemSearchList = new ArrayList<ItemBean>();
+	//戻り値用
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		conn = DriverManager.getConnection(url, id, pw);
+		stmt =conn.createStatement();
+
+		System.out.println("categoryNo"+categoryNo+"で商品を検索します。");
+		query = "select * from item where category_no=?";
+		//PreparedStatementオブジェクトを使用
+		pstmt = conn.prepareStatement(query);
+		pstmt.setInt(1, categoryNo);
+		//SQLの実行
+		System.out.println("pstmt"+pstmt);
+		rs = pstmt.executeQuery();
+
+		//取得した値を格納
+		while(rs.next()) {
+			ItemBean itemBean = new ItemBean();
+			itemBean.setItemNo(rs.getInt("item_no"));
+			itemBean.setItemName(rs.getString("item_name"));
+			itemBean.setItemPrice(rs.getInt("item_price"));
+			itemBean.setItemImage(rs.getString("item_image"));
+			itemSearchList.add(itemBean);
+			}
+
+	}catch(ClassNotFoundException ex) {
+		ex.printStackTrace();
+	}catch(SQLException ex) {
+		ex.printStackTrace();
+	}finally {
+		try {
+			if(conn != null) { conn.close(); }
+			if(stmt != null) { stmt.close(); }
+			if(pstmt != null) { pstmt.close(); }
+			if(rs != null) { rs.close(); }
+
+		}catch(SQLException ex){
+			ex.printStackTrace();
+			}
+			}
+	return itemSearchList;
+		}
+
 }
