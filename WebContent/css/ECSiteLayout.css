@@ -64,6 +64,11 @@ button:hover{
 	cursor: pointer !important;
 }
 
+/*ページングボタン*/
+.btn.page_btn{
+	margin: 0 10px;
+}
+
 /*img*/
 img {
 	max-height: 300px;
@@ -565,6 +570,7 @@ details:open{
 
 .page_layout.favoritelist_layout{
 	height: 100vh;
+	margin-bottom: 60px;
 }
 
 .favoritelist_table{
@@ -591,6 +597,10 @@ details:open{
 
 .btn.mypage_back_btn{
 	margin-top:30px;
+}
+
+.favorite_pagination{
+	text-align: center;
 }
 
 /*カート画面関連*/
@@ -636,6 +646,7 @@ details:open{
 }
 
 /*購入確認画面関連*/
+
 .item_buy_wrap{
 	display: flex;
 	align-items: center;
@@ -659,7 +670,7 @@ details:open{
 
 .item_check_wrap{
 	display: flex;
-	justify-content:space-around;
+	justify-content:space-between;
 	margin-top: 30px;
 }
 .item_check_wrap input {

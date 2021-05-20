@@ -47,7 +47,7 @@
 				</nav>
 			</div>
 	</header>
-	<div class="page_layout cart_layout">
+	<div class="page_layout itembuy_layout">
 		<h1 class="page_ttl">購入確認</h1>
 
 		<div class="cart_container">
@@ -72,7 +72,7 @@
 
 
 			<!-- カート一覧 -->
-
+            <h2 class="page_ttl">お届け先</h2>
 
 			<!--　注文者情報入力 -->
 			<form class="item_buy_check" action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
