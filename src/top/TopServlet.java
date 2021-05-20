@@ -39,6 +39,12 @@ public class TopServlet extends HttpServlet {
 
 		//	トップボタンを押したとき
 			if(request.getParameter("btnTopTransition")!=null) {
+
+				if(loginUserSession == null) {
+					System.out.println("ログインボタンを表示します");
+					request.setAttribute("LoginButton", "LoginButton");
+				}
+
 				ItemJdbc itemJdbc = new ItemJdbc();
 				ItemBean randomItemBean = itemJdbc.randomItem();
 				//値を渡す
