@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>購入完了画面</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -47,7 +48,7 @@
 			</div>
 	</header>
 
-	<div class="page_layout">
+	<div class="page_layout item_buy_completion_layout">
 		<h1 class="page_ttl">${itemBuyResultText}</h1>
 
 		<div class="ItemBuyCompletion">

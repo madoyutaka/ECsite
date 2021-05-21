@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>トップページ</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -69,6 +70,13 @@
 					<input type ="hidden" name="btnMyPageTransition" value="MyPageTransition">
 				</form>
 			</c:when>
+
+			<c:when test="${LoginButton == null}">
+				<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+					<input  class="top_login_btn" type = "submit" name="btnLoginTransition" value = "マイページ">
+					<input type ="hidden" name="btnMyPageTransition" value="MyPageTransition">
+				</form>
+			</c:when>
 		</c:choose>
 		</div>
 	</div>
@@ -88,7 +96,7 @@
 		     	<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<h3 class="item_select_btn">
 						<button class="item" type="submit" name="btnItemDetailTransition" value="${randomItem.itemNo}">
-							<img class="item_image" src="./img/${randomItem.itemImage}" >
+							<img class="item_image" src="./img/${randomItem.itemImage}" alt="商品画像">
 							<p class="item_name"><c:out value="${randomItem.itemName}" default="取得失敗"/></p>
 						<p class="item_price">お値段：<c:out value="${randomItem.itemPrice}" default="取得失敗"/>円</p>
 						</button>
