@@ -92,16 +92,7 @@ public class WriteReviewServlet extends HttpServlet {
 				ReviewJdbc reviewJdbc = new ReviewJdbc();
 				reviewList = reviewJdbc.getReviewData(setItemNo);
 				//レビューの平均を取得
-				double reviewAverage = 0.0;
-				if(reviewList.size() > 0) {
-					reviewAverage = newLogic.getReviewAverage(reviewList, setItemNo);
-					//小数点第二位で四捨五入
-					System.out.println("四捨五入前："+reviewAverage);
-					reviewAverage = ((double)Math.round(reviewAverage * 10)) / 10;
-					System.out.println("四捨五入後："+reviewAverage);
-				}else{
-					reviewAverage = 0.0;
-				}
+				double reviewAverage = newLogic.getReviewAverage(reviewList, setItemNo);
 				//値を渡す
 				request.setAttribute("itemData", itemBean);
 				request.setAttribute("reviewList", reviewList);
