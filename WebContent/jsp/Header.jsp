@@ -1,9 +1,12 @@
-<!-- ヘッダーコピペ用のjspです -->
+	<!-- 各jspのbody内最上部に↓を追加してください-->
+<%--			 <%@include file= "Header.jsp" %>			--%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
@@ -13,20 +16,19 @@
 	</head>
 
 	<body>
-<!-- ここからヘッダー -->
 	<header>
 	       <div class="header_wrap">
 		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
 				<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
 				<input type ="hidden" name="btnTopTransition" value="topTransition">
 			</form>
-		       
+
 			<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
 				<input class ="header_word" type="text" name="itemSearchWord"/>
 				<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
 				<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
 			</form>
-		       
+
 			<nav>
 			<ul>
 			<li>
@@ -35,7 +37,7 @@
 					<input type ="hidden" name="btnHeaderCartTransition" value="headerCartTransition">
 				</form>
 			</li>
-				
+
 			<li>
 		        	<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
 					<input class ="header_mypage_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/home.png"  name="btnMyPageTransition">
@@ -46,8 +48,6 @@
 		       </nav>
 		</div>
 	</header>
-<!-- ここまでヘッダー -->
-
-
 	</body>
+
 </html>
