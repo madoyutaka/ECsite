@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <%@ page import="top.TopServlet" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,38 +15,8 @@
 </head>
 <body>
 <!-- ブラウザ上にトップの画面を表示 -->
-	<header>
-	       <div class="header_wrap">
-		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
-									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
-									<input type ="hidden" name="btnTopTransition" value="topTransition">
-				</form>
+ <%@include file= "Header.jsp" %>
 
-				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
-								<input class ="header_word" type="text" name="itemSearchWord"/>
-								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
-								<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
-				</form>
-
-				<nav>
-					<ul>
-						<li>
-							<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-								<input class ="header_cart_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/cart.png" name="btnCartTransition">
-								<input type ="hidden" name="btnHeaderCartTransition" value="headerCartTransition">
-							</form>
-						</li>
-
-						<li>
-		        			<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
-								<input class ="header_mypage_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/home.png"  name="btnMyPageTransition">
-								<input type ="hidden" name="btnMyPageTransition" value="myPageTransition">
-							</form>
-						</li>
-					</ul>
-				</nav>
-			</div>
-	</header>
 
 	<!-- トップ画像 -->
 	<div class="top_image">
@@ -96,7 +67,7 @@
 		     	<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<h3 class="item_select_btn">
 						<button class="item" type="submit" name="btnItemDetailTransition" value="${randomItem.itemNo}">
-							<img class="item_image" src="img/furniture/${randomItem.itemImage}" alt="商品画像">
+							<img class="item_image" src="./img/${randomItem.itemImage}" alt="商品画像">
 							<p class="item_name"><c:out value="${randomItem.itemName}" default="取得失敗"/></p>
 						<p class="item_price">お値段：<c:out value="${randomItem.itemPrice}" default="取得失敗"/>円</p>
 						</button>
@@ -106,14 +77,9 @@
 		</section>
 	</div>
 
-　　<div id="page_top"><a href="#"></a></div>
-
-	<div class="footer_wrapper">
-	    <footer>
-			<p class="footer_text">2021/05/14/ECSite</p>
-		</footer>
-	</div>
+<div id="page_top"><a href="#"></a></div>
 
 
+ <%@include file= "Footer.jsp" %>
 </body>
 </html>
