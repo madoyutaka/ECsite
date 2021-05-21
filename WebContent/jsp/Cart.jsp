@@ -59,7 +59,7 @@
 				<c:when test="${ fn:length(cartItemData) >= 1}">
 					<c:forEach items="${cartItemData}" var="itemData" varStatus="status">
 						<form class="cart_form" action = "http://localhost:8080/ECSite/ItemDetailServlet" method = "POST">
-							<img class="item_image cart_img" src="img/${itemData.itemImage}">
+							<img class="item_image cart_img" src="img/furniture/${itemData.itemImage}">
 							<button class="btn cart_item_btn" type="submit" name="btnItemDetailTransition" value="${itemData.itemNo}">${itemData.itemName}</button>
 						</form>
 

@@ -58,7 +58,7 @@
 							<table>
 								<tr>
 									<td>
-										<img class="item_image" src="${pageContext.request.contextPath}/img/${a.itemImage}">
+										<img class="item_image" src="${pageContext.request.contextPath}/img/furniture/${a.itemImage}">
 									</td>
 
 									<td class="favoritelist_td">

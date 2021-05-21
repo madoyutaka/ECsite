@@ -67,7 +67,7 @@
 		<% ItemBean itemData = (ItemBean)request.getAttribute("itemData"); %>
 
 		<div class="item_detail_container">
-			<img class="item_image" src="./img/${itemData.itemImage}">
+			<img class="item_image" src="./img/furniture/${itemData.itemImage}">
 
 
 			<p class="item_detail_text">${itemData.itemName} ${itemData.itemPrice}円</p>

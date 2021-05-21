@@ -58,7 +58,7 @@
 					<c:when test="${ fn:length(cartItemData) >= 1}">
 						<c:forEach items="${cartItemData}" var="itemData" varStatus="status">
 						<div class="item_buy_wrap">
-							 <img class="item_image item_buy_image" src="img/${itemData.itemImage}">
+							 <img class="item_image item_buy_image" src="img/furniture/${itemData.itemImage}">
 							 <div class="item_text_wrap">
 							 	<p class="item_buy_list">商品名：<c:out value="${itemData.itemName}"></c:out></p>
 								<p class="item_buy_list">購入数：<c:out value="${cartData[status.index].itemBuyCount}"></c:out>個</p>

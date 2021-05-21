@@ -66,7 +66,7 @@
 							<c:when test="${ fn:length(loginUserItemBuyLog) >= 1}">
 								<c:forEach items="${loginUserItemBuyLog}" var="log">
 									<div class="item_buylog_wrap">
-										<img class="item_image" src="img/${log.itemImage}">
+										<img class="item_image" src="img/furniture/${log.itemImage}">
 
 
 										<form class="item_buylog_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
