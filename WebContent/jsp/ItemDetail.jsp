@@ -71,6 +71,8 @@
 
 
 			<p class="item_detail_text">${itemData.itemName} ${itemData.itemPrice}円</p>
+			<br>
+			<c:out value="レビュー平均：${reviewAverage}"/>
 
 			<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 				<a class="item_quantity">個数</a>
@@ -132,6 +134,7 @@
 		</div>
 
 	</div>
+
 
 
 </body>

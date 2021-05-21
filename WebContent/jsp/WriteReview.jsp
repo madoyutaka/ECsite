@@ -63,7 +63,7 @@
 
 					<select class="review_select" name="reviewScore">
 					<%
-						for(double scoreNo = 1.0; scoreNo <= 5.0; scoreNo+=0.5){
+						for(double scoreNo = 1.0; scoreNo <= 5.0; scoreNo+=1.0){
 					%>
 					<option value=<%=scoreNo%>><%=scoreNo%></option>
 					<%
