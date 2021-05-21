@@ -162,5 +162,43 @@ public class ReviewJdbc {
 			return returnText;
 		}
 
+//指定された商品のレビューの数を取得
+		public int reviewCount(int itemNo) {
+			int reviewCount = -1;
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection(url, id, pw);
+				stmt =conn.createStatement();
+				//query = "SELECT * FROM review WHERE item_no=? ORDER BY review_no DESC";
+				//reviewの数を取得する
+				query = "SELECT COUNT(review_no) AS review_count FROM review WHERE item_no = ?";
+				//PreparedStatementオブジェクトを使用
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,  itemNo);
+				//SQLの実行
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+				reviewCount = rs.getInt("review_count");
+				}
+
+			}catch(ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}finally {
+				try {
+					if(conn != null) { conn.close(); }
+					if(stmt != null) { stmt.close(); }
+					if(pstmt != null) { pstmt.close(); }
+					if(rs != null) { rs.close(); }
+
+				}catch(SQLException ex){
+					ex.printStackTrace();
+					}
+
+				}
+
+			return reviewCount;
+		}
 
 }
