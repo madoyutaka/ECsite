@@ -48,19 +48,26 @@
 			</div>
 	</header>
 
+	<!-- カテゴリボタン↓ -->
+			<div class="category_wrap">
+						<p class="category_ttl">カテゴリ一覧</p>
+							<form  class="category_container" action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
+								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="1">椅子</button>
+								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="2">収納</button>
+								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="3">照明</button>
+								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="4">寝具</button>
+								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="5">机</button>
+								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="6">その他</button>
+							</form>
+
+			</div>
+<!-- カテゴリボタン↑ -->
+
 
 
 	<div class="page_layout search_layout">
-<!-- カテゴリボタン↓ -->
-			<form action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
-				<button class="btn" type="submit" name="btnCategorySelect" value="1">椅子</button>
-				<button class="btn" type="submit" name="btnCategorySelect" value="2">収納</button>
-				<button class="btn" type="submit" name="btnCategorySelect" value="3">照明</button>
-				<button class="btn" type="submit" name="btnCategorySelect" value="4">寝具</button>
-				<button class="btn" type="submit" name="btnCategorySelect" value="5">机</button>
-				<button class="btn" type="submit" name="btnCategorySelect" value="6">その他</button>
-			</form>
-<!-- カテゴリボタン↑ -->
+
+
 			<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
 			<c:choose>
 				<c:when test="${errorText != null}">

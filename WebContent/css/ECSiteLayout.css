@@ -4,6 +4,8 @@
 	 font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
 }
 
+/*PC対応 1024px以上*/
+
 /*各ページ共通*/
 /*各ページ共通エラーメッセージ用*/
 .error_text{
@@ -83,6 +85,7 @@ img {
 /*body*/
 body{
 	background-color:#f8fbf8;
+	position: relative;
 }
 
 /*pタグ*/
@@ -283,12 +286,35 @@ button.item{
 }
 
 
+/*商品一覧画面関連*/
 /*商品一覧画面の商品のついて*/
 
 .page_layout.search_layout{
 	height: 100vh;
 }
 
+/*商品一覧のカテゴリ検索関連*/
+.category_wrap{
+	position:absolute;
+	top: 15%;
+	left: 10px;;
+}
+.category_container{
+	display:flex;
+	flex-direction: column;
+}
+.category_ttl{
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.btn.category_btn{
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+/* 商品名と値段 */
 .item_name{
 	font-size: 20px;
 	font-weight: bold;
@@ -316,7 +342,7 @@ button .item {
 
 
 /*ログイン画面関連*/
-.page_layout.login_layout{
+.login_layout{
 	text-align: center;
 	height:  100vh;
 }
@@ -678,10 +704,42 @@ details:open{
 	width: 50%;
 }
 
+/* 購入方法関連 */
+.item_pay_wrap{
+	margin-top: 30px;
+}
+
+.item_pay_list{
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.item_pay_how{
+	display: flex;
+	justify-content: space-around;
+  	align-items: center;
+}
+
+.item_pay_btn:first-child{
+	margin-left: 0;
+}
+
+.item_pay_btn{
+	font-size: 18px;
+	margin-left: 5px;
+}
+
 /*購入ボタン*/
 .item_buy_form{
 	margin-top: 30px;
 	text-align: center;
+}
+
+/*購入完了ページ*/
+.page_layout.item_buy_completion_layout{
+	height: 100vh;
 }
 
 /*購入履歴画面*/
@@ -706,3 +764,19 @@ details:open{
 .btn.item_buylog_btn{
 	margin: 15px 0 20px;
 }
+
+/*スマホ対応 320pxから599px*/
+@media screen and (max-width: 599px) { /*ウィンドウ幅が最大599pxまでの場合に適用*/
+	body {
+		  	background-color: #3cb371; /*緑色*/
+		  }
+}
+
+
+/*タブレット対応 600pxから1024px*/
+@media screen and (min-width: 600px) and (max-width: 1024px) { /*ウィンドウ幅が最大1024pxまでの場合に適用*/
+	body {
+		  	background-color: #ff69b4;　 /*ピンク色*/
+		  }
+}
+

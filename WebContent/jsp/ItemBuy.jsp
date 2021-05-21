@@ -9,7 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>購入確認画面</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -82,21 +83,35 @@
 				</div>
 
 
-			<div class="item_check_wrap">
-				<p class="item_buy_list">メールアドレス：</p>
-				<input type = "email" name="btnTransition" value ="<c:out value="${loginUserData.emailAddress}" default="取得失敗"/>">
-			</div>
+				<div class="item_check_wrap">
+					<p class="item_buy_list">メールアドレス：</p>
+					<input type = "email" name="btnTransition" value ="<c:out value="${loginUserData.emailAddress}" default="取得失敗"/>">
+				</div>
 
-			 <div class="item_check_wrap">
-				<p class="item_buy_list">郵便番号：</p>
-				<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.postalCode}" default="取得失敗"/>">
-			</div>
+				 <div class="item_check_wrap">
+					<p class="item_buy_list">郵便番号：</p>
+					<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.postalCode}" default="取得失敗"/>">
+				</div>
 
-			<div class="item_check_wrap">
-				<p class="item_buy_list">住所：</p>
-				<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.address}" default="取得失敗"/>">
-			</div>
+				<div class="item_check_wrap">
+					<p class="item_buy_list">住所：</p>
+					<input type = "text" name="btnTransition" value ="<c:out value="${loginUserData.address}" default="取得失敗"/>">
+				</div>
 			</form>
+
+			<div class="item_pay_wrap">
+				<p class="item_pay_list">お支払方法</p>
+
+				<div class="item_pay_how">
+					<p class="item_pay_btn"><input type="radio" name="hyouka" value="credit" checked="checked">クレジットカード決済</p>
+
+					<p class="item_pay_btn"><input type="radio" name="hyouka" value="convenience">コンビニ決済</p>
+
+					<p class="item_pay_btn"><input type="radio" name="hyouka" value="bank">銀行振込</p>
+
+					<p class="item_pay_btn"><input type="radio" name="hyouka" value="bank">現金引換</p>
+				</div>
+			</div>
 		</div>
 
 		<!--　購入ボタン -->
