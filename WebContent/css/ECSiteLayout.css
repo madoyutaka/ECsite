@@ -1,782 +1,906 @@
 @charset "UTF-8";
 
-*{
-	 font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
-}
-
-/*PC対応 1024px以上*/
-
-/*各ページ共通*/
-/*各ページ共通エラーメッセージ用*/
-.error_text{
-	padding-top:100px;
-	text-align: center;
-	font-size: 40px;
-}
-
-
-/*商品画像サイズ統一用*/
-.item_image {
-	height: 300px;
-	width: 300px;
-	object-fit: cover;
-}
-
-
-/*各ページ共通　top以外*/
-.page_layout {
-	height:100%;
-	max-width: 1080px;
-	background-color: white;
-	margin: 0 auto;
-}
-
-/*各ページ共通*/
-.page_ttl {
-	text-align: center;
-	padding-top: 30px;
-	margin-bottom:50px;
-	font-size: 30px;
-}
-
-
-/*各ページ共通　ボタン装飾*/
-/*ボタンの背景色と文字色はご自由に*/
-.btn {
-  display: inline-block;
-  text-align: left;
-  background-color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 4px;
-
-  border: 2px solid #84a2d4;
-  color:  #84a2d4;
-}
-
-.btn:hover{
-  background-color: #84a2d4;
-  border-color:#84a2d4;
-  color: #FFF;
-  cursor: pointer !important;
-}
-
-button:hover{
-	cursor: pointer !important;
-}
-
-/*ページングボタン*/
-.btn.page_btn{
-	margin: 0 10px;
-}
-
-/*ページネーション共通処理*/
-.pagination{
-	text-align: center;
-}
-
-/*img*/
-img {
-	max-height: 300px;
-	max-width: 100%;
-}
-
-/*body*/
-body{
-	background-color:#f8fbf8;
-	position: relative;
-}
-
-/*pタグ*/
-p {
-	text-align: left;
-}
-
-
-/*ヘッダー周り*/
-header{
-	height: 70px;
-	background-color:#c1e4e9;
-	width: 100%
-}
-.header_wrap{
-	display: flex;
-	align-items: center;
-	margin: 0 30px;
-}
-
-header nav {
-	margin-left: auto;
-}
-
-header ul {
-	display: flex;
-	align-items: center;
-}
-
-header ul li {
-	margin-left: 40px;
-}
-
-.header_word {
-	color: #000;
-	background-color: #fff;
-	border-radius: 5px;
-	margin: 20px;
-	font-size: 20px;
-	padding: 0 20px;
-}
-
-/*ヘッダーbutton*/
-.header_cart_btn, .header_mypage_btn, .header_search_btn{
-	max-width: 40px;
-	max-height: 40px;
-}
-
-/*ヘッダーの検索部分*/
-.header_word{
-	margin: 10px;
-	margin-left: 40px;
-	padding: 10px 0;
-	width: 250px;
-	text-align: left;
-}
-
-/*ヘッダーのボタンホバー時*/
-.header_cart_btn:hover, .header_mypage_btn:hover,.header_search_btn:hover{
-	opacity: 0.8;
-}
-
-/*ヘッダーのボタンクリック時*/
-.header_cart_btn:active, .header_mypage_btn:active,.header_search_btn:active{
-	opacity: 0.5;
-	margin-top: 5px;
-}
-
-/*ヘッダーロゴ*/
-.header_top_btn {
-	max-width: 60px;
-	max-height: 60px;
-}
-
-
-/*トップここから*/
-.top_image{
-	height: 400px;
-	width:100%;
-	background-image: url(../img/topimage.jpg);
-	background-position: center;
-	background-size: cover;
-	position: relative;
-	margin-bottom: 50px;
-}
-
-/*トップ画像の文字を見やすくするため少し暗くする*/
-.top_image::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0, 0.1);
-}
-
-/*トップ画面のテキスト*/
-.top_text {
-	position:absolute;
-	top: 50px;
-	left: 50px;
-	color: white;
-	font-size: 45px;
-	line-height: 1.2;
-}
-
-/*トップ画面のログインボタン*/
-.top_login_btn {
-	padding: 5px 20px;
-	border-radius: 5px;
-	border: hidden;
-	background-color: #00a3af;
-    position:relative;
-    margin-top: 20px;
-    left: 50px;
-	border-bottom: solid 5px #778899;
-	font-size: 30px;
-	color: white;
-	font-weight: bold;
-}
-
-.top_login_btn:active{
-  box-shadow: none;
-  position:relative;
-  border-bottom:none;
-  top:7px;
-}
-
-/*ログインボタンホバー時、カーソルの形状をポインタにする*/
-.top_login_btn:hover{
-	cursor: pointer;
-	opacity: 0.8;
-}
-
-/*トップページでの商品表示*/
-.random_item{
-	height: 500px;
-}
-
-.item_list {
-	display: flex;
-}
-
-.item_box{
-	text-align: center;
-	margin-left: 30px;
-}
-
-
-
-/*section関連*/
-.section_wrap{
-	width: 100%;
-	margin-bottom:20px;
-}
-
-section{
-	height: 300px;
-	max-width: 800px;
-	margin: 0 auto;
-	margin-bottom: 20px;
-	background-color: white;
-	text-align: center;
-	padding-top: 30px;
-}
-
-/*各sectionのタイトル*/
-.section_ttl{
-	text-align: center;
-	font-size: 30px;
-	color: black;
-	padding: 20px;
-	margin-bottom: 20px;
-	display: inline-block;
-	padding-bottom: 3px;
-	border-bottom: 3px solid black;
+	*{
+		 font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
 	}
 
-/*トップページのabout関連*/
-.about_text {
-	text-align: center;
-	margin-bottom: 10px;
-	font-size: 18px;
-}
-
-
-/*商品一覧画面関連*/
-/*商品一覧画面のフォーム*/
-
-button.item{
-	border-style: none;
-}
-
-.item_form {
-	margin: 50px;
-}
-
-
-/*商品一覧画面関連*/
-/*商品一覧画面の商品のついて*/
-
-.page_layout.search_layout{
-	height: 100vh;
-}
-
-/*商品一覧のカテゴリ検索関連*/
-.category_wrap{
-	position:absolute;
-	top: 15%;
-	left: 10px;;
-}
-.category_container{
-	display:flex;
-	flex-direction: column;
-}
-.category_ttl{
-	margin-bottom: 10px;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.btn.category_btn{
-	margin-bottom: 10px;
-	text-align: center;
-}
-
-/* 商品名と値段 */
-.item_name{
-	font-size: 20px;
-	font-weight: bold;
-	color:  #302833;
-}
-
-.item_price {
-	font-size: 20px;
-}
-
-/* 商品画像hover時 */
-.item_select_btn :hover {
-	background-color: #f3f3f3;
-}
-
-/* 商品を横並べ */
-.form_cover{
-	display: flex;
-	/*flex-wrap: wrap; */
-}
-
-button .item {
-	padding: 0;
-}
-
-
-/*ログイン画面関連*/
-.login_layout{
-	text-align: center;
-	height:  100vh;
-}
-
-.login_wrap{
-	width: 500px;
-	display: inline-block;
-	margin: 0 auto;
-}
-
-.error_text.error_login {
-	padding-top:10px;
-	margin-bottom:20px;
-	font-size: 30px;
-}
-
-.login_text{
-	font-size: 20px;
-	text-align: center;
-	margin-bottom: 15px;
-}
-
-.login_text:last-of-type{
-	margin-bottom: 30px;
-}
-
-.login_text input {
-	margin-left: 10px;
-}
-
-.login_form{
-	margin-bottom: 20px;
-}
-
-
-/*新規会員登録関連*/
-.page_ttl.signup_ttl{
-	margin-bottom:30px;
-}
-
-/*新規登録時のエラーメッセージ装飾*/
-.error_text.error_signup {
-	padding-top:10px;
-	margin-bottom:10px;
-	font-size: 15px;
-}
-
-/*新規登録関連*/
-.page_layout.signup {
-	height: 100%;
-}
-
-.page_container{
-	width: 600px;
-	margin: 0 auto;
-	text-align: left;
-	height: 800px;
-}
-
-.signup_container{
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 15px;
-}
-
-.signup_text {
-	font-size: 18px;
-}
-
-.signup_container input{
-	width: 50%;
-}
-
-.signup_btn_cover {
-	margin-bottom: 20px;
-}
-.signup_btn_cover,.signup_back{
-	text-align: center;
-}
-
-
-/*マイページ関連*/
-.page_layout.mypage_layout{
-	height: 100vh;
-}
-
-.back_btn{
-	text-align: center;
-}
-
-.mypage_container form{
-	text-align: center;
-	margin-bottom: 30px;
-}
-
-/*フッター関連*/
-.footer_wrapper{
-    position: relative;
-}
-
-footer {
-	width: 100%;
-    background-color: #89c7de;
-    color: #fff;
-    padding: 30px 0;
-    position: absolute;
-    bottom: 0;
-}
-
-footer p{
-	text-align: center;
-}
-
-
-/*トップに戻るボタン*/
-#page_top{
-	width: 40px;
-	height: 40px;
-	position: fixed;
-	right: 30px;
-	bottom: 10px;
-	background:#83ccd2;
-}
-#page_top a{
-	position: relative;
-	display: block;
-	width: 40px;
-	height: 40px;
-	text-decoration: none;
-}
-#page_top:hover{
-	opacity: 0.6;
-}
-
-#page_top a::after{
-	content: '▲';
-	font-size: 18px;
-	font-weight: bold;
-	color: #fff;
-	position: absolute;
-	top: 10px;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	margin: auto;
-	text-align: center;
-}
-
-
-/*購入完了ページ用*/
-.ItemBuyCompletion form{
-	text-align: center;
-}
-
-/*登録情報変更関連*/
-.user_data_change{
-	width: 70%;
-    margin: 0 auto;
-}
-
-.user_data_change .btn{
-	margin-left: 10px;
-	 padding: 2px 5px;
-}
-
-.page_layout.userdatachange_layout{
-	height: 100vh;
-}
-
-/*商品詳細画面関連*/
-.item_detail_container,.review_container{
-	width: 50%;
-	text-align: center;
-	margin: 0 auto;
-	height: 100vh;
-}
-
-.item_detail_text{
-	margin:10px 0;
-	font-size: 18px;
-	text-align: center;
-}
-
-.item_quantity{
-	font-size: 18px;
-}
-
-.btn.favorite_add_btn,.btn.favorite_del_btn{
-	padding: 4px 10px;
-	margin: 15px 0;
-}
-.btn.review_btn{
-	padding: 4px 20px;
-	margin-bottom: 10px;
-}
-
-.review_click{
-	font-size: 18px;
-}
-
-details:open{
-	height: 100vh;
-}
-
-.review_point,.review_comment,.review_text{
-	margin-top:10px;
-	text-align: center;
-	font-size: 18px;
-}
-.btn.cart_in_btn{
-	margin-left: 10px;
-	padding: 4px 20px;
-}
-
-/*レビュー画面関連*/
-.review_select{
-	font-size: 15px;
-	margin: 10px 0 20px;
-}
-
-.review_flex{
- display:flex;
- flex-flow: column;
-}
-
-.review_area{
-　width: 100%;
-  margin: 20px 0 30px;
-}
-
-.btn.review_btn,.favorite_form{
-  text-align: center;
-}
-
-.page_layout.review_layout{
-	height: 100vh;
-}
-
-/*お気に入り完了画面関連*/
-.favorite_form{
-	margin-top: 30px;
-}
-
-.page_layout.completion_layout{
-	height: 100vh;
-}
-
-.favorite_comp_text{
-	font-size: 25px;
-}
-
-/*お気に入り一覧画面関連*/
-.favoritelist_form{
-	text-align: center;
-}
-
-.page_layout.favoritelist_layout{
-	height: 100vh;
-	margin-bottom: 60px;
-}
-
-.favoritelist_table{
-	display:flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin: 10px;
-}
-
-.favoritelist_table tr{
-	display:flex;
-	flex-direction:column;
-}
-
-.favoritelist_td{
-	margin-top:5px;
-	display: flex;
-	justify-content: center;
-}
-
-.btn.delete_btn{
-	margin-left: 15px;
-}
-
-.btn.mypage_back_btn{
-	margin-top:30px;
-}
-
-/*カート画面関連*/
-.page_layout.cart_layout{
-	height: 100vh;
-}
-.cart_container{
-	width: 50%;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.cart_container .cart_form{
-	display:flex;
-	flex-direction:column;
-	 justify-content: center;
-}
-
-.btn.cart_item_btn{
-	text-align: center;
-	margin: 20px auto;
-}
-
-.btn.cart_delete{
-	padding: 5px 20px;
-	margin-top:15px;
-	margin-bottom: 35px;
-}
-
-.cart_item{
-	font-size: 20px;
-	text-align: center;
-	line-height: 1.2;
-}
-
-
-.cart_text{
-	text-align: center;
-	margin: 0 auto;
-}
-.item_image.cart_img{
-	margin: 0 auto;
-}
-
-/*購入確認画面関連*/
-
-.item_buy_wrap{
-	display: flex;
-	align-items: center;
-}
-.item_buy_image{
-	margin-bottom: 40px;
-}
-
-.item_text_wrap{
-	display: flex;
-	flex-direction:column;
-	padding-left: 15px;
-}
-
-.item_buy_list{
-	font-size: 20px;
-	line-height: 1.1;
-	text-align: left;
-	margin-bottom:10px;
-}
-
-.item_check_wrap{
-	display: flex;
-	justify-content:space-between;
-	margin-top: 30px;
-}
-.item_check_wrap input {
-	width: 50%;
-}
-
-/* 購入方法関連 */
-.item_pay_wrap{
-	margin-top: 30px;
-}
-
-.item_pay_list{
-	margin-bottom: 20px;
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
-}
-
-.item_pay_how{
-	display: flex;
-	justify-content: space-around;
-  	align-items: center;
-}
-
-.item_pay_btn:first-child{
-	margin-left: 0;
-}
-
-.item_pay_btn{
-	font-size: 18px;
-	margin-left: 5px;
-}
-
-/*購入ボタン*/
-.item_buy_form{
-	margin-top: 30px;
-	text-align: center;
-}
-
-/*購入完了ページ*/
-.page_layout.item_buy_completion_layout{
-	height: 100vh;
-}
-
-/*購入履歴画面*/
-.item_buylog_container{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-.item_buylog_wrap{
-	margin-bottom: 100px;
-}
-
-.item_buylog_text{
-	display: flex;
-	justify-content: space-around;
-}
-
-.item_buylog_form {
-	text-align: center;
-}
-
-.btn.item_buylog_btn{
-	margin: 15px 0 20px;
+	/*PC対応 1024px以上 通常時*/
+
+	/*各ページ共通*/
+	/*各ページ共通エラーメッセージ用*/
+	.error_text{
+		padding-top:100px;
+		text-align: center;
+		font-size: 40px;
+	}
+
+
+	/*商品画像サイズ統一用*/
+	.item_image {
+		height: 300px;
+		width: 300px;
+		object-fit: cover;
+	}
+
+
+	/*各ページ共通　top以外*/
+	.page_layout {
+		height:100%;
+		max-width: 1080px;
+		background-color: white;
+		margin: 0 auto;
+	}
+
+	/*各ページ共通*/
+	.page_ttl {
+		text-align: center;
+		padding-top: 30px;
+		margin-bottom:50px;
+		font-size: 30px;
+	}
+
+
+	/*各ページ共通　ボタン装飾*/
+	/*ボタンの背景色と文字色はご自由に*/
+	.btn {
+	  display: inline-block;
+	  text-align: left;
+	  background-color: #fff;
+	  font-size: 16px;
+	  font-weight: bold;
+	  padding: 8px 16px;
+	  border-radius: 4px;
+
+	  border: 2px solid #84a2d4;
+	  color:  #84a2d4;
+	}
+
+	.btn:hover{
+	  background-color: #84a2d4;
+	  border-color:#84a2d4;
+	  color: #FFF;
+	  cursor: pointer !important;
+	}
+
+	button:hover{
+		cursor: pointer !important;
+	}
+
+	/*ページングボタン*/
+	.btn.page_btn{
+		margin: 0 10px;
+	}
+
+	/*ページネーション共通処理*/
+	.pagination{
+		text-align: center;
+	}
+
+	/*img*/
+	img {
+		max-height: 300px;
+		max-width: 100%;
+	}
+
+	/*body*/
+	body{
+		background-color:#f8fbf8;
+		position: relative;
+	}
+
+	/*pタグ*/
+	p {
+		text-align: left;
+	}
+
+
+	/*ヘッダー周り*/
+	header{
+		height: 70px;
+		background-color:#c1e4e9;
+		width: 100%
+	}
+	.header_wrap{
+		display: flex;
+		align-items: center;
+		margin: 0 30px;
+	}
+
+	header nav {
+		margin-left: auto;
+	}
+
+	header ul {
+		display: flex;
+		align-items: center;
+	}
+
+	header ul li {
+		margin-left: 40px;
+	}
+
+	.header_word {
+		color: #000;
+		background-color: #fff;
+		border-radius: 5px;
+		margin: 20px;
+		font-size: 20px;
+		padding: 0 20px;
+	}
+
+	/*ヘッダーbutton*/
+	.header_cart_btn, .header_mypage_btn, .header_search_btn{
+		max-width: 40px;
+		max-height: 40px;
+	}
+
+	/*ヘッダーの検索部分*/
+	.header_word{
+		margin: 10px;
+		margin-left: 40px;
+		padding: 10px 0;
+		width: 250px;
+		text-align: left;
+	}
+
+	/*ヘッダーのボタンホバー時*/
+	.header_cart_btn:hover, .header_mypage_btn:hover,.header_search_btn:hover{
+		opacity: 0.8;
+	}
+
+	/*ヘッダーのボタンクリック時*/
+	.header_cart_btn:active, .header_mypage_btn:active,.header_search_btn:active{
+		opacity: 0.5;
+		margin-top: 5px;
+	}
+
+	/*ヘッダーロゴ*/
+	.header_top_btn {
+		max-width: 60px;
+		max-height: 60px;
+	}
+
+
+	/*トップここから*/
+	.top_image{
+		height: 400px;
+		width:100%;
+		background-image: url(../img/topimage.jpg);
+		background-position: center;
+		background-size: cover;
+		position: relative;
+		margin-bottom: 50px;
+	}
+
+	/*トップ画像の文字を見やすくするため少し暗くする*/
+	.top_image::before{
+	  content: "";
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  background: rgba(0,0,0, 0.1);
+	}
+
+	/*トップ画面のテキスト*/
+	.top_text {
+		position:absolute;
+		top: 50px;
+		left: 50px;
+		color: white;
+		font-size: 45px;
+		line-height: 1.2;
+	}
+
+	/*トップ画面のログインボタン*/
+	.top_login_btn {
+		padding: 5px 20px;
+		border-radius: 5px;
+		border: hidden;
+		background-color: #00a3af;
+	    position:relative;
+	    margin-top: 20px;
+	    left: 50px;
+		border-bottom: solid 5px #778899;
+		font-size: 30px;
+		color: white;
+		font-weight: bold;
+	}
+
+	.top_login_btn:active{
+	  box-shadow: none;
+	  position:relative;
+	  border-bottom:none;
+	  top:7px;
+	}
+
+	/*ログインボタンホバー時、カーソルの形状をポインタにする*/
+	.top_login_btn:hover{
+		cursor: pointer;
+		opacity: 0.8;
+	}
+
+	/*トップページでの商品表示*/
+	.random_item{
+		height: 500px;
+	}
+
+	.item_list {
+		display: flex;
+	}
+
+	.item_box{
+		text-align: center;
+		margin-left: 30px;
+	}
+
+
+
+	/*section関連*/
+	.section_wrap{
+		width: 100%;
+		margin-bottom:20px;
+	}
+
+	section{
+		height: 300px;
+		max-width: 800px;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		background-color: white;
+		text-align: center;
+		padding-top: 30px;
+	}
+
+	/*各sectionのタイトル*/
+	.section_ttl{
+		text-align: center;
+		font-size: 30px;
+		color: black;
+		padding: 20px;
+		margin-bottom: 20px;
+		display: inline-block;
+		padding-bottom: 3px;
+		border-bottom: 3px solid black;
+		}
+
+	/*トップページのabout関連*/
+	.about_text {
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 18px;
+	}
+
+
+	/*商品一覧画面関連*/
+	/*商品一覧画面のフォーム*/
+
+	button.item{
+		border-style: none;
+	}
+
+	.item_form {
+		margin: 50px;
+	}
+
+
+	/*商品一覧画面関連*/
+	/*商品一覧画面の商品のついて*/
+
+	.page_layout.search_layout{
+		height: 100vh;
+	}
+
+	/*商品一覧のカテゴリ検索関連*/
+	.category_wrap{
+		position:absolute;
+		top: 15%;
+		left: 10px;;
+	}
+	.category_container{
+		display:flex;
+		flex-direction: column;
+	}
+	.category_ttl{
+		margin-bottom: 10px;
+		font-weight: bold;
+		font-size: 15px;
+	}
+
+	.btn.category_btn{
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	/* 商品名と値段 */
+	.item_name{
+		font-size: 20px;
+		font-weight: bold;
+		color:  #302833;
+	}
+
+	.item_price {
+		font-size: 20px;
+	}
+
+	/* 商品画像hover時 */
+	.item_select_btn :hover {
+		background-color: #f3f3f3;
+	}
+
+	/* 商品を横並べ */
+	.form_cover{
+		display: flex;
+		/*flex-wrap: wrap; */
+	}
+
+	button .item {
+		padding: 0;
+	}
+
+
+	/*ログイン画面関連*/
+	.login_layout{
+		text-align: center;
+		height:  100vh;
+	}
+
+	.login_wrap{
+		width: 500px;
+		display: inline-block;
+		margin: 0 auto;
+	}
+
+	.error_text.error_login {
+		padding-top:10px;
+		margin-bottom:20px;
+		font-size: 30px;
+	}
+
+	.login_text{
+		font-size: 20px;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	.login_text:last-of-type{
+		margin-bottom: 30px;
+	}
+
+	.login_text input {
+		margin-left: 10px;
+	}
+
+	.login_form{
+		margin-bottom: 20px;
+	}
+
+
+	/*新規会員登録関連*/
+	.page_ttl.signup_ttl{
+		margin-bottom:30px;
+	}
+
+	/*新規登録時のエラーメッセージ装飾*/
+	.error_text.error_signup {
+		padding-top:10px;
+		margin-bottom:10px;
+		font-size: 15px;
+	}
+
+	/*新規登録関連*/
+	.page_layout.signup {
+		height: 100%;
+	}
+
+	.page_container{
+		width: 600px;
+		margin: 0 auto;
+		text-align: left;
+		height: 800px;
+	}
+
+	.signup_container{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 15px;
+	}
+
+	.signup_text {
+		font-size: 18px;
+	}
+
+	.signup_container input{
+		width: 50%;
+	}
+
+	.signup_btn_cover {
+		margin-bottom: 20px;
+	}
+	.signup_btn_cover,.signup_back{
+		text-align: center;
+	}
+
+
+	/*マイページ関連*/
+	.page_layout.mypage_layout{
+		height: 100vh;
+	}
+
+	.back_btn{
+		text-align: center;
+	}
+
+	.mypage_container form{
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	/*フッター関連*/
+	.footer_wrapper{
+	    position: relative;
+	}
+
+	footer {
+		width: 100%;
+	    background-color: #89c7de;
+	    color: #fff;
+	    padding: 30px 0;
+	    position: absolute;
+	    bottom: 0;
+	}
+
+	footer p{
+		text-align: center;
+	}
+
+
+	/*トップに戻るボタン*/
+	#page_top{
+		width: 40px;
+		height: 40px;
+		position: fixed;
+		right: 30px;
+		bottom: 10px;
+		background:#83ccd2;
+	}
+	#page_top a{
+		position: relative;
+		display: block;
+		width: 40px;
+		height: 40px;
+		text-decoration: none;
+	}
+	#page_top:hover{
+		opacity: 0.6;
+	}
+
+	#page_top a::after{
+		content: '▲';
+		font-size: 18px;
+		font-weight: bold;
+		color: #fff;
+		position: absolute;
+		top: 10px;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		margin: auto;
+		text-align: center;
+	}
+
+
+	/*購入完了ページ用*/
+	.ItemBuyCompletion form{
+		text-align: center;
+	}
+
+	/*登録情報変更関連*/
+	.user_data_change{
+		width: 70%;
+	    margin: 0 auto;
+	}
+
+	.user_data_change .btn{
+		margin-left: 10px;
+		 padding: 2px 5px;
+	}
+
+	.page_layout.userdatachange_layout{
+		height: 100vh;
+	}
+
+	/*商品詳細画面関連*/
+	.item_detail_container,.review_container{
+		width: 50%;
+		text-align: center;
+		margin: 0 auto;
+		height: 100vh;
+	}
+
+	.item_detail_text{
+		margin:10px 0;
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.item_quantity{
+		font-size: 18px;
+	}
+
+	/*レビュー関連*/
+	.btn.favorite_add_btn,.btn.favorite_del_btn{
+		padding: 4px 10px;
+		margin: 15px 0;
+	}
+	.btn.review_btn{
+		padding: 4px 20px;
+		margin-bottom: 10px;
+	}
+
+	.review_click{
+		font-size: 18px;
+	}
+
+	details:open{
+		height: 100vh;
+	}
+
+	.review_point,.review_comment,.review_text,.review_ave{
+		margin-top:10px;
+		text-align: center;
+		font-size: 18px;
+	}
+
+	.review_ave{
+	margin: 20px 0;
+	}
+
+	.error_text.review_com_text{
+	 font-size: 20px;
+	 margin-bottom: 50px;
+	 padding: 0;
+	}
+
+	.btn.cart_in_btn{
+		margin-left: 10px;
+		padding: 4px 20px;
+	}
+
+	/*レビュー画面関連*/
+	.review_select{
+		font-size: 15px;
+		margin: 10px 0 20px;
+	}
+
+	.review_flex{
+	 display:flex;
+	 flex-flow: column;
+	}
+
+	.review_area{
+	　width: 100%;
+	  margin: 20px 0 30px;
+	}
+
+	.btn.review_btn,.favorite_form{
+	  text-align: center;
+	}
+
+	.page_layout.review_layout{
+		height: 100vh;
+	}
+
+	/*お気に入り完了画面関連*/
+	.favorite_form{
+		margin-top: 30px;
+	}
+
+	.page_layout.completion_layout{
+		height: 100vh;
+	}
+
+	.favorite_comp_text{
+		font-size: 25px;
+	}
+
+	/*お気に入り一覧画面関連*/
+	.favoritelist_form{
+		text-align: center;
+	}
+
+	.page_layout.favoritelist_layout{
+		height: 100vh;
+		margin-bottom: 60px;
+	}
+
+	.favoritelist_table{
+		display:flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: 10px;
+	}
+
+	.favoritelist_table tr{
+		display:flex;
+		flex-direction:column;
+	}
+
+	.favoritelist_td{
+		margin-top:5px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.btn.delete_btn{
+		margin-left: 15px;
+	}
+
+	.btn.mypage_back_btn{
+		margin-top:30px;
+	}
+
+	/*カート画面関連*/
+	.page_layout.cart_layout{
+		height: 100vh;
+	}
+	.cart_container{
+		width: 50%;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.cart_container .cart_form{
+		display:flex;
+		flex-direction:column;
+		 justify-content: center;
+	}
+
+	.btn.cart_item_btn{
+		text-align: center;
+		margin: 20px auto;
+	}
+
+	.btn.cart_delete{
+		padding: 5px 20px;
+		margin-top:15px;
+		margin-bottom: 35px;
+	}
+
+	.cart_item{
+		font-size: 20px;
+		text-align: center;
+		line-height: 1.2;
+	}
+
+
+	.cart_text{
+		text-align: center;
+		margin: 0 auto;
+	}
+	.item_image.cart_img{
+		margin: 0 auto;
+	}
+
+	/*購入確認画面関連*/
+
+	.item_buy_wrap{
+		display: flex;
+		align-items: center;
+	}
+	.item_buy_image{
+		margin-bottom: 40px;
+	}
+
+	.item_text_wrap{
+		display: flex;
+		flex-direction:column;
+		padding-left: 15px;
+	}
+
+	.item_buy_list{
+		font-size: 20px;
+		line-height: 1.1;
+		text-align: left;
+		margin-bottom:10px;
+	}
+
+	.item_check_wrap{
+		display: flex;
+		justify-content:space-between;
+		margin-top: 30px;
+	}
+	.item_check_wrap input {
+		width: 50%;
+	}
+
+	/* 購入方法関連 */
+	.item_pay_wrap{
+		margin-top: 30px;
+	}
+
+	.item_pay_list{
+		margin-bottom: 20px;
+		text-align: center;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.item_pay_how{
+		display: flex;
+		justify-content: space-around;
+	  	align-items: center;
+	}
+
+	.item_pay_btn:first-child{
+		margin-left: 0;
+	}
+
+	.item_pay_btn{
+		font-size: 18px;
+		margin-left: 5px;
+	}
+
+	/*購入ボタン*/
+	.item_buy_form{
+		margin-top: 30px;
+		text-align: center;
+	}
+
+	/*購入完了ページ*/
+	.page_layout.item_buy_completion_layout{
+		height: 100vh;
+	}
+
+	/*購入履歴画面*/
+	.item_buylog_container{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.item_buylog_wrap{
+		margin-bottom: 100px;
+	}
+
+	.item_buylog_text{
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.item_buylog_form {
+		text-align: center;
+	}
+
+	.btn.item_buylog_btn{
+		margin: 15px 0 20px;
+	}
+
+
+/*タブレット対応 600pxから1024px*/
+@media screen and (min-width: 600px) and (max-width: 1024px) { /*ウィンドウ幅が600pxから最大1024pxまでの場合に適用*/
+
+		/*body*/
+		body{
+			background-color: #ff69b4;　 /*ピンク色*/
+			position: relative;
+		}
+
+		/*ヘッダーここから*/
+		header{
+			background-color:#c1e4e9;
+			width: 100%
+		}
+
+		.header_wrap{
+			margin: 0 20px;
+		}
+
+		header ul li {
+			margin-left: 20px;
+		}
+
+		.header_word {
+			margin: 20px;
+			font-size: 15px;
+			padding: 0 15px;
+			margin: 10px;
+			margin-left: 30px;
+			padding: 10px 0;
+
+		}
+
+		/*ヘッダーbutton*/
+		.header_cart_btn, .header_mypage_btn, .header_search_btn{
+			max-width: 35px;
+			max-height: 35px;
+		}
+	/*ヘッダーここまで*/
 }
 
 /*スマホ対応 320pxから599px*/
 @media screen and (max-width: 599px) { /*ウィンドウ幅が最大599pxまでの場合に適用*/
-	body {
-		  	background-color: #3cb371; /*緑色*/
-		  }
-}
+
+		/*body*/
+		body{
+			background-color: #3cb371; /*緑色*/
+			position: relative;
+			max-width: 599px;
+			margin: 0 auto;
+		}
+
+		/*ヘッダーここから*/
+		header{
+			background-color:#c1e4e9;
+			width: 100%;
+			height: 100%;
+		}
+
+		.header_wrap{
+            display: flex;
+            flex-wrap: wrap;
+			margin: 0 10px;
+		}
+
+		header nav{
+			margin: 0 auto;
+		}
+
+		header ul li {
+			margin-left: 20px;
+		}
+
+		.header_word {
+			margin: 10px;
+			font-size: 15px;
+			padding: 0 15px;
+			margin-left: 20px;
+			padding: 10px 0;
+
+		}
+
+		/*ヘッダーbutton*/
+		.header_cart_btn, .header_mypage_btn, .header_search_btn{
+			max-width:  30px;
+			max-height: 30px;
+		}
+	/*ヘッダーここまで*/
+
+	/*トップここから*/
+	.top_image{
+	    height: 100vh;
+	    margin: 0;
+	}
+
+	/*トップ画面のテキスト*/
+	.top_text {
+	    width: 100%;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+	    -webkit- transform: translateY(-50%) translateX(-50%);
+	    font-size: 50px;
+	}
+
+	.top_text h1,.top_text p{
+		text-align: center;
+	}
 
 
-/*タブレット対応 600pxから1024px*/
-@media screen and (min-width: 600px) and (max-width: 1024px) { /*ウィンドウ幅が最大1024pxまでの場合に適用*/
-	body {
-		  	background-color: #ff69b4;　 /*ピンク色*/
-		  }
+	/*トップ画面のログインボタン*/
+	.top_login_btn {
+	    margin-top: 20px;
+	    left: 50%;
+	    transform: translateX(-50%);
+		border-bottom: solid 5px #778899;
+		font-size: 30px;
+		color: white;
+		font-weight: bold;
+	}
+
+
+
 }
+
 
