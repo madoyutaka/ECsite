@@ -96,7 +96,7 @@
 		     	<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 					<h3 class="item_select_btn">
 						<button class="item" type="submit" name="btnItemDetailTransition" value="${randomItem.itemNo}">
-							<img class="item_image" src="./img/${randomItem.itemImage}" alt="商品画像">
+							<img class="item_image" src="img/furniture/${randomItem.itemImage}" alt="商品画像">
 							<p class="item_name"><c:out value="${randomItem.itemName}" default="取得失敗"/></p>
 						<p class="item_price">お値段：<c:out value="${randomItem.itemPrice}" default="取得失敗"/>円</p>
 						</button>
