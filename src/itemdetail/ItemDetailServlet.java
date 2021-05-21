@@ -92,9 +92,21 @@ public class ItemDetailServlet extends HttpServlet {
 					ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
 					ReviewJdbc reviewJdbc = new ReviewJdbc();
 					reviewList = reviewJdbc.getReviewData(item);
+					//レビューの平均を取得
+					double reviewAverage = 0.0;
+					if(reviewList.size() > 0) {
+						reviewAverage = newLogic.getReviewAverage(reviewList, item);
+						//小数点第二位で四捨五入
+						System.out.println("四捨五入前："+reviewAverage);
+						reviewAverage = ((double)Math.round(reviewAverage * 10)) / 10;
+						System.out.println("四捨五入後："+reviewAverage);
+					}else{
+						reviewAverage = 0.0;
+					}
 					//値を渡す
 					request.setAttribute("itemData", itemBean);
 					request.setAttribute("reviewList", reviewList);
+					request.setAttribute("reviewAverage", reviewAverage);
 					req = request.getRequestDispatcher("/jsp/ItemDetail.jsp");
 					req.forward(request, response);
 					return;
