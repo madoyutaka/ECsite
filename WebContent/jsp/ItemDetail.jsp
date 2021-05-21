@@ -57,7 +57,7 @@
 			<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
 			<c:choose>
 				<c:when test="${resultText != null}">
-					<c:out value="${resultText}"/>
+					<h1 class="error_text review_com_text"><c:out value="${resultText}"/></h1>
 				</c:when>
 				<c:when test="${resultText == null}">
 					<br>
@@ -71,8 +71,7 @@
 
 
 			<p class="item_detail_text">${itemData.itemName} ${itemData.itemPrice}円</p>
-			<br>
-			<c:out value="レビュー平均：${reviewAverage}"/>
+			<p class="review_ave">レビュー平均：<c:out value="${reviewAverage}"/></p>
 
 			<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 				<a class="item_quantity">個数</a>
