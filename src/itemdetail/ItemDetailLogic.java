@@ -34,6 +34,14 @@ public class ItemDetailLogic {
 		}
 		System.out.println("レビューの合計："+ totalReviewScore + "レビューの数："+reviewCount);
 		reviewAverage = totalReviewScore / reviewCount;
+		//小数点第二位で四捨五入
+		if(reviewList.size() > 0) {
+			System.out.println("四捨五入前："+reviewAverage);
+			reviewAverage = ((double)Math.round(reviewAverage * 10)) / 10;
+			System.out.println("四捨五入後："+reviewAverage);
+		}else{
+			reviewAverage = 0.0;
+		}
 
 		return reviewAverage;
 	}
