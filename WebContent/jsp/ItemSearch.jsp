@@ -60,7 +60,14 @@
 						<form  class="item_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 						<h3 class="item_select_btn">
 							<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
-								<img src="./img/furniture/${item.itemImage}" class="item_image">
+								<div class="imgPosition">
+								<img src="img/furniture/${item.itemImage}" class="item_image">
+										<c:choose>
+											<c:when test="${reviewAverageHmap[item.itemNo] >= 4.0}">
+												<img class ="highRatingImg" src="img/icon/imghighrating.png">
+											</c:when>
+										</c:choose>
+								</div>
 								<p class="item_name"><c:out value="${item.itemName}" default="取得失敗"/></p>
 							<p class="item_price">お値段：<c:out value="${item.itemPrice}" default="取得失敗"/>円</p>
 							</button>
@@ -80,8 +87,6 @@
 	</div>
 
   <%@include file= "Footer.jsp" %>
-
-
 
 </body>
 </html>
