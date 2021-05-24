@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ItemBuyLogBean {
 	int itemBuyCount;
+	int itemTotalPrice;
 	Date itemBuyDate;
 	int itemNo;
 	String itemName = null;
@@ -14,6 +15,13 @@ public class ItemBuyLogBean {
 	}
 	public void setItemBuyCount(int itemBuyCount) {
 		this.itemBuyCount = itemBuyCount;
+	}
+
+	public int getItemTotalPrice() {
+		return itemTotalPrice;
+	}
+	public void setItemTotalPrice(int itemTotalPrice) {
+		this.itemTotalPrice = itemTotalPrice;
 	}
 
 	public Date getItemBuyDate() {
