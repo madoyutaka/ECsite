@@ -1,6 +1,7 @@
 package itemdetail;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import bean.ItemBean;
 import bean.ReviewBean;
@@ -13,17 +14,36 @@ public class ItemDetailLogic {
 			ItemBean returnBean = null;
 			ItemJdbc itemjdbc = new ItemJdbc();
 
-
 					//データベースに接続する。
 				    returnBean = itemjdbc.getItemData(ItemNo);
 				    System.out.println(returnBean);
-
 
 			System.out.println(returnBean+"を返します。");
 			return returnBean;
 		}
 
-//レビューの平均を取得
+	//複数の商品のレビューの平均点を取得し、HashMapに保存。
+	public HashMap<Integer, Double> getReviewAverageList(ArrayList<ItemBean> itemSearchList){
+		ReviewJdbc reviewJdbc = new ReviewJdbc();
+		//複数の商品のレビューの平均点を保存するためのHashMap。KeyはitemNo。
+		HashMap<Integer, Double> reviewAverageHmap = new HashMap<Integer, Double>();
+		//レビューの平均点を保存するためのreviewAverage
+		//レビューを保存するためのreviewList
+		for(ItemBean item: itemSearchList) {
+			//レビューを取得
+			ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
+			reviewList = reviewJdbc.getReviewData(item.getItemNo());
+			System.out.println(item.getItemName()+"のレビュー数は"+reviewList.size()+"です");
+			//レビューの平均点を取得
+			Double reviewAverage = getReviewAverage(reviewList, item.getItemNo());
+			//HashMapに保存
+			reviewAverageHmap.put(item.getItemNo(), reviewAverage);
+		}
+
+		return reviewAverageHmap;
+	}
+
+//レビューの平均点を取得
 	public double getReviewAverage(ArrayList<ReviewBean> reviewList, int itemNo) {
 		ReviewJdbc reviewJdbc = new ReviewJdbc();
 		int reviewCount = reviewJdbc.reviewCount(itemNo);
@@ -32,13 +52,12 @@ public class ItemDetailLogic {
 		for(ReviewBean review: reviewList) {
 			totalReviewScore += review.getReviewScore();
 		}
-		System.out.println("レビューの合計："+ totalReviewScore + "レビューの数："+reviewCount);
+		System.out.println("合計点："+totalReviewScore);
 		reviewAverage = totalReviewScore / reviewCount;
+		System.out.println(totalReviewScore+" / "+reviewCount+" = "+reviewAverage);
 		//小数点第二位で四捨五入
 		if(reviewList.size() > 0) {
-			System.out.println("四捨五入前："+reviewAverage);
 			reviewAverage = ((double)Math.round(reviewAverage * 10)) / 10;
-			System.out.println("四捨五入後："+reviewAverage);
 		}else{
 			reviewAverage = 0.0;
 		}
