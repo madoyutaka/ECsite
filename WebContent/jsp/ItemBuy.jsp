@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file= "Header.jsp" %>
-	
+
 	<div class="page_layout itembuy_layout">
 		<h1 class="page_ttl">購入確認</h1>
 
@@ -32,7 +32,8 @@
 							 <div class="item_text_wrap">
 							 	<p class="item_buy_list">商品名：<c:out value="${itemData.itemName}"></c:out></p>
 								<p class="item_buy_list">購入数：<c:out value="${cartData[status.index].itemBuyCount}"></c:out>個</p>
-								<p class="item_buy_list">商品１個の金額：<c:out value="${itemData.itemPrice}"></c:out>円</p>
+								<p class="item_buy_list">購入金額：<c:out value="${itemTotalPriceHmap[itemData.itemNo]}"></c:out>円</p>
+
 							 </div>
 						</div>
 
