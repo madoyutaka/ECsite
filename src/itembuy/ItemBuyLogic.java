@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import bean.CartBean;
 import bean.ItemBean;
@@ -13,7 +14,7 @@ import jdbc.ItemJdbc;
 public class ItemBuyLogic {
 	//購入完了へ遷移する際に購入履歴に商品データを渡す
 	//カートの中身を空にする
-	public String itemBuy(ArrayList<CartBean> loginItemSession, ArrayList<ItemBean> cartItemData,  int userNo) {
+	public String itemBuy(ArrayList<CartBean> loginItemSession,  HashMap<Integer, Integer> itemTotalPriceHmap, int userNo) {
 		ItemBuyLogJdbc itemBuyLogJdbc = new ItemBuyLogJdbc();
 
 		//現在の日付を取得する
@@ -22,7 +23,7 @@ public class ItemBuyLogic {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String stringDate = simpleDateFormat.format(date);
 		//問題が無ければ、購入処理を行う。loginItemSessionにはitemNo、itemBuyCountが入っている
-		return itemBuyLogJdbc.setItemBuyLog(loginItemSession, stringDate, userNo);
+		return itemBuyLogJdbc.setItemBuyLog(loginItemSession, itemTotalPriceHmap, stringDate, userNo);
 
 	}
 
