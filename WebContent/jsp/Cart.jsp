@@ -17,7 +17,6 @@
 </head>
 <body>
 <%@include file= "Header.jsp" %>
-	
 	<div class="page_layout cart_layout">
 		<h1 class="page_ttl">ショッピングカート</h1>
 		<div class="cart_container">
@@ -33,7 +32,7 @@
 
 						<div class="cart_text">
 							<p class="cart_item">購入数：<c:out value="${cartData[status.index].itemBuyCount}"></c:out>個<p>
-							<p  class="cart_item">商品１個の金額：<c:out value="${itemData.itemPrice}"></c:out>円<p>
+							<p  class="cart_item">金額：<c:out value="${itemTotalPriceHmap[itemData.itemNo]}"></c:out>円<p>
 						</div>
 
 						<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
