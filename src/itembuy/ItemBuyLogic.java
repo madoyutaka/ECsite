@@ -1,5 +1,6 @@
 package itembuy;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class ItemBuyLogic {
 	}
 
 	//購入完了へ遷移する際に在庫数を減らす
-	public String itemBuyStockLogic(ArrayList<CartBean> loginItemSession) {
+	public String itemBuyStockLogic(ArrayList<CartBean> loginItemSession){
 		ItemJdbc itemJdbc = new ItemJdbc();
 		int itemStock;
 		int cartItemNo;
@@ -49,9 +50,14 @@ public class ItemBuyLogic {
 		}
 
 		//データベースに接続する。
-			return itemJdbc.itemBuyStock(loginItemSession);
+			try {
+				return itemJdbc.itemBuyStock(loginItemSession);
 
-
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+				return "購入処理中にエラーが発生しました。";
+			}
 
 	}
 }
