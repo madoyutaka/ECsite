@@ -2,6 +2,7 @@ package cart;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.CartBean;
+import bean.ItemBean;
 import bean.UserBean;
 
 @WebServlet("/CartServlet")
@@ -56,14 +58,17 @@ public class CartServlet extends HttpServlet {
 					setItemNo = Integer.parseInt(request.getParameter("btnCartTransition"));
 					//テスト用
 					int setItemBuyCount = Integer.parseInt(request.getParameter("itemNum"));
-
 					//インスタンスを生成し、処理を行った結果を格納する。
 					CartLogic newLogic = new CartLogic();
 					loginItemSession = newLogic.cartIn(setItemNo, setItemBuyCount, loginItemSession);
 					session.setAttribute("CartItem",loginItemSession);
 					//表示用のデータを取得し、パラメータ名set
+					ArrayList<ItemBean> cartItemData = newLogic.getCartItemData(loginItemSession);
 					request.setAttribute("cartData", loginItemSession);
-					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
+					request.setAttribute("cartItemData", cartItemData);
+					//合計金額が入ったHashMap。KeyはItem_no
+					HashMap<Integer, Integer> itemTotalPriceHmap = newLogic.getCartTotalPriceHmap(loginItemSession, cartItemData);
+					request.setAttribute("itemTotalPriceHmap", itemTotalPriceHmap);
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
@@ -79,8 +84,12 @@ public class CartServlet extends HttpServlet {
 					loginItemSession = newLogic.remove(setItemNo, loginItemSession);
 					session.setAttribute("CartItem",loginItemSession);
 					//パラメータ名set
+					ArrayList<ItemBean> cartItemData = newLogic.getCartItemData(loginItemSession);
 					request.setAttribute("cartData", loginItemSession);
-					request.setAttribute("cartItemData", newLogic.getCartItemData(loginItemSession));
+					request.setAttribute("cartItemData", cartItemData);
+					//合計金額が入ったHashMap。KeyはItem_no
+					HashMap<Integer, Integer> itemTotalPriceHmap = newLogic.getCartTotalPriceHmap(loginItemSession, cartItemData);
+					request.setAttribute("itemTotalPriceHmap", itemTotalPriceHmap);
 					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
@@ -89,13 +98,15 @@ public class CartServlet extends HttpServlet {
 
 				//ヘッダー用
 				if(request.getParameter("btnHeaderCartTransition")!=null) {
-					//画面遷移
 					CartLogic newLogic = new CartLogic();
-					//カートの情報を取得
-					ArrayList<CartBean> cartItem = (ArrayList<CartBean>) session.getAttribute("CartItem");
 					//表示用のデータを取得し、パラメータ名set
-					request.setAttribute("cartData", cartItem);
-					request.setAttribute("cartItemData", newLogic.getCartItemData(cartItem));
+					ArrayList<ItemBean> cartItemData = newLogic.getCartItemData(loginItemSession);
+					request.setAttribute("cartData", loginItemSession);
+					request.setAttribute("cartItemData", cartItemData);
+					//合計金額が入ったHashMap。KeyはItem_no
+					HashMap<Integer, Integer> itemTotalPriceHmap = newLogic.getCartTotalPriceHmap(loginItemSession, cartItemData);
+					request.setAttribute("itemTotalPriceHmap", itemTotalPriceHmap);
+					//画面遷移
 					System.out.println("カート画面に遷移します。");
 					request.getRequestDispatcher("jsp/Cart.jsp").forward(request, response);
 					return;

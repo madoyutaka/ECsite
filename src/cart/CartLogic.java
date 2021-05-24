@@ -1,6 +1,7 @@
 package cart;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import bean.CartBean;
 import bean.ItemBean;
@@ -42,6 +43,7 @@ public class CartLogic {
 		return cartItemData;
 	}
 
+	//カートから商品を削除する
 	public ArrayList<CartBean> remove(int setItemNo, ArrayList<CartBean> sessionItemList) {
 		ArrayList<CartBean> itemInCartList = new ArrayList<CartBean>();
 		itemInCartList = sessionItemList;
@@ -53,6 +55,18 @@ public class CartLogic {
 			}
 		}
 		return  itemInCartList ;
+	}
+
+	//カートの商品の金額が保存されたHashMapを作成する。
+	public HashMap<Integer, Integer> getCartTotalPriceHmap(ArrayList<CartBean> cartData, ArrayList<ItemBean> cartItemData){
+		HashMap<Integer, Integer> returnHmap = new HashMap<Integer, Integer>();
+		int no = 0;
+		for(ItemBean cartItem: cartItemData) {
+			returnHmap.put(cartItem.getItemNo(), (cartItem.getItemPrice()*cartData.get(no).getItemBuyCount()) );
+			no++;
+		}
+
+		return returnHmap;
 	}
 
 }
