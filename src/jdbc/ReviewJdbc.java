@@ -14,7 +14,6 @@ public class ReviewJdbc {
 	//returnする文章を入れる
 		String returnText = null;
 		String query = null;
-		ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -27,6 +26,7 @@ public class ReviewJdbc {
 
 		//レビューを取得する
 		public ArrayList<ReviewBean> getReviewData(int setItemNo) {
+			ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(url, id, pw);
