@@ -186,29 +186,37 @@ public class ItemJdbc {
 
 
 	//購入した商品の在庫数を購入した分だけ減らす
-		public String itemBuyStock(ArrayList<CartBean> loginItemSession) {
+		public String itemBuyStock(ArrayList<CartBean> loginItemSession)throws SQLException {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(url, id, pw);
+				conn.setAutoCommit(false);
 				stmt =conn.createStatement();
 
 				//SQL文
 				query = "UPDATE item set  item_stock = item_stock - ?  WHERE item_no LIKE ?";
+
 				//PreparedStatementオブジェクトを使用
 				pstmt = conn.prepareStatement(query);
+				//確認用
+
 				for(CartBean list: loginItemSession) {
 					pstmt.setInt(1, list.getItemBuyCount());
 					pstmt.setInt(2, list.getItemNo());
+
 					//SQLの実行
 					pstmt.executeUpdate();
+					//commit
+					conn.commit();
 				}
-
 			}catch(ClassNotFoundException ex) {
-				ex.printStackTrace();
-				return "購入処理中にエラーが発生しました。";
-			}catch(SQLException ex) {
-				ex.printStackTrace();
-				return "購入処理中にエラーが発生しました。";
+					ex.printStackTrace();
+					return "購入処理中にエラーが発生しました。";
+			} catch(SQLException ex) {
+				//rollback
+			    conn.rollback();
+			    ex.printStackTrace();
+			    return "購入処理中にエラーが発生しました。";
 			}finally {
 				try {
 					if(conn != null) { conn.close(); }
@@ -220,8 +228,7 @@ public class ItemJdbc {
 					ex.printStackTrace();
 					return "購入処理中にエラーが発生しました。";
 					}
-
-				}
+			}
 			return "購入処理が完了しました。";
 		}
 
