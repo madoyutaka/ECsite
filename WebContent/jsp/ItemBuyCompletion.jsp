@@ -27,6 +27,7 @@
 		</div>
 	</div>
 
-<%@include file= "Footer.jsp" %>
+	<%@include file= "Footer.jsp" %>
+
 </body>
 </html>
