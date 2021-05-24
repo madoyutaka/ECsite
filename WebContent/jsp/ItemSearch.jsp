@@ -79,11 +79,7 @@
 		</c:choose>
 	</div>
 
-  	<div class="footer_wrapper">
-	    <footer>
-			<p class="footer_text">2021/05/14/ECSite</p>
-		</footer>
-	</div>
+  <%@include file= "Footer.jsp" %>
 
 
 
