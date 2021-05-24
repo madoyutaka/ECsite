@@ -45,6 +45,7 @@
 										<div class="item_buylog_text">
 											<p class="item_buylog_day">購入日：<c:out value="${log.itemBuyDate}" default="取得失敗"/></p>
 											<p class="item_buylog_num">購入数：<c:out value="${log.itemBuyCount}" default="取得失敗"/></p>
+											<p class="item_buylog_num">購入金額：<c:out value="${log.itemTotalPrice}" default="取得失敗"/></p>
 										</div>
 									</div>
 
