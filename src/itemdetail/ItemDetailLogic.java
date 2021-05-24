@@ -10,17 +10,14 @@ import jdbc.ReviewJdbc;
 
 public class ItemDetailLogic {
 	public ItemBean detailLogic(int ItemNo) {
-		  //returnする文章を入れる
-			ItemBean returnBean = null;
-			ItemJdbc itemjdbc = new ItemJdbc();
+		//returnする文章を入れる
+		ItemBean returnBean = null;
+		ItemJdbc itemjdbc = new ItemJdbc();
+		//データベースに接続する。
+		returnBean = itemjdbc.getItemData(ItemNo);
 
-					//データベースに接続する。
-				    returnBean = itemjdbc.getItemData(ItemNo);
-				    System.out.println(returnBean);
-
-			System.out.println(returnBean+"を返します。");
-			return returnBean;
-		}
+		return returnBean;
+	}
 
 	//複数の商品のレビューの平均点を取得し、HashMapに保存。
 	public HashMap<Integer, Double> getReviewAverageList(ArrayList<ItemBean> itemSearchList){
@@ -33,7 +30,6 @@ public class ItemDetailLogic {
 			//レビューを取得
 			ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
 			reviewList = reviewJdbc.getReviewData(item.getItemNo());
-			System.out.println(item.getItemName()+"のレビュー数は"+reviewList.size()+"です");
 			//レビューの平均点を取得
 			Double reviewAverage = getReviewAverage(reviewList, item.getItemNo());
 			//HashMapに保存
@@ -52,9 +48,7 @@ public class ItemDetailLogic {
 		for(ReviewBean review: reviewList) {
 			totalReviewScore += review.getReviewScore();
 		}
-		System.out.println("合計点："+totalReviewScore);
 		reviewAverage = totalReviewScore / reviewCount;
-		System.out.println(totalReviewScore+" / "+reviewCount+" = "+reviewAverage);
 		//小数点第二位で四捨五入
 		if(reviewList.size() > 0) {
 			reviewAverage = ((double)Math.round(reviewAverage * 10)) / 10;
