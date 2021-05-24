@@ -2,6 +2,7 @@ package itembuy;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,11 +65,15 @@ public class ItemBuyServlet extends HttpServlet {
 
 				//購入確認画面へ遷移する
 				if(request.getParameter("btnItemBuyTransition")!=null) {
+					//合計金額が入ったHashMap。KeyはItem_no
+					HashMap<Integer, Integer> itemTotalPriceHmap = newLogic.getCartTotalPriceHmap(loginItemSession, ItemBeanList);
+
 					//表示用のデータを取得し、パラメータ名set
 					userBean = userJdbc.getUserData(loginUserNo);
 					request.setAttribute("loginUserData", userBean);
 					request.setAttribute("cartData", loginItemSession);
 					request.setAttribute("cartItemData", ItemBeanList);
+					request.setAttribute("itemTotalPriceHmap", itemTotalPriceHmap);
 					request.getRequestDispatcher("jsp/ItemBuy.jsp").forward(request, response);
 					return;
 				}
