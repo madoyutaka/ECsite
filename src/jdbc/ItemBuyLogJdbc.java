@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import bean.CartBean;
 import bean.ItemBuyLogBean;
@@ -46,6 +47,7 @@ public class ItemBuyLogJdbc {
 			while(rs.next()) {
 					ItemBuyLogBean itemBuyLogBean = new ItemBuyLogBean();
 					itemBuyLogBean.setItemBuyCount(rs.getInt("item_buy_count"));
+					itemBuyLogBean.setItemTotalPrice(rs.getInt("item_total_price"));
 					itemBuyLogBean.setItemBuyDate(rs.getDate("item_buy_date"));
 					itemBuyLogBean.setItemNo(rs.getInt("item_no"));
 					itemBuyLogBean.setItemName(rs.getString("item_name"));
@@ -79,22 +81,23 @@ public class ItemBuyLogJdbc {
 
 
 	//商品購入履歴の保存
-		public String setItemBuyLog(ArrayList<CartBean> cartList, String buyDate, int userNo) {
+		public String setItemBuyLog(ArrayList<CartBean> cartList, HashMap<Integer, Integer> itemTotalPriceHmap, String buyDate, int userNo) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(url, id, pw);
 				stmt =conn.createStatement();
 
 				//履歴を保存する
-				query = "INSERT INTO itembuylog(item_buy_count, item_buy_date, item_no, user_no)"
-						+"VALUES(?, ?, ?, ?)";
+				query = "INSERT INTO itembuylog(item_buy_count, item_total_price, item_buy_date, item_no, user_no)"
+						+"VALUES(?, ?, ?, ?, ?)";
 				//PreparedStatementオブジェクトを使用
 				pstmt = conn.prepareStatement(query);
 				for(CartBean list: cartList) {
 					pstmt.setInt(1, list.getItemBuyCount());
-					pstmt.setString(2, buyDate);
-					pstmt.setInt(3, list.getItemNo());
-					pstmt.setInt(4, userNo);
+					pstmt.setInt(2, itemTotalPriceHmap.get(list.getItemNo()));
+					pstmt.setString(3, buyDate);
+					pstmt.setInt(4, list.getItemNo());
+					pstmt.setInt(5, userNo);
 					//SQLの実行
 					pstmt.executeUpdate();
 				}
