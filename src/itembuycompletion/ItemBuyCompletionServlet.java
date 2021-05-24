@@ -2,6 +2,7 @@ package itembuycompletion;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,8 +69,10 @@ public class ItemBuyCompletionServlet extends HttpServlet {
 
 			//画面遷移if文
 			if(itemBuyResultText.equals("購入処理が完了しました。")) {
+				//合計金額が入ったHashMap。KeyはItem_no
+				HashMap<Integer, Integer> itemTotalPriceHmap = newLogic.getCartTotalPriceHmap(loginItemSession, ItemBeanList);
 				//履歴保存処理
-				itemBuyLogResultText = itemBuyLogic.itemBuy(loginItemSession, ItemBeanList, loginUserNo);
+				itemBuyLogResultText = itemBuyLogic.itemBuy(loginItemSession, itemTotalPriceHmap, loginUserNo);
 				//表示用のデータを取得し、パラメータ名set
 				request.setAttribute("itemBuyResultText", itemBuyResultText);
 				request.setAttribute("itemBuyLogResultText", itemBuyLogResultText);
