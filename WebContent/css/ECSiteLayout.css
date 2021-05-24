@@ -76,6 +76,19 @@
 		text-align: center;
 	}
 
+	/*highRating表示共通処理*/
+	.imgPosition{
+		position:relative
+	}
+
+	.highRatingImg{
+		height: 60px;
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
 	/*img*/
 	img {
 		max-height: 300px;
