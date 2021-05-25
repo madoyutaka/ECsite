@@ -98,17 +98,17 @@ public class ItemDetailServlet extends HttpServlet {
 					int totalPageNo = newLogic.getReviewTotalPageNo(reviewList);
 					int selectPageNo;
 					//表示用のレビュー一覧、新しいものから5件表示
-					ArrayList<ReviewBean> displayReviewList = new ArrayList<ReviewBean>();
+					ArrayList<ReviewBean> showReviewList = new ArrayList<ReviewBean>();
 					if(reviewList.size() >= 1) {
 							selectPageNo = Integer.parseInt(request.getParameter("selectReviewPageNo"));
-							displayReviewList = newLogic.getDisplaytReviewList(reviewList, selectPageNo);
+							showReviewList = newLogic.getShowReviewList(reviewList, selectPageNo);
 					}else {
 						selectPageNo = 1;
-						displayReviewList = reviewList;
+						showReviewList = reviewList;
 					}
 					//値を渡す
 					request.setAttribute("itemData", itemBean);
-					request.setAttribute("reviewList", displayReviewList);
+					request.setAttribute("reviewList", showReviewList);
 					request.setAttribute("totalPageNo", totalPageNo);
 					request.setAttribute("selectReviewPageNo", selectPageNo);
 					request.setAttribute("reviewAverage", reviewAverage);
