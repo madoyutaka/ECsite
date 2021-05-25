@@ -44,15 +44,9 @@ public class ItemSearchServlet extends HttpServlet {
 		categoryHmap.put(5, "机");
 		categoryHmap.put(6, "その他");
 
-		//トップ画面から商品検索画面に遷移する際の処理
-		if(request.getParameter("btnItemListTransition")!=null) {
-				req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
-				req.forward(request, response);
-				return;
-			}
-
 		//カテゴリ検索
 		if(request.getParameter("btnCategorySelect")!=null) {
+			request.setAttribute("categoryHmap", categoryHmap);
 			int categoryNo = Integer.parseInt(request.getParameter("btnCategorySelect"));
 			ItemSearchLogic itemSearchLogic = new ItemSearchLogic();
 			itemSearchList = itemSearchLogic.categorySearch(categoryNo);
@@ -64,14 +58,21 @@ public class ItemSearchServlet extends HttpServlet {
 			//検索結果が1以上の場合
 			if(itemSearchList.size() >= 1) {
 				//ページ数を渡す
-				request.setAttribute("itemSearchListTotalPageNo", itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList));
-				//値を渡し、1ページ目を表示
-				request.setAttribute("itemSearchListPageNo", 1);
+				int totalPageNo = itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList);
+				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
+				//指定されたページが存在しない場合
+				if(totalPageNo < selectNo) {
+					request.setAttribute("errorText", "お探しのページは見つかりませんでした。");
+					req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
+					req.forward(request, response);
+					return;
+				}
 				//表示するためのリストを渡す
 				request.setAttribute("itemSearchList", itemSearchLogic.getShowItemSearchList(itemSearchList, selectNo));
 			}else {
 				//表示するためのリストを渡す
 				request.setAttribute("itemSearchList", itemSearchList);
+				request.setAttribute("errorText", "お探しの商品は見つかりませんでした。");
 			}
 
 			//値を渡す
@@ -85,12 +86,12 @@ public class ItemSearchServlet extends HttpServlet {
 
 		//商品検索ボタンが押された場合の処理
 		if(request.getParameter("btnItemSearchTransition")!=null) {
+			request.setAttribute("categoryHmap", categoryHmap);
 			//入力された文字を取得
 			itemSearchWord = request.getParameter("itemSearchWord");
 			//未入力の場合
 			if(itemSearchWord.equals("")) {
 				request.setAttribute("errorText", "検索ワードを入力してください。");
-				request.setAttribute("categoryHmap", categoryHmap);
 				req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 				req.forward(request, response);
 				return;
@@ -107,20 +108,26 @@ public class ItemSearchServlet extends HttpServlet {
 			//検索結果が1以上の場合
 			if(itemSearchList.size() >= 1) {
 				//ページ数を渡す
-				request.setAttribute("itemSearchListTotalPageNo", itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList));
-				//値を渡し、1ページ目を表示
-				request.setAttribute("itemSearchListPageNo", 1);
+				int totalPageNo = itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList);
+				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
+				//指定されたページが存在しない場合
+				if(totalPageNo < selectNo) {
+					request.setAttribute("errorText", "お探しのページは見つかりませんでした。");
+					req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
+					req.forward(request, response);
+					return;
+				}
 				//表示するためのリストを渡す
 				request.setAttribute("itemSearchList", itemSearchLogic.getShowItemSearchList(itemSearchList, selectNo));
-			}else {
+			}else{
 				//表示するためのリストを渡す
 				request.setAttribute("itemSearchList", itemSearchList);
+				request.setAttribute("errorText", "お探しの商品は見つかりませんでした。");
 			}
 
 			//値を渡す
 			request.setAttribute("itemSearchWord", itemSearchWord);
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
-			request.setAttribute("categoryHmap", categoryHmap);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 			req.forward(request, response);
 			return;
