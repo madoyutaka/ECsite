@@ -76,6 +76,7 @@ public class ItemSearchServlet extends HttpServlet {
 			//未入力の場合
 			if(itemSearchWord.equals("")) {
 				request.setAttribute("errorText", "検索ワードを入力してください。");
+				request.setAttribute("categoryHmap", categoryHmap);
 				req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 				req.forward(request, response);
 				return;
