@@ -59,10 +59,24 @@ public class ItemSearchServlet extends HttpServlet {
 			//複数の商品のレビューの平均点を保存するためのHashMap。KeyはitemNo。
 			HashMap<Integer, Double> reviewAverageHmap = new HashMap<Integer, Double>();
 			reviewAverageHmap = itemDetailLogic.getReviewAverageList(itemSearchList);
+			//選択されたページ番号
+			int selectNo = Integer.parseInt(request.getParameter("selectItemSearchListPageNo"));
+			//検索結果が1以上の場合
+			if(itemSearchList.size() >= 1) {
+				//ページ数を渡す
+				request.setAttribute("itemSearchListTotalPageNo", itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList));
+				//値を渡し、1ページ目を表示
+				request.setAttribute("itemSearchListPageNo", 1);
+				//表示するためのリストを渡す
+				request.setAttribute("itemSearchList", itemSearchLogic.getShowItemSearchList(itemSearchList, selectNo));
+			}else {
+				//表示するためのリストを渡す
+				request.setAttribute("itemSearchList", itemSearchList);
+			}
+
 			//値を渡す
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
 			request.setAttribute("categoryHmap", categoryHmap);
-			request.setAttribute("itemSearchList", itemSearchList);
 			request.setAttribute("selectCategoryNo", categoryNo);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 			req.forward(request, response);
@@ -88,8 +102,23 @@ public class ItemSearchServlet extends HttpServlet {
 			//複数の商品のレビューの平均点を保存するためのHashMap。KeyはitemNo。
 			HashMap<Integer, Double> reviewAverageHmap = new HashMap<Integer, Double>();
 			reviewAverageHmap = itemDetailLogic.getReviewAverageList(itemSearchList);
+			//選択されたページ番号
+			int selectNo = Integer.parseInt(request.getParameter("selectItemSearchListPageNo"));
+			//検索結果が1以上の場合
+			if(itemSearchList.size() >= 1) {
+				//ページ数を渡す
+				request.setAttribute("itemSearchListTotalPageNo", itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList));
+				//値を渡し、1ページ目を表示
+				request.setAttribute("itemSearchListPageNo", 1);
+				//表示するためのリストを渡す
+				request.setAttribute("itemSearchList", itemSearchLogic.getShowItemSearchList(itemSearchList, selectNo));
+			}else {
+				//表示するためのリストを渡す
+				request.setAttribute("itemSearchList", itemSearchList);
+			}
+
 			//値を渡す
-			request.setAttribute("itemSearchList", itemSearchList);
+			request.setAttribute("itemSearchWord", itemSearchWord);
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
 			request.setAttribute("categoryHmap", categoryHmap);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
