@@ -38,8 +38,8 @@ public class FavoriteListLogic {
 	public ArrayList<FavoriteBean> getShowList(ArrayList<FavoriteBean> faveList, int selectNo) {
 		//戻り値用
 		ArrayList<FavoriteBean> showList = new ArrayList<FavoriteBean>();
-		int plusNo = 3 * (selectNo - 1);
-		for(int no = 0; no <= 2; no++) {
+		int plusNo = 6 * (selectNo - 1);
+		for(int no = 0; no <= 5; no++) {
 			showList.add(faveList.get(no + plusNo));
 			if(no + plusNo == faveList.size() - 1) {
 				break;
@@ -57,10 +57,10 @@ public class FavoriteListLogic {
 			favoriteListTotalPageNo = 1;
 		}else {
 			//お気に入りが1件以上存在する場合
-			if(faveList.size() % 3 == 0) {
-				favoriteListTotalPageNo = faveList.size() / 3;
+			if(faveList.size() % 6 == 0) {
+				favoriteListTotalPageNo = faveList.size() / 6;
 			}else {
-				favoriteListTotalPageNo = (faveList.size() / 3) + 1;
+				favoriteListTotalPageNo = (faveList.size() / 6) + 1;
 			}
 		}
 		return favoriteListTotalPageNo;
