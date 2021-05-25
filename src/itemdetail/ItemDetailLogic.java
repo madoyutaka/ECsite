@@ -58,4 +58,36 @@ public class ItemDetailLogic {
 
 		return reviewAverage;
 	}
+
+	//表示用レビューを5件取得
+	public ArrayList<ReviewBean> getDisplaytReviewList(ArrayList<ReviewBean> reviewList, int selectNo){
+		ArrayList<ReviewBean> returnList = new ArrayList<ReviewBean>();
+		int plusNo = 5 * (selectNo - 1);
+		for(int no = 0; no <= 4; no++) {
+			returnList.add(reviewList.get(no + plusNo));
+			if(no + plusNo == reviewList.size() - 1) {
+				break;
+			}
+		}
+		return returnList;
+	}
+
+	//ページ数を計算する
+	public int getReviewTotalPageNo(ArrayList<ReviewBean> reviewList) {
+		//戻り値用
+		int reviewListTotalPageNo;
+		if(reviewList.size() == 0) {
+			//レビューが存在しない場合
+			reviewListTotalPageNo = 1;
+		}else {
+			//レビューが1件以上存在する場合
+			if(reviewList.size() % 5 == 0) {
+				reviewListTotalPageNo = reviewList.size() / 5;
+			}else {
+				reviewListTotalPageNo = (reviewList.size() / 5) + 1;
+			}
+		}
+		return reviewListTotalPageNo;
+	}
+
 }

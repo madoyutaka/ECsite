@@ -94,9 +94,23 @@ public class ItemDetailServlet extends HttpServlet {
 					reviewList = reviewJdbc.getReviewData(item);
 					//レビューの平均点を取得
 					double reviewAverage = newLogic.getReviewAverage(reviewList, item);
+					//ページ数取得
+					int totalPageNo = newLogic.getReviewTotalPageNo(reviewList);
+					int selectPageNo;
+					//表示用のレビュー一覧、新しいものから5件表示
+					ArrayList<ReviewBean> displayReviewList = new ArrayList<ReviewBean>();
+					if(reviewList.size() >= 1) {
+							selectPageNo = Integer.parseInt(request.getParameter("selectReviewPageNo"));
+							displayReviewList = newLogic.getDisplaytReviewList(reviewList, selectPageNo);
+					}else {
+						selectPageNo = 1;
+						displayReviewList = reviewList;
+					}
 					//値を渡す
 					request.setAttribute("itemData", itemBean);
-					request.setAttribute("reviewList", reviewList);
+					request.setAttribute("reviewList", displayReviewList);
+					request.setAttribute("totalPageNo", totalPageNo);
+					request.setAttribute("selectReviewPageNo", selectPageNo);
 					request.setAttribute("reviewAverage", reviewAverage);
 					req = request.getRequestDispatcher("/jsp/ItemDetail.jsp");
 					req.forward(request, response);
