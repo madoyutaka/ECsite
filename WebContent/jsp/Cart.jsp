@@ -28,6 +28,7 @@
 						<form class="cart_form" action = "http://localhost:8080/ECSite/ItemDetailServlet" method = "POST">
 							<img class="item_image cart_img" src="img/furniture/${itemData.itemImage}">
 							<button class="btn cart_item_btn" type="submit" name="btnItemDetailTransition" value="${itemData.itemNo}">${itemData.itemName}</button>
+							<input type ="hidden" name="selectReviewPageNo" value="1">
 						</form>
 
 						<div class="cart_text">

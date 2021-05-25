@@ -33,6 +33,7 @@
 									<td class="favoritelist_td">
 										<form name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 											<button class="btn" type="submit" name="btnItemDetailTransition" value="${a.itemNo}">${a.itemName}</button>
+											<input type ="hidden" name="selectReviewPageNo" value="1">
 										</form>
 
 										<form name="btnItemDetail" action="http://localhost:8080/ECSite/FavoriteListCompletionServlet" method="POST">

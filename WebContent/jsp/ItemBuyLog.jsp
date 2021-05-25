@@ -40,6 +40,7 @@
 
 										<form class="item_buylog_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 											<button class="btn item_buylog_btn" type="submit" name="btnItemDetailTransition" value="${log.itemNo}">${log.itemName}</button>
+											<input type ="hidden" name="selectReviewPageNo" value="1">
 										</form>
 
 										<div class="item_buylog_text">

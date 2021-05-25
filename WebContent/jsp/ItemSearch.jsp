@@ -60,6 +60,7 @@
 						<form  class="item_form" name="btnItemDetail" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 						<h3 class="item_select_btn">
 							<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
+							<input type ="hidden" name="selectReviewPageNo" value="1">
 								<div class="imgPosition">
 								<img src="img/furniture/${item.itemImage}" class="item_image">
 										<c:choose>

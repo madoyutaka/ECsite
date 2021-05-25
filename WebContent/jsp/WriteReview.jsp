@@ -44,6 +44,8 @@
 					<div class="review_flex">
 						<textarea class="review_area" name="reviewComment" rows=10 cols=25></textarea>
 						<input class="btn review_btn" type="submit" name="btnWriteReview" value="送信"/>
+						<input type ="hidden" name="btnItemDetailTransition" value="btnItemDetailTransition">
+						<input type ="hidden" name="selectReviewPageNo" value="1">
 					</div>
 
 				</form>

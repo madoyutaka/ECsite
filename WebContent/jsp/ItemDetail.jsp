@@ -81,7 +81,7 @@
 			</form>
 
 			<!-- loginUserItemBuyLogが0件の場合、1件以上の場合 -->
-			<details>
+			<details open>
 			<summary class="review_click">レビューを見る</summary>
 				<p>
 					<c:choose>
@@ -89,15 +89,29 @@
 							<c:forEach items="${reviewList}" var="review">
 									<p class="review_point">点数：<c:out value="${review.reviewScore}" default="取得失敗"/></p>
 									<p class="review_comment">コメント：<c:out value="${review.reviewComment}" default="取得失敗"/></p>
+									<br>
 							</c:forEach>
 						</c:when>
 
 						<c:when test="${ fn:length(loginUserItemBuyLog) == 0}">
 							<p class="review_text">レビューはありません。</p>
 						</c:when>
-
 					</c:choose>
 				</p>
+
+					<c:choose>
+						<c:when test="${ fn:length(reviewList) >= 1}">
+							<form name="btnReviewPagination" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
+								<div class="pagination">
+									<c:forEach begin="1" end="${totalPageNo}" step="1" var = "a">
+										<button class="btn page_btn" type="submit" name="selectReviewPageNo" value="${a}">${a}</button>
+									</c:forEach>
+								</div>
+								<input type ="hidden" name="btnItemDetailTransition" value="${itemData.itemNo}">
+							</form>
+						</c:when>
+					</c:choose>
+
 			</details>
 		</div>
 
