@@ -21,12 +21,16 @@
 			<div class="category_wrap">
 						<p class="category_ttl">カテゴリ一覧</p>
 							<form  class="category_container" action = "http://localhost:8080/ECSite/ItemSearchServlet" method = "POST">
-								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="1">椅子</button>
-								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="2">収納</button>
-								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="3">照明</button>
-								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="4">寝具</button>
-								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="5">机</button>
-								<button class="btn category_btn" type="submit" name="btnCategorySelect" value="6">その他</button>
+								<c:forEach items="${categoryHmap}" var="category">
+									<c:choose>
+										<c:when test="${category.key == selectCategoryNo}">
+											<button class="btn category_btn select_btn" type="submit" name="btnCategorySelect" value="${category.key}">${category.value}</button>
+										</c:when>
+										<c:when test="${category.key != selectCategoryNo}">
+											<button class="btn category_btn" type="submit" name="btnCategorySelect" value="${category.key}">${category.value}</button>
+										</c:when>
+									</c:choose>
+								</c:forEach>
 							</form>
 
 			</div>
