@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>購入履歴</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -44,9 +45,9 @@
 										</form>
 
 										<div class="item_buylog_text">
-											<p class="item_buylog_day">購入日：<c:out value="${log.itemBuyDate}" default="取得失敗"/></p>
-											<p class="item_buylog_num">購入数：<c:out value="${log.itemBuyCount}" default="取得失敗"/></p>
-											<p class="item_buylog_num">購入金額：<c:out value="${log.itemTotalPrice}" default="取得失敗"/></p>
+											<p class="item_buylog_day">購入日:<c:out value="${log.itemBuyDate}" default="取得失敗"/></p>
+											<p class="item_buylog_num">購入数:<c:out value="${log.itemBuyCount}" default="取得失敗"/></p>
+											<p class="item_buylog_price">購入金額:<c:out value="${log.itemTotalPrice}" default="取得失敗"/></p>
 										</div>
 									</div>
 

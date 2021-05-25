@@ -296,7 +296,7 @@
 	}
 
 	.item_form {
-		margin: 50px;
+		margin: 10px;
 	}
 
 
@@ -305,13 +305,14 @@
 
 	.page_layout.search_layout{
 		height: 100vh;
+		width: 100%;
 	}
 
 	/*商品一覧のカテゴリ検索関連*/
 	.category_wrap{
 		position:absolute;
 		top: 15%;
-		left: 10px;;
+		left: 10px;
 	}
 	.category_container{
 		display:flex;
@@ -352,8 +353,10 @@
 
 	/* 商品を横並べ */
 	.form_cover{
+	    width: 100%;
 		display: flex;
-		/*flex-wrap: wrap; */
+		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 
 	button .item {
@@ -519,8 +522,19 @@
 
 	/*登録情報変更関連*/
 	.user_data_change{
-		width: 70%;
+		width: 80%;
 	    margin: 0 auto;
+	}
+
+	.data_change_text{
+		margin-bottom: 10px;
+	    display: flex;
+	    justify-content: space-evenly;
+	}
+
+	.data_change_ttl{
+	text-align: left;
+	margin-bottom: 10px;
 	}
 
 	.user_data_change .btn{
@@ -530,6 +544,7 @@
 
 	.page_layout.userdatachange_layout{
 		height: 100vh;
+		margin-bottom: 15%;
 	}
 
 	/*商品詳細画面関連*/
@@ -633,7 +648,7 @@
 
 	.page_layout.favoritelist_layout{
 		height: 100vh;
-		margin-bottom: 60px;
+		margin-bottom: 40%;
 	}
 
 	.favoritelist_table{
@@ -643,9 +658,16 @@
 		margin: 10px;
 	}
 
+	.favoritelist_table::after {
+		display: block;
+		content:"";
+		width: 300px;
+	}
+
 	.favoritelist_table tr{
 		display:flex;
 		flex-direction:column;
+		margin-bottom: 50px;
 	}
 
 	.favoritelist_td{
@@ -780,21 +802,28 @@
 		flex-wrap: wrap;
 		justify-content: space-between;
 	}
+
+	.item_buylog_container::after {
+		display: block;
+		content:"";
+		width: 300px;
+	}
+
 	.item_buylog_wrap{
 		margin-bottom: 100px;
 	}
 
 	.item_buylog_text{
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 
 	.item_buylog_form {
 		text-align: center;
 	}
 
-	.item_buylog_price {
-		margin-left: 10px;
+	.item_buylog_num{
+	margin: 0 5px;
 	}
 
 	.btn.item_buylog_btn{
@@ -840,6 +869,37 @@
 			max-height: 35px;
 		}
 	/*ヘッダーここまで*/
+
+	/*登録情報変更関連*/
+
+	.data_change_text{
+		margin-bottom: 20px;
+	    justify-content: space-around;
+	}
+
+	.page_layout.userdatachange_layout{
+		margin-bottom: 50%;
+		width: 100%;
+	}
+
+	/*お気に入り一覧画面関連*/
+	.page_layout.favoritelist_layout{
+		height: 100vh;
+
+	}
+
+	.form_cover{
+
+	}
+
+	.item_form{
+	height: 100%;
+	}
+
+	/*footer*/
+    footer{
+	display: none;
+	}
 }
 
 /*スマホ対応 320pxから599px*/
@@ -980,7 +1040,56 @@
 	}
 
 	/*登録情報変更関連*/
+	.page_layout.userdatachange_layout{
+		height: 100vh;
+		background-color: white;
+	}
 
+	.data_change_text{
+		margin-bottom: 30px;
+		flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+	/*新規登録画面関連*/
+	.page_layout.favoritelist_layout{
+		height: 100vh;
+		margin-bottom: 60px;
+	}
+
+	/*お気に入り一覧画面関連*/
+	.favoritelist_table{
+		display:flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin: 10px;
+	}
+
+	.favoritelist_table tr{
+		display:flex;
+		flex-direction:column;
+		margin-bottom: 50px;
+		align-items: center;
+	}
+
+	.favoritelist_td{
+		margin-top:5px;
+		display: flex;
+		justify-content: center;
+	}
+
+    .item_image {
+		height: 100vh;
+		width: 100%;
+		max-width: 580px;
+		object-fit: cover;
+	}
+
+   /*footer*/
+    footer{
+	display: none;
+	}
 
 
 }
