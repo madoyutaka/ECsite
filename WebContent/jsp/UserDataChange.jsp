@@ -9,12 +9,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>登録情報変更</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
 <body>
-<%@include file= "Header.jsp" %>
+　　<header>
+	       <div class="header_wrap">
+		       <form action="http://localhost:8080/ECSite/TopServlet" method="POST">
+									<input class ="header_top_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/logo.png"  name="btnItemSearch"/>
+									<input type ="hidden" name="btnTopTransition" value="topTransition">
+				</form>
+
+				<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+								<input class ="header_word" type="text" name="itemSearchWord"/>
+								<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
+								<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
+				</form>
+
+				<nav>
+					<ul>
+						<li>
+							<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+								<input class ="header_cart_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/cart.png" name="btnCartTransition">
+								<input type ="hidden" name="btnHeaderCartTransition" value="headerCartTransition">
+							</form>
+						</li>
+
+						<li>
+		        			<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
+								<input class ="header_mypage_btn" type = "image" src="${pageContext.request.contextPath}/img/icon/home.png"  name="btnMyPageTransition">
+								<input type ="hidden" name="btnMyPageTransition" value="myPageTransition">
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	</header>
 
 　　<div class="page_layout userdatachange_layout">
         <h1 class="page_ttl login_ttl">登録情報変更画面</h1>
@@ -45,144 +77,143 @@
 
 
 
-		<table class="user_data_change">
-			<tr>
-				<td>
+		<div class="user_data_change">
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					氏名：
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<c:out value="${loginUserData.userName}" default="取得失敗"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</p>
+			</div>
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					氏名の変更(20文字以内)
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<input type="text" name="newUserName" placeholder="山田太郎"/><input class="btn" type="submit" name="btnUserName" value="送信">
-				</td>
-			</tr>
+				</p>
+			</div>
 
-			<tr>
-				<td>
-					<br>
-				</td>
-			</tr>
 
-			<tr>
-				<td>
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					ユーザーID：
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<c:out value="${loginUserData.userId}" default="取得失敗"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</p>
+
+			</div>
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					ユーザーIDの変更(半角英数字、20文字以内)
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<input type="text" name="newUserID" placeholder="tarou"/><input class="btn" type="submit" name="btnUserID" value="送信">
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					<br>
-				</td>
-			</tr>
+				</p>
+			</div>
 
 
-			<tr>
-				<td>
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					パスワード：
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<%= passwordResultText %>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</p>
+
+
+			</div>
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					パスワードの変更(20文字以内)
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<input type="password" name="newPassword"/><input class="btn" type="submit" name="btnPassword" value="送信">
-				</td>
-			</tr>
+				</p>
+			</div>
 
-			<tr>
-				<td>
-					<br>
-				</td>
-			</tr>
-
-			<tr>
-				<td>
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					メールアドレス：
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<c:out value="${loginUserData.emailAddress}" default="取得失敗"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</p>
+			</div>
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					メールアドレスの変更(40文字以内)
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<input type="text" name="newEmailAddress" placeholder="tarou@mail"/><input class="btn" type="submit" name="btnEmailAddress" value="送信">
-				</td>
-			</tr>
+				</p>
+			</div>
 
-			<tr>
-				<td>
-					<br>
-				</td>
-			</tr>
 
-			<tr>
-				<td>
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					郵便番号
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<c:out value="${loginUserData.postalCode}" default="取得失敗"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</p>
+
+			</div>
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					郵便番号の変更(-無し、7文字)
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<input type="text" name="newPostalCode" placeholder="1112222"/><input class="btn" type="submit" name="btnPostalCode" value="送信">
-				</td>
-			</tr>
+				</p>
+			</div>
 
-			<tr>
-				<td>
-					<br>
-				</td>
-			</tr>
-
-			<tr>
-				<td>
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					住所
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<c:out value="${loginUserData.address}" default="取得失敗"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</p>
+			</div>
+
+			<div class="data_change_text">
+				<p class="data_change_ttl">
 					住所の変更(100文字以内)
-				</td>
-				<td>
+				</p>
+
+				<p>
 					<input type="text" name="newAddress" placeholder="東京都○○区○○1丁目1番1号"/><input class="btn" type="submit" name="btnAddress" value="送信">
-				</td>
-			</tr>
-		</table>
+				</p>
+			</div>
+		</div>
 
 		</form>
 	</div>
 
-	<%@include file= "Footer.jsp" %>
+	<div class="footer_wrapper">
+	    <footer>
+			<p class="footer_text">2021/05/14/ECSite</p>
+		</footer>
+	</div>
 </body>
 </html>
