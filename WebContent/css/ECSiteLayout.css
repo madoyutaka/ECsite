@@ -328,6 +328,12 @@
 		text-align: center;
 	}
 
+	.btn.category_btn.select_btn{
+		background-color: #84a2d4;
+		border: 2px solid #84a2d4;
+		color:  #fff;
+	}
+
 	/* 商品名と値段 */
 	.item_name{
 		font-size: 20px;
