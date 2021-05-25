@@ -60,8 +60,7 @@ public class FavoriteListServlet extends HttpServlet {
 					if(faveList.size() >= 1) {
 						//ページ数を渡す
 						request.setAttribute("favoriteListTotalPageNo", faveLogic.getFavoriteListTotalPageNo(faveList));
-						//値を渡し、1ページ目を表示
-						request.setAttribute("favoriteListPageNo", 1);
+						request.setAttribute("favoriteListPageNo", selectNo);
 						//表示するためのリストを渡す
 						request.setAttribute("loginUserFaves", faveLogic.getShowList(faveList, selectNo));
 					}else {
