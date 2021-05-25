@@ -254,7 +254,7 @@
 	/*section関連*/
 	.section_wrap{
 		width: 100%;
-		margin-bottom:20px;
+		margin-bottom:50px;
 	}
 
 	section{
@@ -282,7 +282,8 @@
 	/*トップページのabout関連*/
 	.about_text {
 		text-align: center;
-		margin-bottom: 10px;
+		line-height: 1.2;
+		margin-bottom: 15px;
 		font-size: 18px;
 	}
 
@@ -786,6 +787,10 @@
 		text-align: center;
 	}
 
+	.item_buylog_price {
+		margin-left: 10px;
+	}
+
 	.btn.item_buylog_btn{
 		margin: 15px 0 20px;
 	}
@@ -796,7 +801,6 @@
 
 		/*body*/
 		body{
-			background-color: #ff69b4;　 /*ピンク色*/
 			position: relative;
 		}
 
@@ -837,7 +841,6 @@
 
 		/*body*/
 		body{
-			background-color: #3cb371; /*緑色*/
 			position: relative;
 			max-width: 599px;
 			margin: 0 auto;
@@ -847,13 +850,14 @@
 		header{
 			background-color:#c1e4e9;
 			width: 100%;
-			height: 100%;
+			height: 60px;
+			line-height: 60px;
 		}
 
 		.header_wrap{
             display: flex;
             flex-wrap: wrap;
-			margin: 0 10px;
+			margin: 0 5px;
 		}
 
 		header nav{
@@ -865,12 +869,16 @@
 		}
 
 		.header_word {
-			margin: 10px;
+			margin: 5px;
 			font-size: 15px;
-			padding: 0 15px;
-			margin-left: 20px;
-			padding: 10px 0;
+			margin-left: 10px;
+			padding: 0;
 
+		}
+
+		.header_top_btn{
+			max-width:  40px;
+			max-height: 40px;
 		}
 
 		/*ヘッダーbutton*/
@@ -911,6 +919,61 @@
 		color: white;
 		font-weight: bold;
 	}
+
+	section{
+		height: 100%;
+		max-width: 100%;
+	}
+
+	.about{
+	width: 100%;
+	max-width: 580px;
+	margin:0 auto;
+	padding: 40px 0;
+	}
+
+	.about_line{
+		display: flex;
+		margin: 0 5%;
+		flex-wrap: wrap;
+	}
+
+	.about_text {
+	line-height: 1.3;
+		text-align: left;
+		margin-bottom: 15px;
+	}
+
+	/*新規登録画面関連*/
+
+	.signup_container{
+		flex-direction: column;
+		flex-wrap: wrap;
+		margin-bottom: 25px;
+		align-items: center;
+	}
+
+	.signup_text {
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	.signup_container input{
+		width: 50%;
+		text-align: center;
+	}
+
+	/*ログイン画面関連*/
+	.login_wrap{
+		width: 100%;
+	}
+
+	.page_container{
+		width: 100%;
+
+	}
+
+	/*登録情報変更関連*/
 
 
 
