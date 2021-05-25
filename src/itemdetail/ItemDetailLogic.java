@@ -60,7 +60,7 @@ public class ItemDetailLogic {
 	}
 
 	//表示用レビューを5件取得
-	public ArrayList<ReviewBean> getDisplaytReviewList(ArrayList<ReviewBean> reviewList, int selectNo){
+	public ArrayList<ReviewBean> getShowReviewList(ArrayList<ReviewBean> reviewList, int selectNo){
 		ArrayList<ReviewBean> returnList = new ArrayList<ReviewBean>();
 		int plusNo = 5 * (selectNo - 1);
 		for(int no = 0; no <= 4; no++) {
