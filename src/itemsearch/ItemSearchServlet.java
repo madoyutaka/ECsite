@@ -35,6 +35,14 @@ public class ItemSearchServlet extends HttpServlet {
 		String itemSearchWord = null;
 		ArrayList<ItemBean> itemSearchList = new ArrayList<ItemBean>();
 		ItemDetailLogic itemDetailLogic = new ItemDetailLogic();
+		//カテゴリ表示用HashMap
+		HashMap<Integer, String> categoryHmap = new HashMap<Integer, String>();
+		categoryHmap.put(1, "椅子");
+		categoryHmap.put(2, "収納");
+		categoryHmap.put(3, "照明");
+		categoryHmap.put(4, "寝具");
+		categoryHmap.put(5, "机");
+		categoryHmap.put(6, "その他");
 
 		//トップ画面から商品検索画面に遷移する際の処理
 		if(request.getParameter("btnItemListTransition")!=null) {
@@ -53,8 +61,9 @@ public class ItemSearchServlet extends HttpServlet {
 			reviewAverageHmap = itemDetailLogic.getReviewAverageList(itemSearchList);
 			//値を渡す
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
-			//値を渡す
+			request.setAttribute("categoryHmap", categoryHmap);
 			request.setAttribute("itemSearchList", itemSearchList);
+			request.setAttribute("selectCategoryNo", categoryNo);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 			req.forward(request, response);
 			return;
@@ -81,6 +90,7 @@ public class ItemSearchServlet extends HttpServlet {
 			//値を渡す
 			request.setAttribute("itemSearchList", itemSearchList);
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
+			request.setAttribute("categoryHmap", categoryHmap);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 			req.forward(request, response);
 			return;
