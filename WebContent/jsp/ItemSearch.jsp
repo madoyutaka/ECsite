@@ -83,9 +83,6 @@
 					</c:forEach>
 				</div>
 			</c:when>
-			<c:when test="${ fn:length(itemSearchList) == 0}">
-				お探しの商品はありません。
-			</c:when>
 			</c:choose>
 		</div>
 
