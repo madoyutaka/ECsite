@@ -27,6 +27,7 @@
 				<input class ="header_word" type="text" name="itemSearchWord"/>
 				<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
 				<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
+				<input type ="hidden" name="selectItemSearchListPageNo" value="1">
 			</form>
 
 			<nav>

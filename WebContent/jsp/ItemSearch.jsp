@@ -30,6 +30,7 @@
 											<button class="btn category_btn" type="submit" name="btnCategorySelect" value="${category.key}">${category.value}</button>
 										</c:when>
 									</c:choose>
+									<input type ="hidden" name="selectItemSearchListPageNo" value="1">
 								</c:forEach>
 							</form>
 
@@ -79,19 +80,39 @@
 						</h3>
 						</form>
 						<br>
-				</c:forEach>
-			</div>
-
+					</c:forEach>
+				</div>
 			</c:when>
-
 			<c:when test="${ fn:length(itemSearchList) == 0}">
 				お探しの商品はありません。
 			</c:when>
+			</c:choose>
+		</div>
 
+		<c:choose>
+			<c:when test="${ fn:length(itemSearchList) >= 1}">
+				<form name="btnFavoritePagination" action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+					<div class="pagination">
+						<c:forEach begin="1" end="${itemSearchListTotalPageNo}" step="1" var = "a">
+							<button class="btn page_btn" type="submit" name="selectItemSearchListPageNo" value="${a}">${a}</button>
+						</c:forEach>
+					</div>
+
+					<c:choose>
+						<c:when test="${itemSearchWord!= null}">
+							<input type ="hidden" name="btnItemSearchTransition" value="btnItemSearchTransition">
+							<input type ="hidden" name="itemSearchWord" value="${itemSearchWord}">
+						</c:when>
+						<c:when test="${selectCategoryNo != null}">
+							<input type ="hidden" name="btnCategorySelect" value="${selectCategoryNo}">
+						</c:when>
+					</c:choose>
+
+				</form>
+			</c:when>
 		</c:choose>
-	</div>
 
-  <%@include file= "Footer.jsp" %>
+
 
 </body>
 </html>
