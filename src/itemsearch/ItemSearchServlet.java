@@ -57,9 +57,10 @@ public class ItemSearchServlet extends HttpServlet {
 			int selectNo = Integer.parseInt(request.getParameter("selectItemSearchListPageNo"));
 			//検索結果が1以上の場合
 			if(itemSearchList.size() >= 1) {
-				//ページ数を渡す
 				int totalPageNo = itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList);
+				//ページ数を渡す
 				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
+				request.setAttribute("itemSearchListSelectPageNo", selectNo);
 				//指定されたページが存在しない場合
 				if(totalPageNo < selectNo) {
 					request.setAttribute("errorText", "お探しのページは見つかりませんでした。");
@@ -67,6 +68,7 @@ public class ItemSearchServlet extends HttpServlet {
 					req.forward(request, response);
 					return;
 				}
+
 				//表示するためのリストを渡す
 				request.setAttribute("itemSearchList", itemSearchLogic.getShowItemSearchList(itemSearchList, selectNo));
 			}else {
@@ -107,9 +109,11 @@ public class ItemSearchServlet extends HttpServlet {
 			int selectNo = Integer.parseInt(request.getParameter("selectItemSearchListPageNo"));
 			//検索結果が1以上の場合
 			if(itemSearchList.size() >= 1) {
-				//ページ数を渡す
 				int totalPageNo = itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList);
 				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
+				//ページ数を渡す
+				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
+				request.setAttribute("itemSearchListSelectPageNo", selectNo);
 				//指定されたページが存在しない場合
 				if(totalPageNo < selectNo) {
 					request.setAttribute("errorText", "お探しのページは見つかりませんでした。");
