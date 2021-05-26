@@ -84,7 +84,7 @@
 				</div>
 			</c:when>
 			</c:choose>
-		</div>
+		
 
 		<c:choose>
 			<c:when test="${ fn:length(itemSearchList) >= 1}">
@@ -110,6 +110,6 @@
 		</c:choose>
 
 
-
+</div>
 </body>
 </html>
