@@ -12,6 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>商品詳細画面</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -40,12 +41,13 @@
 
 
 			<p class="item_detail_text">${itemData.itemName} ${itemData.itemPrice}円</p>
+			<p class="item_detail_description">${itemData.itemDescription}</p>
 			<p class="review_ave">レビュー平均：<c:out value="${reviewAverage}"/></p>
 
-			<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
-				<a class="item_quantity">個数</a>
+			<form class="cart_form" action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
+				<p class="item_quantity">個数</p>
 				<c:if test = "${itemData.itemStock > 0}">
-					<select name="itemNum">
+					<select class="itemNum" name="itemNum">
 								<c:forEach begin = "1" end = "${itemData.itemStock}" step ="1" var ="i">
 								 　<option><c:out value="${i}"/></option>
 					            </c:forEach>
@@ -76,7 +78,7 @@
 				<button class="btn  favorite_del_btn" type="submit" name="btnFavoriteListDeleteTransition" value="${itemData.itemNo}">お気に入りから削除</button>
 			</form>
 
-			<form action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
+			<form class="review_form" action = "http://localhost:8080/ECSite/WriteReviewServlet" method = "POST">
 				<button class="btn review_btn" type="submit" name="btnWriteReviewTransition" value="${itemData.itemNo}">レビュー</button>
 			</form>
 

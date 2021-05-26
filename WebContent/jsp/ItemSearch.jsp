@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>商品検索</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -50,7 +51,6 @@
 				<c:when test="${errorText == null}">
 				</c:when>
 			</c:choose>
-		<br>
 
 
 		<!-- itemSearchListがnullの場合、0件の場合、1件以上の場合 -->
@@ -83,12 +83,13 @@
 					</c:forEach>
 				</div>
 			</c:when>
+
 			</c:choose>
-		
+		</div>
 
 		<c:choose>
 			<c:when test="${ fn:length(itemSearchList) >= 1}">
-				<form name="btnFavoritePagination" action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
+				<form class="favorite_pagination"name="btnFavoritePagination" action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
 					<div class="pagination">
 						<c:forEach begin="1" end="${itemSearchListTotalPageNo}" step="1" var = "a">
 							<button class="btn page_btn" type="submit" name="selectItemSearchListPageNo" value="${a}">${a}</button>
@@ -110,6 +111,6 @@
 		</c:choose>
 
 
-</div>
+
 </body>
 </html>
