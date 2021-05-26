@@ -76,6 +76,13 @@
 		text-align: center;
 	}
 
+	/*ボタン選択時*/
+	.select_btn{
+		background-color: #84a2d4;
+		border: 2px solid #84a2d4;
+		color:  #fff;
+	}
+
 	/*highRating表示共通処理*/
 	.imgPosition{
 		position:relative
@@ -327,12 +334,6 @@
 	.btn.category_btn{
 		margin-bottom: 10px;
 		text-align: center;
-	}
-
-	.btn.category_btn.select_btn{
-		background-color: #84a2d4;
-		border: 2px solid #84a2d4;
-		color:  #fff;
 	}
 
 	/* 商品名と値段 */
