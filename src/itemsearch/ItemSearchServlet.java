@@ -110,7 +110,6 @@ public class ItemSearchServlet extends HttpServlet {
 			//検索結果が1以上の場合
 			if(itemSearchList.size() >= 1) {
 				int totalPageNo = itemSearchLogic.getItemSearchListTotalPageNo(itemSearchList);
-				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
 				//ページ数を渡す
 				request.setAttribute("itemSearchListTotalPageNo", totalPageNo);
 				request.setAttribute("itemSearchListSelectPageNo", selectNo);
