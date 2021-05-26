@@ -56,7 +56,14 @@
 			<form name="btnFavoritePagination" action="http://localhost:8080/ECSite/FavoriteListServlet" method="POST">
 				<div class="pagination">
 					<c:forEach begin="1" end="${favoriteListTotalPageNo}" step="1" var = "a">
-						<button class="btn page_btn" type="submit" name="selectFavoriteListPageNo" value="${a}">${a}</button>
+						<c:choose>
+							<c:when test="${favoriteListPageNo == a}">
+								<button class="btn page_btn select_btn" type="submit" name="selectFavoriteListPageNo" value="${a}">${a}</button>
+							</c:when>
+							<c:when test="${favoriteListPageNo != a}">
+								<button class="btn page_btn" type="submit" name="selectFavoriteListPageNo" value="${a}">${a}</button>
+							</c:when>
+						</c:choose>
 					</c:forEach>
 				</div>
 			</form>

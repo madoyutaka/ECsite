@@ -104,7 +104,14 @@
 							<form name="btnReviewPagination" action="http://localhost:8080/ECSite/ItemDetailServlet" method="POST">
 								<div class="pagination">
 									<c:forEach begin="1" end="${totalPageNo}" step="1" var = "a">
-										<button class="btn page_btn" type="submit" name="selectReviewPageNo" value="${a}">${a}</button>
+										<c:choose>
+											<c:when test="${selectReviewPageNo == a}">
+												<button class="btn page_btn select_btn" type="submit" name="selectReviewPageNo" value="${a}">${a}</button>
+											</c:when>
+											<c:when test="${selectReviewPageNo != a}">
+												<button class="btn page_btn " type="submit" name="selectReviewPageNo" value="${a}">${a}</button>
+											</c:when>
+										</c:choose>
 									</c:forEach>
 								</div>
 								<input type ="hidden" name="btnItemDetailTransition" value="${itemData.itemNo}">
