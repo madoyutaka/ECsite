@@ -92,7 +92,13 @@
 				<form class="favorite_pagination"name="btnFavoritePagination" action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
 					<div class="pagination">
 						<c:forEach begin="1" end="${itemSearchListTotalPageNo}" step="1" var = "a">
-							<button class="btn page_btn" type="submit" name="selectItemSearchListPageNo" value="${a}">${a}</button>
+							<c:choose>
+								<c:when test="${itemSearchListSelectPageNo == a}">
+									<button class="btn page_btn select_btn" type="submit" name="selectItemSearchListPageNo" value="${a}">${a}</button>
+								</c:when>
+								<c:when test="${itemSearchListSelectPageNo != a}">
+									<button class="btn page_btn" type="submit" name="selectItemSearchListPageNo" value="${a}">${a}</button>								</c:when>
+							</c:choose>
 						</c:forEach>
 					</div>
 
