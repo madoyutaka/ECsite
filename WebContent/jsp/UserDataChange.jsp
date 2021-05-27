@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-<title>登録情報変更画面</title>
+<title>登録情報変更</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
