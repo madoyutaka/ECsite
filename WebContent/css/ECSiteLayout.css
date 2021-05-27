@@ -322,7 +322,7 @@
 	/*商品一覧のカテゴリ検索関連*/
 	.category_wrap{
 		position:absolute;
-		top: 15%;
+		top: 80px;
 		left: 10px;
 		z-index: 500;
 	}
@@ -1030,7 +1030,7 @@
 
 	/*カテゴリ配置*/
 	.category_wrap{
-		top: 8%;
+		top: 80px;
 		left: 10px;
 	}
 
@@ -1084,10 +1084,7 @@
 		flex-direction: column;
 	}
 
-	.category_wrap{
-		top: 5%;
-		left: 10px;
-	}
+
 
 	.item_buy_wrap .item_image{
 		width: 50%;
@@ -1284,12 +1281,6 @@
 
 	.page_layout.search_layout{
 		padding-top: 50px;
-	}
-
-	/*カテゴリ配置*/
-	.category_wrap{
-		top: 5%;
-		left: 10px;
 	}
 
    /*footer*/
