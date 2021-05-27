@@ -55,7 +55,7 @@
            </div>
 
            <div class="signup_container">
-				<p class="signup_text">郵便番号(ハイフンなし半角数字7桁)</p>
+				<p class="signup_text">郵便番号(半角数字7桁)</p>
 				<input type="text" name="postalCode"  value="${pcode}" size="5"  placeholder="1112222">
            </div>
 
