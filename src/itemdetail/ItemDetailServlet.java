@@ -96,14 +96,18 @@ public class ItemDetailServlet extends HttpServlet {
 					double reviewAverage = newLogic.getReviewAverage(reviewList, item);
 					//ページ数取得
 					int totalPageNo = newLogic.getReviewTotalPageNo(reviewList);
-					int selectPageNo;
+					int selectPageNo = Integer.parseInt(request.getParameter("selectReviewPageNo"));
+					//指定されたページが存在しない場合
+					if(totalPageNo < selectPageNo) {
+						request.setAttribute("resultText", "お探しのレビューのページは見つかりませんでした。");
+						//1ページ目を表示する
+						selectPageNo = 1;
+					}
 					//表示用のレビュー一覧、新しいものから5件表示
 					ArrayList<ReviewBean> showReviewList = new ArrayList<ReviewBean>();
 					if(reviewList.size() >= 1) {
-							selectPageNo = Integer.parseInt(request.getParameter("selectReviewPageNo"));
 							showReviewList = newLogic.getShowReviewList(reviewList, selectPageNo);
 					}else {
-						selectPageNo = 1;
 						showReviewList = reviewList;
 					}
 					//値を渡す
