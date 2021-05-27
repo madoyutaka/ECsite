@@ -11,6 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>カート画面</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
@@ -55,7 +56,7 @@
 					</c:when>
 
 					<c:when test="${ fn:length(cartItemData) == 0}">
-						<input  type = "submit" disabled name="btnItemBuyTransition" value ="カートに商品が入っていません">
+						 <p class="error_text cart_text">カートに商品が入っていません<p>
 					</c:when>
 				</c:choose>
 			</form>
