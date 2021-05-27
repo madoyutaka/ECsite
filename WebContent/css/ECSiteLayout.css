@@ -1010,8 +1010,16 @@
 	/*登録情報変更関連*/
 
 	.data_change_text{
+		display: flex;
+		justify-content: space-between;
 		margin-bottom: 20px;
-	    justify-content: space-around;
+	}
+
+	.user_data_change{
+		width: 550px;
+		margin: 0 auto;
+		text-align: left;
+		height: 800px;
 	}
 
 	.page_layout.userdatachange_layout{
