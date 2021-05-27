@@ -10,12 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-<title>登録情報変更</title>
+<title>登録情報変更画面</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
 <body>
-　　 <%@include file= "Header.jsp" %>
+ <%@include file= "Header.jsp" %>
 
 　　<div class="page_layout userdatachange_layout">
         <h1 class="page_ttl login_ttl">登録情報変更画面</h1>
@@ -180,5 +180,7 @@
 	</div>
 
 
+
 </body>
+
 </html>
