@@ -7,6 +7,12 @@
 	/*PC対応 1024px以上 通常時*/
 
 	/*各ページ共通*/
+	textarea {
+	  resize: none;
+	  max-width:600px;
+
+	}
+
 	/*各ページ共通エラーメッセージ用*/
 	.error_text{
 		padding-top:100px;
@@ -603,7 +609,7 @@
 	}
 
 	/*商品詳細のセレクトボタン*/
-	.itemNum{
+	.itemNum,.review_select{
 		  /* 👇デフォルトのスタイルを解除 */
 	  -moz-appearance: none;
 	  -webkit-appearance: none;
@@ -628,7 +634,7 @@
 	  background-repeat: no-repeat;
 	}
 
-	.itemNum:focus {
+	.itemNum:focus ,.review_select:focus{
 	  outline: 0;
 	  border-color: #b0c5ff; /* 枠線色を変更 */
 	}
@@ -705,10 +711,6 @@
 	}
 
 	/*レビュー画面関連*/
-	.review_select{
-		font-size: 15px;
-		margin: 10px 0 20px;
-	}
 
 	.review_flex{
 	 display:flex;
