@@ -63,8 +63,16 @@ public class ItemBuyLogServlet extends HttpServlet {
 			//お気に入り数が1以上の場合
 			if(itemBuyLogList.size() >= 1) {
 				//ページ数を渡す
-				request.setAttribute("itemBuyLogTotalPageNo", itemBuyLogLogic.getItemBuyLogListTotalPageNo(itemBuyLogList));
+				int totalPageNo = itemBuyLogLogic.getItemBuyLogListTotalPageNo(itemBuyLogList);
+				request.setAttribute("itemBuyLogTotalPageNo", totalPageNo);
 				request.setAttribute("itemBuyLogPageNo", selectNo);
+				//指定されたページが存在しない場合
+				if(totalPageNo < selectNo) {
+					request.setAttribute("errorText", "お探しのページは見つかりませんでした。");
+					req = request.getRequestDispatcher("jsp/ItemBuyLog.jsp");
+					req.forward(request, response);
+					return;
+				}
 				//表示するためのリストを渡す
 				request.setAttribute("loginUserItemBuyLog", itemBuyLogLogic.getShowList(itemBuyLogList, selectNo));
 			}else {
