@@ -551,14 +551,16 @@
 
 	/*登録情報変更関連*/
 	.user_data_change{
-		width: 80%;
-	    margin: 0 auto;
+		width: 600px;
+		margin: 0 auto;
+		text-align: left;
+		height: 800px;
 	}
 
 	.data_change_text{
-		margin-bottom: 10px;
-	    display: flex;
-	    justify-content: space-evenly;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 15px;
 	}
 
 	.data_change_ttl{
