@@ -91,11 +91,11 @@
 	}
 
 	/*highRating表示共通処理*/
-	.imgPosition{
+	.img_position{
 		position:relative
 	}
 
-	.highRatingImg{
+	.high_rating_img{
 		height: 60px;
 		pointer-events: none;
 		position: absolute;
