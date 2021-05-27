@@ -3,6 +3,7 @@ package favoritelist;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,7 @@ public class FavoriteListServlet extends HttpServlet {
 				request.setCharacterEncoding("UTF-8");
 
 				//保存用
+				RequestDispatcher req = null;
 				int loginUserNo;
 				HttpSession session = request.getSession();
 				UserBean loginUserBean = (UserBean) session.getAttribute("loginUser");
@@ -59,8 +61,16 @@ public class FavoriteListServlet extends HttpServlet {
 					//お気に入り数が1以上の場合
 					if(faveList.size() >= 1) {
 						//ページ数を渡す
-						request.setAttribute("favoriteListTotalPageNo", faveLogic.getFavoriteListTotalPageNo(faveList));
+						int totalPageNo = faveLogic.getFavoriteListTotalPageNo(faveList);
+						request.setAttribute("favoriteListTotalPageNo", totalPageNo);
 						request.setAttribute("favoriteListPageNo", selectNo);
+						//指定されたページが存在しない場合
+						if(totalPageNo < selectNo) {
+							request.setAttribute("errorText", "お探しのページは見つかりませんでした。");
+							req = request.getRequestDispatcher("jsp/FavoriteList.jsp");
+							req.forward(request, response);
+							return;
+						}
 						//表示するためのリストを渡す
 						request.setAttribute("loginUserFaves", faveLogic.getShowList(faveList, selectNo));
 					}else {
