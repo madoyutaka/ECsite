@@ -46,7 +46,14 @@
 					</c:when>
 
 					<c:when test="${ fn:length(loginUserFaves) == 0}">
-						<p class="error_text error_login">お気に入りリストに商品がありません。</p>
+						<c:choose>
+							<c:when test="${errorText==null}">
+								<p class="error_text error_login">お気に入りリストに商品がありません。</p>
+							</c:when>
+							<c:when test="${errorText!=null}">
+								<p class="error_text error_login">${errorText}</p>
+							</c:when>
+						</c:choose>
 					</c:when>
 			</c:choose>
 	</div>

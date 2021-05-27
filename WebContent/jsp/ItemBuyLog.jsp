@@ -21,14 +21,6 @@
 
 	<div class="page_layout cart_layout">
 			<h1 class="page_ttl">購入履歴</h1>
-			<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
-			<c:choose>
-				<c:when test="${errorText != null}">
-					<h1 class="error_text"><c:out value="${errorText}"/></h1>
-				</c:when>
-				<c:when test="${errorText == null}">
-				</c:when>
-			</c:choose>
 
 			<div class="item_buylog_container">
 				<!-- loginUserItemBuyLogが0件の場合、1件以上の場合 -->
@@ -56,7 +48,14 @@
 							</c:when>
 
 							<c:when test="${ fn:length(loginUserItemBuyLog) == 0}">
-								<p class="error_text">購入履歴はありません。</p>
+								<c:choose>
+									<c:when test="${errorText==null}">
+										<p class="error_text">購入履歴はありません。</p>
+									</c:when>
+									<c:when test="${errorText!=null}">
+										<p class="error_text error_login">${errorText}</p>
+									</c:when>
+								</c:choose>
 							</c:when>
 
 						</c:choose>
