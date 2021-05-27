@@ -21,6 +21,8 @@
 	}
 
 
+
+
 	/*商品画像サイズ統一用*/
 	.item_image {
 		height: 300px;
@@ -825,6 +827,11 @@
 		line-height: 1.2;
 	}
 
+	.error_text.cart_text{
+		padding-top:50px;
+		text-align: center;
+		font-size: 30px;
+	}
 
 	.cart_text{
 		text-align: center;
@@ -1334,5 +1341,3 @@
 	}
 
 }
-
-
