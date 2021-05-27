@@ -66,11 +66,11 @@
 						<h3 class="item_select_btn">
 							<button class="item" type="submit" name="btnItemDetailTransition" value="${item.itemNo}">
 							<input type ="hidden" name="selectReviewPageNo" value="1">
-								<div class="imgPosition">
+								<div class="img_position">
 								<img src="img/furniture/${item.itemImage}" class="item_image">
 										<c:choose>
 											<c:when test="${reviewAverageHmap[item.itemNo] >= 4.0}">
-												<img class ="highRatingImg" src="img/icon/imghighrating.png">
+												<img class ="high_rating_img" src="img/icon/imghighrating.png">
 											</c:when>
 										</c:choose>
 								</div>
