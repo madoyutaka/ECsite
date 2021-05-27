@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <title>ログインページ</title>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/reset.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/ECSiteLayout.css">
 </head>
 <body>
-<%@include file= "Header.jsp" %>
+ <%@include file= "Header.jsp" %>
 
 	<div class="page_layout">
 		<h1 class="page_ttl login_ttl">ログイン画面</h1>
@@ -24,7 +27,7 @@
 
 		<!-- IDとPassWordを入力 -->
 		<!-- actionで指定した場所に値をPOST -->
-		<div class="page_layout login_layout">
+		<div class="login_layout">
 			<form class="login_form"action="http://localhost:8080/ECSite/LoginServlet" method="POST">
 				<div class="login_wrap">
 					<p class="login_text">
@@ -47,6 +50,10 @@
 
 	</div>
 
-	<%@include file= "Footer.jsp" %>
+	 <%@include file= "Footer.jsp" %>
+
+
+
 </body>
+
 </html>
