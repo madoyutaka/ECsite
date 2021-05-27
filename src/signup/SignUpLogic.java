@@ -15,29 +15,33 @@ public class SignUpLogic implements Serializable {
 
 			if(userId=="" || password=="" || emailAddress=="" || pCode=="" || address=="" || userName=="") {
 			list.add("！入力されていない項目があります");
+
+			}else{
+				if(!userId.matches("^[a-zA-Z0-9]+$")||userId.length()>20){
+					list.add("！ユーザIDは半角英数字20文字以内で入力してください");
+				}
+				if(password.length()>20||!password.matches("^[a-zA-Z0-9]+$")){
+					list.add("！パスワードは半角英数字20文字以内で入力してください");
+				}
+				if(emailAddress.length()>40){
+					list.add("！メールアドレスは40文字以内で入力してください");
+				}else if(!emailAddress.matches("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
+						list.add("！入力されたメールアドレスの形式はご登録いただけません");
+				}
+				if(pCode.length()!=7||!pCode.matches("^[0-9]+$")){
+					list.add("！郵便番号は半角数字7文字で入力してください");
+				}
+				if(pCode.matches("^0+[0-9]+$")){
+					list.add("！郵便番号は0以外から開始してください");
+				}
 			}
-			if(address.length()>=100||userName.length()>=20){
+
+			if(userName.length()>20){
 				list.add("！氏名は20文字以内で入力してください");
 			}
-			if(!userId.matches("^[a-zA-Z0-9]+$")||userId.length()>=20){
-				list.add("！ユーザIDは半角英数字20文字以内で入力してください");
-			}
-			if(password.length()>=20||!password.matches("^[a-zA-Z0-9]+$")){
-				list.add("！パスワードは半角英数字20文字以内で入力してください");
-			}
-			if(emailAddress.length()>=40){
-				list.add("！メールアドレスは40文字以内で入力してください");
-			}else if(!emailAddress.matches("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")){
-					list.add("！メールアドレスは正しい方法で入力してください");
-			}
-			if(pCode.length()!=7||!pCode.matches("^[0-9]+$")){
-				list.add("！郵便番号はハイフンなし半角数字7文字で入力してください");
-			}
-			if(pCode.matches("^0+[0-9]+$")){
-				list.add("！郵便番号は0以外から開始してください");
-			}
-			if(address.length()>=100){
-				list.add("！住所は40文字以内で入力してください");
+
+			if(address.length()>100){
+				list.add("！住所は100文字以内で入力してください");
 			}
 
 			//重複チェック
