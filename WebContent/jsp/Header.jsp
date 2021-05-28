@@ -4,6 +4,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ page import="itemsearch.ItemSearchServlet" %>
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +26,14 @@
 			</form>
 
 			<form action="http://localhost:8080/ECSite/ItemSearchServlet" method="POST">
-				<input class ="header_word" type="text" name="itemSearchWord"/>
+				<c:choose>
+					<c:when test="${itemSearchWord != null}">
+						<input class ="header_word" type="text" name="itemSearchWord" value="${itemSearchWord}"/>
+					</c:when>
+					<c:when test="${itemSearchWord == null}">
+						<input class ="header_word" type="text" name="itemSearchWord"/>
+					</c:when>
+				</c:choose>
 				<input class ="header_search_btn" type="image"  src="${pageContext.request.contextPath}/img/icon/search.png"  name="btnItemSearch"/>
 				<input type ="hidden" name="btnItemSearchTransition" value="itemSearchTransition">
 				<input type ="hidden" name="selectItemSearchListPageNo" value="1">
