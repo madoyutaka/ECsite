@@ -48,6 +48,8 @@ public class ItemSearchServlet extends HttpServlet {
 		if(request.getParameter("btnCategorySelect")!=null) {
 			request.setAttribute("categoryHmap", categoryHmap);
 			int categoryNo = Integer.parseInt(request.getParameter("btnCategorySelect"));
+			//選択されたカテゴリの番号を渡す
+			request.setAttribute("selectCategoryNo", categoryNo);
 			ItemSearchLogic itemSearchLogic = new ItemSearchLogic();
 			itemSearchList = itemSearchLogic.categorySearch(categoryNo);
 			//複数の商品のレビューの平均点を保存するためのHashMap。KeyはitemNo。
@@ -80,7 +82,6 @@ public class ItemSearchServlet extends HttpServlet {
 			//値を渡す
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
 			request.setAttribute("categoryHmap", categoryHmap);
-			request.setAttribute("selectCategoryNo", categoryNo);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 			req.forward(request, response);
 			return;
@@ -98,7 +99,8 @@ public class ItemSearchServlet extends HttpServlet {
 				req.forward(request, response);
 				return;
 			}
-
+			//入力された文字を渡す
+			request.setAttribute("itemSearchWord", itemSearchWord);
 			//検索する。
 			ItemSearchLogic itemSearchLogic = new ItemSearchLogic();
 			itemSearchList = itemSearchLogic.itemSearch(itemSearchWord);
@@ -129,7 +131,6 @@ public class ItemSearchServlet extends HttpServlet {
 			}
 
 			//値を渡す
-			request.setAttribute("itemSearchWord", itemSearchWord);
 			request.setAttribute("reviewAverageHmap", reviewAverageHmap);
 			req = request.getRequestDispatcher("jsp/ItemSearch.jsp");
 			req.forward(request, response);
