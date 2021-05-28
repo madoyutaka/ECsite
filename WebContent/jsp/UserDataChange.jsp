@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-<%@ page import="userdatachange.UserDataChangeServlet" %>
-<%@ page import="mypage.MyPageServlet" %>
+<%@ page import="servlet.UserDataChangeServlet" %>
+<%@ page import="servlet.MyPageServlet" %>
 <%@ page import="java.util.ArrayList.*" %>
 <%@ page import="bean.UserBean.*" %>
 <!DOCTYPE html>

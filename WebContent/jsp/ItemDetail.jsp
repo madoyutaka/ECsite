@@ -2,9 +2,9 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@ page import = "bean.ItemBean" %>
-<%@ page import = "itemdetail.ItemDetailServlet" %>
-<%@ page import = "itemsearch.ItemSearchServlet" %>
-<%@ page import = "writereview.WriteReviewServlet" %>
+<%@ page import = "servlet.ItemDetailServlet" %>
+<%@ page import = "servlet.ItemSearchServlet" %>
+<%@ page import = "servlet.WriteReviewServlet" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"  isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
-<%@ page import="itemsearch.ItemSearchServlet" %>
+<%@ page import="servlet.ItemSearchServlet" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bean.ItemBean" %>
 

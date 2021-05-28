@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ page import = "bean.ItemBean" %>
-<%@ page import = "itembuy.ItemBuyServlet" %>
+<%@ page import = "servlet.ItemBuyServlet" %>
 <%@ page import="java.util.ArrayList.*" %>
 <%@ page import="bean.UserBean" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
