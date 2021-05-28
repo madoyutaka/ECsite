@@ -58,7 +58,7 @@
 			<div class="about_line">
 				<p class="about_text">このECサイトは、ECサイト開発の研修中に作成されました。</p>
 				<p class="about_text">このサイトでは家具を閲覧可能です。好きな家具をご覧ください。</p>
-				<p class="about_text">商品の詳細を閲覧したい場合や購入、お気に入り、レビューするためにはログインが必要です。</p>
+				<p class="about_text">商品の購入、お気に入り、レビューするためにはログインが必要です。</p>
 				<p  class="about_text">このECサイトは少数メンバーで作成されております。どうぞ、ご覧ください。</p>
 			</div>
 
