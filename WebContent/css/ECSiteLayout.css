@@ -323,7 +323,6 @@
 
 	.search_layout{
 		width: 100%;
-		background-color: transparent;
 		padding: 0 0 50px;
 	}
 
@@ -580,8 +579,7 @@
 
 	/*商品詳細画面関連*/
 	.itemdetail_layout{
-		height: 100vh;
-		background-color: transparent;
+		height: 1100px;
 	}
 
 	.item_detail_container,.review_container{
@@ -797,8 +795,7 @@
 
 	/*カート画面関連*/
 	.page_layout.cart_layout{
-		height: 100vh;
-		background-color: transparent;
+		height: 1000px;
 	}
 	.cart_container{
 		width: 50%;
@@ -1350,4 +1347,4 @@
 			align-items: center;
 	}
 
-}
+}}
