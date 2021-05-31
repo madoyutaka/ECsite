@@ -66,9 +66,8 @@ public class FavoriteListCompletionServlet extends HttpServlet {
 				if(request.getParameter("btnFavoriteListDeleteTransition")!=null) {
 					System.out.println("itemNo："+request.getParameter("btnFavoriteListDeleteTransition")+"を削除");
 					int itemNo = Integer.parseInt(request.getParameter("btnFavoriteListDeleteTransition"));
-					FavoriteBean faveBean = new FavoriteBean();
-					faveBean = faveLogic.deleteLogic(loginUserNo,itemNo);
-					request.setAttribute("returnText", "お気に入りリストから商品を削除しました。");
+					String returnText = faveLogic.deleteLogic(loginUserNo,itemNo);
+					request.setAttribute("returnText", returnText);
 					request.getRequestDispatcher("jsp/FavoriteListCompletion.jsp").forward(request, response);
 					return;
 				}
