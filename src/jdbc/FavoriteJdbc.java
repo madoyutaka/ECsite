@@ -69,12 +69,25 @@ public class FavoriteJdbc {
 
 
 //お気に入りリストから削除
-	public FavoriteBean daleteFaves(int itemNo,int loginUserNo) {
+	public String daleteFaves(int itemNo,int loginUserNo) {
 		try {
 			//SQLの実行(発行)
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, id, pw);
 			stmt =conn.createStatement();
+				//存在するか確認する
+				query= "select * from favorite where item_no=? and user_no=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, loginUserNo);
+				pstmt.setInt(2,itemNo);
+				rs = pstmt.executeQuery();
+				//存在する場合
+				if(rs.next()) {
+
+				//しない場合
+				}else {
+					return "！この商品はお気に入りリストに追加されていません。";
+				}
 				//SQl文の用意
 				query= "delete from favorite where item_no=? and user_no=?";
 				//SQL文の実行
@@ -98,7 +111,7 @@ public class FavoriteJdbc {
 
 				}
 
-		return null;
+		return "お気に入りリストから商品を削除しました。";
 	}
 
 
