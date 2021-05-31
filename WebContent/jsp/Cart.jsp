@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "bean.ItemBean" %>
-<%@ page import = "servlet.ItemSearchServlet" %>
-<%@ page import = "servlet.CartServlet" %>
+<%@ page import = "itemsearch.ItemSearchServlet" %>
+<%@ page import = "cart.CartServlet" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 
@@ -40,14 +40,14 @@
 						<form action = "http://localhost:8080/ECSite/CartServlet" method = "POST">
 							<button class="btn cart_delete" type="submit" name="btnCartRemoveTransition"  value="${itemData.itemNo}">削除</button>
 						</form>
+					<c:set var="total" value="${total +itemTotalPriceHmap[itemData.itemNo]}"/>
 						<br>
 						<br>
 					</c:forEach>
 				</c:when>
 			</c:choose>
-
-
-
+				商品の合計金額：${total}
+			<br>
 			<!-- 購入画面に進む -->
 			<form action = "http://localhost:8080/ECSite/ItemBuyServlet" method = "POST">
 				<c:choose>
@@ -60,9 +60,7 @@
 					</c:when>
 				</c:choose>
 			</form>
-
 		</div>
-
 	</div>
 
 	<div id="page_top"><a href="#"></a></div>
