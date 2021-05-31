@@ -116,7 +116,9 @@
 			</c:when>
 		</c:choose>
 
-
+	　<div id="page_top"><a href="#"></a></div>
+		<div class ="p_layout"></div>
+		<%@include file= "Footer.jsp" %>
 
 
 </body>

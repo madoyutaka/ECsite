@@ -83,7 +83,7 @@
 	</div>
 
 	　<div id="page_top"><a href="#"></a></div>
-
+		<%@include file= "Footer.jsp" %>
 
 </body>
 </html>
