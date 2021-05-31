@@ -46,12 +46,12 @@
 					</c:forEach>
 				</c:when>
 			</c:choose>
-				商品の合計金額：${total}
-			<br>
+
 			<!-- 購入画面に進む -->
 			<form action = "http://localhost:8080/ECSite/ItemBuyServlet" method = "POST">
 				<c:choose>
 					<c:when test="${ fn:length(cartItemData) >= 1}">
+					合計金額：${total}円<br><br>
 						<input class="btn" type = "submit" name="btnItemBuyTransition" value ="購入確認に進む">
 					</c:when>
 
