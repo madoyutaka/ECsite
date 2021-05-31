@@ -17,13 +17,12 @@ public class FavoriteListLogic {
 		return returnlist;
 	}
 
-	public FavoriteBean deleteLogic(int loginUserNo,int itemNo) {
-		FavoriteBean returnBean = null;
+	public String deleteLogic(int loginUserNo,int itemNo) {
+		String returnText = null;
 		FavoriteJdbc favoriteJdbc = new FavoriteJdbc();
-		 returnBean = favoriteJdbc.daleteFaves(loginUserNo,itemNo);
-		    System.out.println(returnBean);
+		returnText = favoriteJdbc.daleteFaves(loginUserNo,itemNo);
 
-		return null;
+		return returnText;
 
 	}
 
