@@ -20,7 +20,9 @@
 		font-size: 40px;
 	}
 
-
+	.p_layout{
+		padding-bottom: 60px;
+	}
 
 
 	/*商品画像サイズ統一用*/
@@ -355,8 +357,8 @@
 
 	/* ページングボタンの位置 */
 	.favorite_pagination{
-		position: absolute;
-		bottom: 0;
+		position: relative;
+		paging-bottom: 60px;
 		left: 50%;
 		 transform: translate(-50%, 0);
 	}
