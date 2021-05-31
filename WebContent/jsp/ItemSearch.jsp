@@ -46,7 +46,7 @@
 			<!-- エラーメッセージがある場合は表示し、ない場合は表示しない。 -->
 			<c:choose>
 				<c:when test="${errorText != null}">
-						<h1 class="error_text"><c:out value="${errorText}"/></h1>
+						<h1 class="error_text search_text"><c:out value="${errorText}"/></h1>
 				</c:when>
 				<c:when test="${errorText == null}">
 				</c:when>
@@ -115,6 +115,7 @@
 				</form>
 			</c:when>
 		</c:choose>
+
 
 
 

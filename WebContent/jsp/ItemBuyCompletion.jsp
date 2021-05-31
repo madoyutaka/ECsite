@@ -22,7 +22,7 @@
 
 		<div class="ItemBuyCompletion">
 			<form action = "http://localhost:8080/ECSite/MyPageServlet" method = "POST">
-				<input class="btn" type = "submit" name="btnMyPageTransition" value = "マイページへ">
+				<input class="btn itembuycomp_btn" type = "submit" name="btnMyPageTransition" value = "マイページへ">
 			</form>
 		</div>
 	</div>
